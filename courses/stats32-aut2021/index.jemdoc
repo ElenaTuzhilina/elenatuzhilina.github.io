@@ -1,0 +1,61 @@
+# jemdoc: menu{MENU}{index.html}
+= STATS 32: Introduction to R for Undergraduates
+[http://web.stanford.edu/~elenatuz/ Elena Tuzhilina], Fall 2021, Stanford University
+
+== Classes 
+*Time:* Tuesday & Thursday 11:30 AM - 1:00 PM
+
+*Location:*  Littlefield 107
+
+== Office Hours 
+*Time:* Friday 9:00 AM - 11:00 AM
+
+*Location:*  Zoom
+
+== Course Description
+This short course runs for weeks 1-5 of the quarter.
+The goal of the course is to familiarize students with R's tools for data analysis. 
+Lectures will be interactive with a focus on learning by example, no prior programming experience is needed. 
+Topics covered:
+ - basic data structures 
+ - data manipulation
+ - data visualization
+ - simple statistical tests
+
+Laptops are necessary for use in class.
+
+== Textbooks 
+There are no required textbooks for this course. However, R for Data Science by Hadley
+Wickham and Garrett Grolemund (O'Reilly Media, 2017, available for free online [http://r4ds.had.co.nz/ here]) is highly recommended as an aid to understanding the course material.
+
+== Assignments
+
+*Practice questions (not graded)*
+
+Constant practice is an essential component of learning programming.
+After each session, a small practice assignment testing your understanding of the session material will be released.
+I highly encourage you to do these assignments.
+The answers will be released a few days later. 
+
+*Final project (graded)*
+
+The only graded assignment
+for this class is a final project. The project proposal (20\%)
+will be due on /Oct 20 (Wed) 11:59pm/, and the final project itself (80\%) will be due on /Oct 30 (Sat) 11:59pm/.
+More details will be given closer to the date.
+
+== Late Policy 
+Late assignments will be penalized at 10% of the score per day. 
+Assignments turned in more than 2 days late will not be graded.
+
+== Communication
+
+The /Campuswire forum/ is a place for you to communicate with your classmates and 
+to ask questions about the course.
+I will also monitor the forum (not very often), 
+so it is a better place for posting questions that your classmates might know the answer to.
+The link will be shared on Canvas.
+
+
+For urgent questions reach me by email /elenatuz@stanford.edu/.
+

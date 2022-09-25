@@ -1,0 +1,76 @@
+# jemdoc: menu{MENU}{practice.html}
+= Practice
+
+*Shortcuts:*
+- /Cmd-Enter/ in Mac or /Ctrl-Enter/ in Windows/Linux executes the highlighted text. If no text is highlighted, execute the current line of code the cursor is on.
+- /Option-Cmd-I/ in Mac or /Ctrl-Alt-I/ in Windows/Linux inserts a new code chunk.
+- /Cmd-Shift-K/ in Mac or /Ctrl-Shift-K/ in Windows/Linux knits the document.
+
+To learn more, open RStudio and click /Option-Shift-K/ in Mac or /Alt-Shift-K/ in Windows/Linux.
+
+*Useful cheetsheats:*
+- [base-r.pdf base R]
+- [rmarkdown.pdf rmarkdown]
+- [data-visualization.pdf ggplot]
+- [data-transformation.pdf dplyr]
+- [data-import.pdf data import]
+
+== Introduction to R 
+
+*Reading:* Chapters 4 & 6 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-1-Practice.html Practice exercises] | [Session-1-Solutions.html Solution] 
+
+
+== Basic R objects 
+
+*Reading:* Chapter 20 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-2-Practice.html Practice exercises] | [Session-2-Solutions.html Solution] 
+
+
+== Data Visualization
+
+*Reading:* Chapter 3 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-3-Practice.html Practice exercises] | [Session-3-Solutions.html Solution]
+
+== Data Visualization (cont'd)
+
+*Reading:* Chapter 28 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-4-Practice.html Practice exercises] | [Session-4-Solutions.html Solution]
+
+== Data Transformation
+
+*Reading:* Chapter 5, 18 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-5-Practice.html Practice exercises] | [Session-5-Solutions.html Solution]
+
+== Functions
+
+*Reading:* Chapter 6, 12 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-6-Practice.html Practice exercises] | [Session-6-Solutions.html Solution]
+
+== Data import
+
+*Reading:* Chapter 8, 11, 15 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-7-Practice.html Practice exercises] | [Session-7-Solutions.html Solution] | [nba_free_throws.csv NBA throws data]
+
+== R Markdown
+
+*Reading:* Chapter 27, 30 in [https://r4ds.had.co.nz/index.html R4DS]
+
+Do four exercises from the review lecture and post your solution on Campuswire.
+
+== Maps in R
+
+*Reading:* Chapter 13 in [https://r4ds.had.co.nz/index.html R4DS]
+
+[Session-9-Practice.html Practice exercises] | [Session-9-Solutions.html Solution]
+
+
+ 
+

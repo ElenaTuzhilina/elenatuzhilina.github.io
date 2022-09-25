@@ -1,0 +1,32 @@
+# jemdoc: menu{MENU}{index.html}
+= Elena Tuzhilina 
+
+~~~
+{}{img_left}{photo.jpeg}{alt text}{250px}{410px}{}
+Ph.D. Student \n 
+[https://statistics.stanford.edu Department of Statistics,\n Stanford University] \n
+Contact: [elenatuz@stanford.edu Email], [https://www.linkedin.com/in/elena-tuzhilina-2a1b23192/ Linkedin] \n
+Here is [CV.pdf my CV].
+~~~
+
+== About me 
+
+I was born in Moscow and received my [https://en.wikipedia.org/wiki/Specialist_degree Specialist's degree] (equivalent to B.Sc. + M.Sc.) at [https://www.msu.ru/en/info/struct/depts/mechmath.html 
+Faculty of Mechanics and Mathematics of Moscow State University]. 
+During my undergraduate studies in pure mathematics I found myself having a growing interest in machine learning and applied statistics, which was fueled by two-year program 
+in Data Science at [https://yandexdataschool.com Yandex School of Data Analysis]
+and my job as an analyst in the research group of [https://www.smartcat.ai  SmartCAT Company]. 
+Currently, I am a 5th-year PhD student in the [https://statistics.stanford.edu Department of Statistics at Stanford], advised by [http://web.stanford.edu/~hastie/ Professor Trevor Hastie]. 
+My scientific interests include machine learning, applied statistics, especially with applications in biology, computer linguistics and convex optimization.
+
+== Education 
+- /Ph.D. Statistics/, Department of Statistics, Stanford University, Stanford, CA, USA, *2017 -- present*
+- /Ph.D. Mathematics/, Department of Mathematics, Lomonosov Moscow State University, Moscow, Russia, *2015 -- left in 2017*
+- /B.Sc. + M.Sc. Mathematics/, Department of Mathematics, Lomonosov Moscow State University, Moscow, Russia, *2010 -- 2015*
+
+== Employment
+- /Intern in Data Science/, Microsoft, Redmond, WA, USA, *Summer 2021* 
+- /Researcher in Computer Linguistics/, SmartCAT, Moscow, Russia, *2015 -- 2017*
+
+== Scholarship
+- [https://datascience.stanford.edu/people/all/grid/grouped /Data Science Scholarship/], Stanford, CA, USA, *2020 -- present*

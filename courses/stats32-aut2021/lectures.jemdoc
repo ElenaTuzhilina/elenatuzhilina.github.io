@@ -1,0 +1,110 @@
+# jemdoc: menu{MENU}{lectures.html}
+= Lectures
+
+== Introduction to R 
+
+*Topics*:
+- Course overview: Why learn R?
+- Class logistics
+- Installing R, RStudio and packages
+- Variable types
+
+[Session-1-Pres.html Slides] | [Session-1-Install.html How to install] | [Session-1-Lab.html Lab]
+
+*Optional reading*:
+- [reading_1.pdf "R generation" by Nick Thieme]
+
+== Basic R objects
+
+*Topics*:
+- Vectors
+- Matrices/arrays
+- Lists
+- Data frames
+
+[Session-2-Pres.html Slides] | [Session-2-Lab.html Lab]
+
+*Reading*:
+- [https://towardsdatascience.com/descriptive-statistics-f2beeaf7a8df Descriptive Statistics]
+
+== Data Visualization
+
+*Topics*:
+- Different kinds of plots
+- Plotting with ggplot2
+
+[Session-3-Pres.html Slides] | [Session-3-Lab.html Lab]
+
+*Reading*:
+- [Session-3-Plotting.html Plotting in base R]
+
+== Data Visualization (cont'd)
+
+*Topics*:
+- Layers
+- Scales
+- Facets
+- Themes
+
+[Session-4-Pres.html Slides] | [Session-4-Lab.html Lab]
+
+*Reading*:
+- [Session-4-Lab-Extra.html If, else, for, while, and functions in R]
+
+== Data Transformation
+
+*Topics*:
+- \%>\% syntax
+- Transforming data with `dplyr`
+
+[Session-5-Pres.html Slides] | [Session-5-Lab.html Lab]
+
+*Reading*:
+- [Session-5-Extra.html Transformation in base R]
+
+== Functions
+
+*Topics*:
+-  `gather()` function in `tidyr`
+- Functions in R  
+- How to use a function that already exists
+- Direct function call vs pipe \%>\%
+- How to write your own function
+    
+
+[Session-6-Pres.html Slides] | [Session-6-Lab.html Lab]
+
+== Data import
+
+*Topics*:
+- Importing data with readr
+- Factors    
+
+[Session-7-Pres.html Slides] | [Session-7-Lab.html Lab] | [nba_tidy.csv NBA data]
+
+== R Markdown
+
+*Topics*:
+- R Markdown
+- Review    
+
+[Session-8-Pres.html Slides] | [Session-8-Lab.html Lab] | [airbnb_nyc_2019.csv Airbnb data] | [Airbnb_analysis.R Airbnb analysis.R] | [Airbnb_analysis.Rmd Airbnb analysis.Rmd]
+
+== Maps in R
+
+*Topics*:
+- Making maps in R
+- Joining datasets   
+
+[Session-9-Pres.html Slides] | [Session-9-Lab.html Lab] | [2016_US_Presdential_Results_for_class.csv Elections data] | [county_map_fips.rds County map data] | [Elections_analysis.Rmd Elections analysis.Rmd] | [Elections_analysis.html Elections analysis.html]
+
+== Statistics and modeling
+
+*Topics*:
+- Hypothesis testing
+- Linear regression
+
+[Session-10-Pres.html Slides] | [Session-10-Lab.html Lab] | [spotify-2017.csv Spotify data] | [Spotify_starter.R Starter code] | [Spotify_analysis.Rmd Spotify analysis.Rmd] | [Spotify_analysis.html Spotify analysis.html]
+
+
+

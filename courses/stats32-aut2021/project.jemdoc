@@ -1,0 +1,80 @@
+# jemdoc: menu{MENU}{project.html}
+= Final Project
+
+To demonstrate your understanding of the material, you will perform a data analysis project in R. 
+You may choose to do a project on your own or with one other teammate. 
+
+
+== Deadlines
+*Project proposal (20%):* /Oct 20 (Wed) 11:59pm/
+
+*Final project (80%):* /Oct 30 (Sat) 11:59pm/.
+
+
+== Project Proposal Guidelines
+For the project proposal, submit a 1-2 paragraph description of your final project. 
+The project proposal should be submitted as a text file (e.g. .pdf or .doc).
+In the proposal, provide the details on 
+- a dataset that you will use 
+- a problem you plan to explore 
+- some visualization you plan to do 
+
+The proposal is a way for me to make sure that you have a good dataset 
+to complete the project.
+
+== Final Project Guidelines
+You need to submit both .Rmd file and .html files.
+Below I provide some minimum requirements.
+
+*Datasets:*
+use datasets not studied in class. Provide the data file and/or a link to it. My advice is to use a dataset that is in .csv or .txt format; these will be 
+easier to import into R.
+
+*Introduction section:* describe the problem and the datasets you are using. This should include high-level summaries of the 
+data, e.g. how many observations 
+and features, histogram/scatterplots of values, 
+missing values, anything unusual.
+
+*Data analysis section:* include both code and text describing what 
+the code is doing and interpreting the results.
+Provide at least 3 data visualizations, each of a different type. 
+If working with a teammate, at least 6 data visualizations,
+with at least 3 different types.
+
+*Conclusion section:* summarize the results of the analysis. 
+
+Try to put as many details as possible and make your analysis structured. In implementing your final project, you should try to stick as closely to your proposal as possible. 
+If you are unable to do so, please provide a paragraph in 
+your final project to explain the deviations from the proposal.
+
+== Submission
+We will use Gradescope to submit both assignments. 
+The link to the Gradescope page will appear on Canvas shortly.  
+If working with a teammate, only one person has to submit the work.
+Please use the [https://help.gradescope.com/article/m5qz2xsnjy-student-add-group-members group submission option] on 
+Gradescope and add your teammate to the submission.
+
+== Grading policy
+Late assignments will be penalized at 10\% of the score per day. 
+Assignments turned in more than 2 days late will not be graded.
+
+== Project examples
+Here are some examples of great projects from previous runs of this class:
+
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/world_happiness_analysis-1.html World Happiness Analysis], Clementine Chou
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/Chocolate_Analysis.html Analysis of Chocolate Bars], William Chow
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/CA_Election_Analysis_Markdown.html California Election Analysis], Kyle Dixon
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/Street_Trees.html Street Trees in San Francisco], Jessica Eggers
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/College_Data.html An (Incomprehensive) Analysis of the College Scorecard Data], Alex Hurtado
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/wine_report.html Wine Project Report], Miranda Li
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/SAT_Score_Analysis.html SAT Score Analysis], Angela Luo
+- [http://kjytay.github.io/teaching/stats32-aut2019/projects/Airbnb_Analysis.html San Francisco Airbnb Analysis], Jenny Nova
+
+If you don't have ideas for what data to use,
+here are some resources for datasets that you might want to explore:
+
+- [https://github.com/awesomedata/awesome-public-datasets Awesome Public Datasets]. A compilation of links to various open datasets
+- [https://datasetsearch.research.google.com Google Dataset Search]. A tool for searching for open datasets
+
+You can also collect the data by yourself :)
+

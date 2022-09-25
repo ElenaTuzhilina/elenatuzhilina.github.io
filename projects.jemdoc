@@ -1,0 +1,275 @@
+# jemdoc: menu{MENU}{projects.html}
+
+= PhD projects
+
+== Weighted Low Rank Matrix Approximation and Acceleration
+
+~~~
+{}{img_left}{WLRMA.png}{alt text}{180px}{}
+*April 2020 -- present*, Stanford University, Stanford, USA
+
+Low-rank matrix approximation is one of the central concepts in machine learning, 
+with applications in dimension reduction, de-noising, multivariate statistical methodology, and many more.
+A recent extension to LRMA is called low-rank matrix completion (LRMC). 
+It solves the LRMA problem when some observations are missing and is especially useful 
+for recommender systems. In this project, we consider an element-wise weighted generalization of LRMA. 
+WLRMA has many applications. For example, it is an essential component of GLM optimization algorithms, 
+where an exponential family is used to model the entries of a matrix, and the matrix 
+of natural parameters admits a low-rank structure.  
+
+This project is done in collabortion with [https://web.stanford.edu/~hastie/ Trevor Hastie] as a part of my PhD research at Stanford. 
+
+[https://github.com/ElenaTuzhilina/WLRMA/ \[WLRMA package\]]
+~~~
+
+== Canonical Correlation Analysis in high dimensions with structured regularization
+
+~~~
+{}{img_left}{RCCA.png}{alt text}{180px}{}
+*April 2020 -- present*, Stanford University, Stanford, USA
+
+Canonical Correlation Analysis (CCA) is a technique that allows to measure the 
+association between two multivariate sets of variables. 
+The Regularized modification of Canonical Correlation Analysis (RCCA) 
+is widely used to conduct the analysis of high dimensional data. 
+One limitation of RCCA is that it treats all features equally. 
+In this project we introduce several modifications of RCCA utilizing 
+the underlying data structure and 
+suggesting some tricks that allows to avoid excessive computations 
+while conducting CCA with regularization. 
+
+This project is done in collabortion with [https://web.stanford.edu/~hastie/ Trevor Hastie] and [https://profiles.stanford.edu/leonardo-tozzi Leonardo Tozzi] as 
+a part of my PhD research at Stanford. 
+
+[https://youtu.be/CZ5lxhiZqVM \[JSM talk video\]] [JSM_talk_2021.pdf \[JSM talk slides\]] [DBDS_poster.pdf \[DBDS poster\]] [IAC_talk_2020.pdf \[IAC slides\]] [https://github.com/ElenaTuzhilina/RCCA/ \[RCCA package\]]
+~~~
+
+== Reconstruction of 3D chromatin architecture
+
+~~~
+{}{img_left}{conformation.png}{alt text}{175px}{175px}
+*2018 -- present*, Stanford University, Stanford, USA
+
+/Description/: Three dimensional (3D) genome spatial organization is critical for numerous cellular processes. 
+Genome architecture had been 
+notoriously difficult to elucidate, but the advent of the suite of 
+chromatin conformation capture assays, notably Hi-C, has transformed 
+understanding of chromatin structure and provided downstream biological insights. 
+In this project we target finding a chromatin spatial conformation.
+We exploit the fact that single chromosome solutions constitute a one dimensional (1D) curve in 3D.
+The resulting PoisMS technique thereby combines principal curve methodology with the metric scaling approach. 
+
+
+This project is done in collabortion with [https://web.stanford.edu/~hastie/ Trevor Hastie] and [https://profiles.ucsf.edu/mark.segal Mark Segal] as a part of 
+my PhD research at Stanford. 
+
+[https://youtu.be/CZ5lxhiZqVM \[JSM talk video\]] [JSM_talk_2020.pdf \[JSM talk slides\]] [IAC_talk_2019.pdf \[IAC slides\]] [MLSS_poster.pdf \[MLSS poster\]] [https://github.com/ElenaTuzhilina/PoisMS \[PoisMS package\]] [https://elenatuzhilina.github.io/PoisMS/ \[PoisMS tutorial\]]
+~~~
+
+== The Human Connectome project
+
+~~~
+{}{img_left}{connectome.jpg}{alt text}{175px}{175px}
+*2018 -- present*, Stanford University, Stanford, USA
+
+/Description/: 
+Being a part of the [http://williamspanlab.com/connectome Connectomes for Emotional Disorders Project], 
+it uses the data collected at Stanford School of Medicine and it 
+has among the main goals the investigation of relation between emotional disorders and brain 
+functioning by means of statistical analysis.
+
+This project is done in collaboration with [https://web.stanford.edu/~hastie/ Trevor Hastie] and [http://williamspanlab.com/ Stanford Williams PanLab] as 
+a part of my PhD research at Stanford. 
+
+[HCP_poster.pdf \[HCP poster\]] [https://github.com/ElenaTuzhilina/Connectome \[Code\]] 
+~~~
+
+
+= Course projects
+
+== Weighted Low Rank Matrix Approximation
+
+~~~
+{}{img_left}{convergence.png}{alt text}{160px}{}
+*April 2020 -- June 2020*, Stanford University, Stanford, USA
+
+/Description/: The Low-rank matrix-completion (LRC) problem has always 
+attracted a lot of attention. One of the most famous applications 
+can be found in Netflix Problem, which aims to build a movie 
+recommendation system based on partial user's movie ratings. 
+The general LRC problem statement is: given some incomplete matrix
+find a low-rank matrix that provides the best approximation 
+to its observed entries. 
+In this project we consider the generalization of LRC problem 
+introducing weights in the problem set-up and stating 
+the Weighted Low Rank Matrix Approximation (WLRA) problem. 
+We suggest several optimization algorithms solving this problem
+and compare them in terms of convergence. 
+
+This project was done as a part of Convex Optimization II course at Stanford. 
+
+[EE364B_report.pdf \[Project report\]]
+~~~
+
+== Early Detection of COVID-19 from Cough Sounds, Symptoms, and Context
+
+~~~
+{}{img_left}{wave.png}{alt text}{160px}{}
+*April 2020 -- June 2020*, Stanford University, Stanford, USA
+
+/Description/: As of June 12th 2020, there have been 7,739,944 cases and 428,337 deaths 
+as a result of the COVID-19 pandemic as per the World Health Organization COVID-19 Dashboard. 
+The countries around the world have imposed restrictions in the form of the lockdown to combat 
+the rate of the spread and flatten the curve describing the number of patients admitted to hospital per day.
+Currently most of governments are planning their post-lockdown reopening procedures and methods 
+to monitor the spread of the disease. However, limited tested capabilities, varying quality of the tests, 
+and a large number of asymptomatic carriers make 
+this task particularly challenging. 
+In this project we attempt to build a classifier to diagnose 
+the patient based on the cough recording and general patient information 
+collected by the hospital staff. The data was provided by the Wadhwani Institute of 
+Artificial Intelligence.
+
+This project was done as a part of Data science and AI for COVID-19 course at Stanford. 
+ 
+[CS472_report.pdf \[Project report\]]
+~~~
+
+== Art Nouveau style transfer with face alignment
+
+~~~
+{}{img_left}{art_nouveau.jpg}{alt text}{160px}{}
+*October 2019 -- December 2019*, Stanford University, Stanford, USA
+
+/Description/: Flourished throughout Europe and the United
+States at the turn of 19th and 20th centuries, Art
+Nouveau still remains one of the most beautiful
+decorative art movements. Promulgating the
+idea of art and design as part of everyday life and
+inspired by natural forms and patterns of plants
+and flowers, it has influenced different aspects
+of art and architecture, such as interior, furnishings
+and glass design, as well as graphic work,
+posters, and illustration. This project inspired by
+Henri de Toulouse-Lautrec and Alphonse Mucha
+works of art is aimed to develop a deep learning
+tool transforming already boring photos into
+a bright and bold Art Nouveau fine art posters.
+
+This project was done as a part of Deep Learning course at Stanford.
+
+[CS230_report.pdf \[Project report\]]  [CS230_poster.pdf \[Project poster\]] 
+~~~
+
+== Monet is spot, Manet is people
+
+~~~
+{}{img_left}{MonetManet.jpg}{alt text}{175px}{175px}
+*October 2018 -- December 2018*, Stanford University, Stanford, USA
+
+/Description/: It takes some time for a human being to conceive the differences between two of the most well-known
+impressionist painters Claude Monet and Edouard Manet. Although quite cultivated the French beau
+monde of the nineteenth century had a struggle with this problem as well. When Claude Monet made his
+debut at the salon in Paris in 1865, his landscapes were displayed next to the famous painting "Olympia"
+by Edouard Manet who was already known at the time. Funnily enough, people could not recognize the difference between the paintings of these two artists.
+Could the machine do better?
+
+This project was done as a part of Machine Learning course at Stanford. 
+
+[CS229_report.pdf \[Project report\]] [CS229_poster.pdf \[Project poster\]] 
+~~~
+
+== Imputing chromatin landscape from a single essay
+
+~~~
+{}{img_left}{sequencing.png}{alt text}{175px}{175px}
+*October 2018 -- December 2018*, Stanford University, Stanford, USA
+
+/Description/: Chromatin landscapes provide critical insight into the transcriptional regulation of
+the genome. Current approaches for profiling chromatin landscape require
+multiple high-throughput sequencing assays, creating the desire for a single
+cost-effective assay. Here we assess the ability of nascent transcription assay -
+Global Run-On and sequencing (GRO-seq) and Precision Run-On and
+sequencing (PRO-seq) -- to impute H3K4me3, H3K27ac, H3K27me3, and
+DNase-seq using XGBoost, Dense Neural Network, and Convolutional Neural
+Network models.
+
+This project was done as a part of Deep Learning in Genetics course at Stanford. 
+
+[CS273B_report.pdf \[Project report\]] 
+~~~
+
+= Other projects
+
+== COVID-19 forecasting
+
+~~~
+{}{img_left}{covid.jpg}{alt text}{180px}{}
+*March 2021 -- present*, Stanford University, Stanford, USA
+
+The COVID-19 pandemic presented enormous data challenges in the United States. 
+In this project we analyse the data collected by COVIDcast team and develop 
+the tools for COVID-19 forecasting.
+
+This project is done in collabortion with [https://web.stanford.edu/~hastie/ Trevor Hastie], [https://statweb.stanford.edu/~tibs/ Rob Tibshirani] and
+[https://delphi.cmu.edu Delphi Research group] as a part of my Data Science scholarship at Stanford. 
+
+~~~
+
+
+== Dimension reduction methods in myeloma studies
+
+~~~
+{}{img_left}{myeloma.jpg}{alt text}{175px}{175px}
+*2016 -- 2017*, Yandex School of Data Analysis, Moscow, Russia
+
+/Description/: In the present work the success of targeted therapy as an approach to the treatment of myeloma was investigated. 
+This project is aimed to predict the outcome of the therapy suggested by the hospital using gene expression information of the patient. 
+
+This project 
+was done as a part of [https://yandexdataschool.com/ Yandex School of Data Analysis] program and in collaboration with 
+[http://www.fnkc.ru/ Dmitry Rogachev National Research Center of Pediatric Hematology, Oncology and Immunology]. 
+
+[Yandex_project.pdf \[Project report\]] 
+~~~
+
+== Automatic organization of translation workflow
+
+~~~
+{}{img_left}{smartcat.jpg}{alt text}{175px}{175px}
+*2015 -- 2017*, SmartCAT, Moscow, Russia
+
+/Description/:
+ The main goal of the project can be stated as follows. Given the complete information about translators 
+in a marketplace such as average translation pace (words per hour), translation price (cents per word), customer feedbacks
+ and customers rating, texts of the projects translated along with translation mistakes made (detected automatically 
+ by system or manually by reviewer or corrector) find the most efficient translator for the new project. By efficiency of the translator
+ we imply that such translator would meet time and price restrictions imposed by the customer and would 
+ produce the translation of the highest possible quality.
+
+This project was done as a part of my job at [https://www.smartcat.ai/company/ SmartCAT Company], it won the grant and was sponsored
+ by [https://sk.ru/ Skolkovo Innovation Center], and, subsequently, our research group got two patents on the invented algorithm.
+
+~~~
+
+== Geometry of amino acids and polypeptides spatial structures
+
+~~~
+{}{img_left}{amino.png}{alt text}{175px}{145px}
+*2014 -- 2017*, Moscow State University, Moscow, Russia
+
+/Description/:
+In this project the geometry of polypeptides is investigated by means of geometrical and statistical methods.
+One part of this project is devoted to the analysis of the information contained in Protein Data Bank. In particular, 
+we have tested several characteristics (such as covalent bonds lengths and angles, cis--trans isomerism or Pauling plane low) 
+of PDB conformations for consistency and general theory fitting.
+The second part is focused on geometrical modeling of polypeptides. We consider several approaches 
+to polypeptides modeling (e.g by a polygonal chain with fixed edge lengths or by a smooth curve) and investigate
+folding properties of the suggested models.
+
+This project was done in collaboration with [https://www.msu.ru/en/info/struct/depts/bio.html Faculty of Biology of Moscow state University] 
+and it was funded by 
+[https://grant.rscf.ru/enexp/ Russian Science Foundation] grant.
+
+~~~
+
