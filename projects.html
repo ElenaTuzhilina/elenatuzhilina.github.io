@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title></title>
+<title>Research projects</title>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -13,21 +13,42 @@
 <td id="layout-menu">
 <div class="menu-category">Home</div>
 <div class="menu-item"><a href="index.html">About&nbsp;me</a></div>
+<div class="menu-item"><a href="resume.html">Resume</a></div>
 <div class="menu-category">Research</div>
 <div class="menu-item"><a href="projects.html" class="current">Projects</a></div>
 <div class="menu-item"><a href="publications.html">Publications</a></div>
 <div class="menu-item"><a href="conferences.html">Conferences</a></div>
-<div class="menu-category">Coursework</div>
-<div class="menu-item"><a href="teaching.html">Teaching</a></div>
-<div class="menu-item"><a href="courses.html">Courses</a></div>
+<div class="menu-item"><a href="software.html">Software</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="instructor.html">Instructor</a></div>
+<div class="menu-item"><a href="teaching_assistant.html">Teaching&nbsp;Assistant</a></div>
+<div class="menu-category">Data Science</div>
+<div class="menu-item"><a href="ds_blog.html">Blog</a></div>
 </td>
 <td id="layout-content">
-<h1>PhD projects</h1>
-<h2>Weighted Low Rank Matrix Approximation and Acceleration</h2>
+<div id="toptitle">
+<h1>Research projects</h1>
+</div>
+<h2>Multi-period forecasting</h2>
 <table class="imgtable"><tr><td>
-<img src="WLRMA.png" alt="alt text" width="180px" />&nbsp;</td>
-<td align="left"><p><b>April 2020 &ndash; present</b>, Stanford University, Stanford, USA</p>
-<p>Low-rank matrix approximation is one of the central concepts in machine learning, 
+<img src="images/MPF.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2021 &ndash; 2022</b>, Stanford University, Stanford, USA</p>
+<p>Forecasting methodologies have always attracted a lot of attention and have become an
+especially hot topic since the beginning of the COVID-19 pandemic. In this paper we consider
+the problem of multi-period forecasting that aims to predict several horizons at once. We
+propose a novel approach that forces the prediction to be &ldquo;smooth&rdquo; across horizons and
+apply it to two tasks: point estimation via regression and interval prediction via quantile
+regression. This methodology was developed for real-time distributed COVID-19 forecasting.
+This project was sponsered by Stanford Data Science Institute.</p>
+<p><i>Collaborators:</i> <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a>, <a href="https://statweb.stanford.edu/~tibs/" target=&ldquo;blank&rdquo;>Rob Tibshirani</a> and
+<a href="https://delphi.cmu.edu" target=&ldquo;blank&rdquo;>Delphi Research group</a>.</p>
+<p><a href="materials/MPF_paper.pdf" target=&ldquo;blank&rdquo;>[Paper]</a> <a href="materials/MPF_slides.pdf" target=&ldquo;blank&rdquo;>[Slides]</a> <a href="https://github.com/ElenaTuzhilina/MPF/" target=&ldquo;blank&rdquo;>[Code]</a></p>
+</td></tr></table>
+<h2>Weighted low rank matrix approximation and acceleration</h2>
+<table class="imgtable"><tr><td>
+<img src="images/WLRMA.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2020 &ndash; present</b>, Stanford University, Stanford, USA</p>
+<p><i>Description</i>: Low-rank matrix approximation is one of the central concepts in machine learning, 
 with applications in dimension reduction, de-noising, multivariate statistical methodology, and many more.
 A recent extension to LRMA is called low-rank matrix completion (LRMC). 
 It solves the LRMA problem when some observations are missing and is especially useful 
@@ -35,29 +56,28 @@ for recommender systems. In this project, we consider an element-wise weighted g
 WLRMA has many applications. For example, it is an essential component of GLM optimization algorithms, 
 where an exponential family is used to model the entries of a matrix, and the matrix 
 of natural parameters admits a low-rank structure.  </p>
-<p>This project is done in collabortion with <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> as a part of my PhD research at Stanford. </p>
-<p><a href="https://github.com/ElenaTuzhilina/WLRMA/" target=&ldquo;blank&rdquo;>[WLRMA package]</a></p>
+<p><i>Collabortors:</i> <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a>.</p>
+<p><a href="materials/WLRMA_paper.pdf" target=&ldquo;blank&rdquo;>[Paper]</a> <a href="https://github.com/ElenaTuzhilina/WLRMA/" target=&ldquo;blank&rdquo;>[WLRMA package]</a> </p>
 </td></tr></table>
-<h2>Canonical Correlation Analysis in high dimensions with structured regularization</h2>
+<h2>Canonical correlation analysis with structured regularization</h2>
 <table class="imgtable"><tr><td>
-<img src="RCCA.png" alt="alt text" width="180px" />&nbsp;</td>
-<td align="left"><p><b>April 2020 &ndash; present</b>, Stanford University, Stanford, USA</p>
-<p>Canonical Correlation Analysis (CCA) is a technique that allows to measure the 
+<img src="images/RCCA.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2020 &ndash; 2022</b>, Stanford University, Stanford, USA</p>
+<p><i>Description</i>: Canonical correlation analysis (CCA) is a technique that allows to measure the 
 association between two multivariate sets of variables. 
-The Regularized modification of Canonical Correlation Analysis (RCCA) 
+The regularized modification of canonical correlation analysis (RCCA) 
 is widely used to conduct the analysis of high dimensional data. 
 One limitation of RCCA is that it treats all features equally. 
 In this project we introduce several modifications of RCCA utilizing 
 the underlying data structure and 
 suggesting some tricks that allows to avoid excessive computations 
 while conducting CCA with regularization. </p>
-<p>This project is done in collabortion with <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> and <a href="https://profiles.stanford.edu/leonardo-tozzi" target=&ldquo;blank&rdquo;>Leonardo Tozzi</a> as 
-a part of my PhD research at Stanford. </p>
-<p><a href="https://youtu.be/CZ5lxhiZqVM" target=&ldquo;blank&rdquo;>[JSM talk video]</a> <a href="JSM_talk_2021.pdf" target=&ldquo;blank&rdquo;>[JSM talk slides]</a> <a href="DBDS_poster.pdf" target=&ldquo;blank&rdquo;>[DBDS poster]</a> <a href="IAC_talk_2020.pdf" target=&ldquo;blank&rdquo;>[IAC slides]</a> <a href="https://github.com/ElenaTuzhilina/RCCA/" target=&ldquo;blank&rdquo;>[RCCA package]</a></p>
+<p><i>Collabortors:</i> <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> and <a href="https://profiles.stanford.edu/leonardo-tozzi" target=&ldquo;blank&rdquo;>Leonardo Tozzi</a>. </p>
+<p><a href="materials/RCCA_paper.pdf" target=&ldquo;blank&rdquo;>[Paper]</a> <a href="https://github.com/ElenaTuzhilina/RCCA/" target=&ldquo;blank&rdquo;>[RCCA package]</a> <a href="materials/RCCA_slides.pdf" target=&ldquo;blank&rdquo;>[Slides]</a> <a href="materials/RCCA_poster.pdf" target=&ldquo;blank&rdquo;>[Poster]</a> <a href="https://youtu.be/CZ5lxhiZqVM" target=&ldquo;blank&rdquo;>[Video]</a> </p>
 </td></tr></table>
-<h2>Reconstruction of 3D chromatin architecture</h2>
+<h2>Chromatin conformation reconstruction</h2>
 <table class="imgtable"><tr><td>
-<img src="conformation.png" alt="alt text" width="175px" height="175px" />&nbsp;</td>
+<img src="images/PoisMS.png" alt="alt text" width="200px" />&nbsp;</td>
 <td align="left"><p><b>2018 &ndash; present</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: Three dimensional (3D) genome spatial organization is critical for numerous cellular processes. 
 Genome architecture had been 
@@ -66,30 +86,28 @@ chromatin conformation capture assays, notably Hi-C, has transformed
 understanding of chromatin structure and provided downstream biological insights. 
 In this project we target finding a chromatin spatial conformation.
 We exploit the fact that single chromosome solutions constitute a one dimensional (1D) curve in 3D.
-The resulting PoisMS technique thereby combines principal curve methodology with the metric scaling approach. </p>
-<p>This project is done in collabortion with <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> and <a href="https://profiles.ucsf.edu/mark.segal" target=&ldquo;blank&rdquo;>Mark Segal</a> as a part of 
-my PhD research at Stanford. </p>
-<p><a href="https://youtu.be/CZ5lxhiZqVM" target=&ldquo;blank&rdquo;>[JSM talk video]</a> <a href="JSM_talk_2020.pdf" target=&ldquo;blank&rdquo;>[JSM talk slides]</a> <a href="IAC_talk_2019.pdf" target=&ldquo;blank&rdquo;>[IAC slides]</a> <a href="MLSS_poster.pdf" target=&ldquo;blank&rdquo;>[MLSS poster]</a> <a href="https://github.com/ElenaTuzhilina/PoisMS" target=&ldquo;blank&rdquo;>[PoisMS package]</a> <a href="https://elenatuzhilina.github.io/PoisMS/" target=&ldquo;blank&rdquo;>[PoisMS tutorial]</a></p>
+The resulting technique thereby combines principal curve methodology with the metric scaling approach. </p>
+<p><i>Collabortors:</i> <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> and <a href="https://profiles.ucsf.edu/mark.segal" target=&ldquo;blank&rdquo;>Mark Segal</a>. </p>
+<p><a href="materials/DBMS_paper.pdf" target=&ldquo;blank&rdquo;>[Paper 1]</a> <a href="materials/PoisMS_paper.pdf" target=&ldquo;blank&rdquo;>[Paper 2]</a> <a href="https://github.com/ElenaTuzhilina/DBMS" target=&ldquo;blank&rdquo;>[DBMS package]</a> <a href="https://github.com/ElenaTuzhilina/PoisMS" target=&ldquo;blank&rdquo;>[PoisMS package]</a> <a href="https://elenatuzhilina.github.io/PoisMS/" target=&ldquo;blank&rdquo;>[PoisMS vignette]</a> <a href="materials/PoisMS_slides.pdf" target=&ldquo;blank&rdquo;>[Slides]</a> <a href="materials/PoisMS_poster.pdf" target=&ldquo;blank&rdquo;>[Poster]</a> <a href="https://youtu.be/CZ5lxhiZqVM" target=&ldquo;blank&rdquo;>[Video]</a></p>
 </td></tr></table>
 <h2>The Human Connectome project</h2>
 <table class="imgtable"><tr><td>
-<img src="connectome.jpg" alt="alt text" width="175px" height="175px" />&nbsp;</td>
-<td align="left"><p><b>2018 &ndash; present</b>, Stanford University, Stanford, USA</p>
+<img src="images/Connectome.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2018 &ndash; 2022</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: 
 Being a part of the <a href="http://williamspanlab.com/connectome" target=&ldquo;blank&rdquo;>Connectomes for Emotional Disorders Project</a>, 
 it uses the data collected at Stanford School of Medicine and it 
 has among the main goals the investigation of relation between emotional disorders and brain 
 functioning by means of statistical analysis.</p>
-<p>This project is done in collaboration with <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a> and <a href="http://williamspanlab.com/" target=&ldquo;blank&rdquo;>Stanford Williams PanLab</a> as 
-a part of my PhD research at Stanford. </p>
-<p><a href="HCP_poster.pdf" target=&ldquo;blank&rdquo;>[HCP poster]</a> <a href="https://github.com/ElenaTuzhilina/Connectome" target=&ldquo;blank&rdquo;>[Code]</a> </p>
+<p><i>Collaborators</i>: <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a>, <a href="http://williamspanlab.com/" target=&ldquo;blank&rdquo;>Stanford Williams PanLab</a>. </p>
+<p><a href="materials/Connectome_paper.pdf" target=&ldquo;blank&rdquo;>[Paper]</a> <a href="materials/Connectome_poster.pdf" target=&ldquo;blank&rdquo;>[Poster]</a> <a href="https://github.com/ElenaTuzhilina/Connectome" target=&ldquo;blank&rdquo;>[Code]</a> </p>
 </td></tr></table>
 <h1>Course projects</h1>
-<h2>Weighted Low Rank Matrix Approximation</h2>
+<h2>Weighted low rank matrix approximation</h2>
 <table class="imgtable"><tr><td>
-<img src="convergence.png" alt="alt text" width="160px" />&nbsp;</td>
-<td align="left"><p><b>April 2020 &ndash; June 2020</b>, Stanford University, Stanford, USA</p>
-<p><i>Description</i>: The Low-rank matrix-completion (LRC) problem has always 
+<img src="images/EE364B.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2020</b>, Stanford University, Stanford, USA</p>
+<p><i>Description</i>: The low-rank matrix-completion (LRC) problem has always 
 attracted a lot of attention. One of the most famous applications 
 can be found in Netflix Problem, which aims to build a movie 
 recommendation system based on partial user's movie ratings. 
@@ -98,16 +116,16 @@ find a low-rank matrix that provides the best approximation
 to its observed entries. 
 In this project we consider the generalization of LRC problem 
 introducing weights in the problem set-up and stating 
-the Weighted Low Rank Matrix Approximation (WLRA) problem. 
+the weighted low rank matrix approximation (WLRA) problem. 
 We suggest several optimization algorithms solving this problem
 and compare them in terms of convergence. </p>
-<p>This project was done as a part of Convex Optimization II course at Stanford. </p>
-<p><a href="EE364B_report.pdf" target=&ldquo;blank&rdquo;>[Project report]</a></p>
+<p><i>Course:</i> Convex Optimization II (EE364B). </p>
+<p><a href="materials/EE364B_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a></p>
 </td></tr></table>
-<h2>Early Detection of COVID-19 from Cough Sounds, Symptoms, and Context</h2>
+<h2>Early Detection of COVID-19 from Cough Sounds</h2>
 <table class="imgtable"><tr><td>
-<img src="wave.png" alt="alt text" width="160px" />&nbsp;</td>
-<td align="left"><p><b>April 2020 &ndash; June 2020</b>, Stanford University, Stanford, USA</p>
+<img src="images/CS472.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2020</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: As of June 12th 2020, there have been 7,739,944 cases and 428,337 deaths 
 as a result of the COVID-19 pandemic as per the World Health Organization COVID-19 Dashboard. 
 The countries around the world have imposed restrictions in the form of the lockdown to combat 
@@ -120,13 +138,13 @@ In this project we attempt to build a classifier to diagnose
 the patient based on the cough recording and general patient information 
 collected by the hospital staff. The data was provided by the Wadhwani Institute of 
 Artificial Intelligence.</p>
-<p>This project was done as a part of Data science and AI for COVID-19 course at Stanford. </p>
-<p><a href="CS472_report.pdf" target=&ldquo;blank&rdquo;>[Project report]</a></p>
+<p><i>Course:</i> Data science and AI for COVID-19 (CS472). </p>
+<p><a href="materials/CS472_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a></p>
 </td></tr></table>
 <h2>Art Nouveau style transfer with face alignment</h2>
 <table class="imgtable"><tr><td>
-<img src="art_nouveau.jpg" alt="alt text" width="160px" />&nbsp;</td>
-<td align="left"><p><b>October 2019 &ndash; December 2019</b>, Stanford University, Stanford, USA</p>
+<img src="images/CS230.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2019</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: Flourished throughout Europe and the United
 States at the turn of 19th and 20th centuries, Art
 Nouveau still remains one of the most beautiful
@@ -141,26 +159,26 @@ Henri de Toulouse-Lautrec and Alphonse Mucha
 works of art is aimed to develop a deep learning
 tool transforming already boring photos into
 a bright and bold Art Nouveau fine art posters.</p>
-<p>This project was done as a part of Deep Learning course at Stanford.</p>
-<p><a href="CS230_report.pdf" target=&ldquo;blank&rdquo;>[Project report]</a>  <a href="CS230_poster.pdf" target=&ldquo;blank&rdquo;>[Project poster]</a> </p>
+<p><i>Course:</i> Deep Learning (CS230).</p>
+<p><a href="materials/CS230_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a>  <a href="materials/CS230_poster.pdf" target=&ldquo;blank&rdquo;>[Poster]</a> </p>
 </td></tr></table>
 <h2>Monet is spot, Manet is people</h2>
 <table class="imgtable"><tr><td>
-<img src="MonetManet.jpg" alt="alt text" width="175px" height="175px" />&nbsp;</td>
-<td align="left"><p><b>October 2018 &ndash; December 2018</b>, Stanford University, Stanford, USA</p>
+<img src="images/CS229.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2018</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: It takes some time for a human being to conceive the differences between two of the most well-known
 impressionist painters Claude Monet and Edouard Manet. Although quite cultivated the French beau
 monde of the nineteenth century had a struggle with this problem as well. When Claude Monet made his
 debut at the salon in Paris in 1865, his landscapes were displayed next to the famous painting &ldquo;Olympia&rdquo;
 by Edouard Manet who was already known at the time. Funnily enough, people could not recognize the difference between the paintings of these two artists.
 Could the machine do better?</p>
-<p>This project was done as a part of Machine Learning course at Stanford. </p>
-<p><a href="CS229_report.pdf" target=&ldquo;blank&rdquo;>[Project report]</a> <a href="CS229_poster.pdf" target=&ldquo;blank&rdquo;>[Project poster]</a> </p>
+<p><i>Course:</i> Machine Learning (CS229). </p>
+<p><a href="materials/CS229_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a> <a href="materials/CS229_poster.pdf" target=&ldquo;blank&rdquo;>[Poster]</a> </p>
 </td></tr></table>
 <h2>Imputing chromatin landscape from a single essay</h2>
 <table class="imgtable"><tr><td>
-<img src="sequencing.png" alt="alt text" width="175px" height="175px" />&nbsp;</td>
-<td align="left"><p><b>October 2018 &ndash; December 2018</b>, Stanford University, Stanford, USA</p>
+<img src="images/CS273B.png" alt="alt text" width="200px" />&nbsp;</td>
+<td align="left"><p><b>2018</b>, Stanford University, Stanford, USA</p>
 <p><i>Description</i>: Chromatin landscapes provide critical insight into the transcriptional regulation of
 the genome. Current approaches for profiling chromatin landscape require
 multiple high-throughput sequencing assays, creating the desire for a single
@@ -169,34 +187,22 @@ Global Run-On and sequencing (GRO-seq) and Precision Run-On and
 sequencing (PRO-seq) &ndash; to impute H3K4me3, H3K27ac, H3K27me3, and
 DNase-seq using XGBoost, Dense Neural Network, and Convolutional Neural
 Network models.</p>
-<p>This project was done as a part of Deep Learning in Genetics course at Stanford. </p>
-<p><a href="CS273B_report.pdf" target=&ldquo;blank&rdquo;>[Project report]</a> </p>
+<p><i>Course:</i> Deep Learning in Genetics (CS273B). </p>
+<p><a href="materials/CS273B_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a> </p>
 </td></tr></table>
 <h1>Other projects</h1>
-<h2>COVID-19 forecasting</h2>
-<table class="imgtable"><tr><td>
-<img src="covid.jpg" alt="alt text" width="180px" />&nbsp;</td>
-<td align="left"><p><b>March 2021 &ndash; present</b>, Stanford University, Stanford, USA</p>
-<p>The COVID-19 pandemic presented enormous data challenges in the United States. 
-In this project we analyse the data collected by COVIDcast team and develop 
-the tools for COVID-19 forecasting.</p>
-<p>This project is done in collabortion with <a href="https://web.stanford.edu/~hastie/" target=&ldquo;blank&rdquo;>Trevor Hastie</a>, <a href="https://statweb.stanford.edu/~tibs/" target=&ldquo;blank&rdquo;>Rob Tibshirani</a> and
-<a href="https://delphi.cmu.edu" target=&ldquo;blank&rdquo;>Delphi Research group</a> as a part of my Data Science scholarship at Stanford. </p>
-</td></tr></table>
 <h2>Dimension reduction methods in myeloma studies</h2>
 <table class="imgtable"><tr><td>
-<img src="myeloma.jpg" alt="alt text" width="175px" height="175px" />&nbsp;</td>
+<img src="images/myeloma.jpg" alt="alt text" width="200px" />&nbsp;</td>
 <td align="left"><p><b>2016 &ndash; 2017</b>, Yandex School of Data Analysis, Moscow, Russia</p>
 <p><i>Description</i>: In the present work the success of targeted therapy as an approach to the treatment of myeloma was investigated. 
 This project is aimed to predict the outcome of the therapy suggested by the hospital using gene expression information of the patient. </p>
-<p>This project 
-was done as a part of <a href="https://yandexdataschool.com/" target=&ldquo;blank&rdquo;>Yandex School of Data Analysis</a> program and in collaboration with 
-<a href="http://www.fnkc.ru/" target=&ldquo;blank&rdquo;>Dmitry Rogachev National Research Center of Pediatric Hematology, Oncology and Immunology</a>. </p>
-<p><a href="Yandex_project.pdf" target=&ldquo;blank&rdquo;>[Project report]</a> </p>
+<p><i>Collabortors:</i> <a href="http://www.fnkc.ru/" target=&ldquo;blank&rdquo;>Dmitry Rogachev National Research Center of Pediatric Hematology, Oncology and Immunology</a>. </p>
+<p><a href="materials/Yandex_report.pdf" target=&ldquo;blank&rdquo;>[Report]</a> </p>
 </td></tr></table>
 <h2>Automatic organization of translation workflow</h2>
 <table class="imgtable"><tr><td>
-<img src="smartcat.jpg" alt="alt text" width="175px" height="175px" />&nbsp;</td>
+<img src="images/smartcat.jpg" alt="alt text" width="200px" />&nbsp;</td>
 <td align="left"><p><b>2015 &ndash; 2017</b>, SmartCAT, Moscow, Russia</p>
 <p><i>Description</i>:
 The main goal of the project can be stated as follows. Given the complete information about translators 
@@ -204,13 +210,14 @@ in a marketplace such as average translation pace (words per hour), translation 
 and customers rating, texts of the projects translated along with translation mistakes made (detected automatically 
 by system or manually by reviewer or corrector) find the most efficient translator for the new project. By efficiency of the translator
 we imply that such translator would meet time and price restrictions imposed by the customer and would 
-produce the translation of the highest possible quality.</p>
-<p>This project was done as a part of my job at <a href="https://www.smartcat.ai/company/" target=&ldquo;blank&rdquo;>SmartCAT Company</a>, it won the grant and was sponsored
-by <a href="https://sk.ru/" target=&ldquo;blank&rdquo;>Skolkovo Innovation Center</a>, and, subsequently, our research group got two patents on the invented algorithm.</p>
+produce the translation of the highest possible quality. 
+This project was funded
+by <a href="https://sk.ru/" target=&ldquo;blank&rdquo;>Skolkovo Innovation Center</a> grant.</p>
+<p><a href="materials/Smartcat_patent.pdf" target=&ldquo;blank&rdquo;>[Patent]</a> </p>
 </td></tr></table>
-<h2>Geometry of amino acids and polypeptides spatial structures</h2>
+<h2>Amino acids spatial structures</h2>
 <table class="imgtable"><tr><td>
-<img src="amino.png" alt="alt text" width="175px" height="145px" />&nbsp;</td>
+<img src="images/amino.png" alt="alt text" width="200px" />&nbsp;</td>
 <td align="left"><p><b>2014 &ndash; 2017</b>, Moscow State University, Moscow, Russia</p>
 <p><i>Description</i>:
 In this project the geometry of polypeptides is investigated by means of geometrical and statistical methods.
@@ -219,14 +226,15 @@ we have tested several characteristics (such as covalent bonds lengths and angle
 of PDB conformations for consistency and general theory fitting.
 The second part is focused on geometrical modeling of polypeptides. We consider several approaches 
 to polypeptides modeling (e.g by a polygonal chain with fixed edge lengths or by a smooth curve) and investigate
-folding properties of the suggested models.</p>
-<p>This project was done in collaboration with <a href="https://www.msu.ru/en/info/struct/depts/bio.html" target=&ldquo;blank&rdquo;>Faculty of Biology of Moscow state University</a> 
-and it was funded by 
+folding properties of the suggested models. 
+This project was funded by 
 <a href="https://grant.rscf.ru/enexp/" target=&ldquo;blank&rdquo;>Russian Science Foundation</a> grant.</p>
+<p><i>Collaborators:</i> <a href="https://www.msu.ru/en/info/struct/depts/bio.html" target=&ldquo;blank&rdquo;>Faculty of Biology of Moscow state University</a>.</p>
+<p><a href="materials/PDB_paper.pdf" target=&ldquo;blank&rdquo;>[Paper]</a> </p>
 </td></tr></table>
 <div id="footer">
 <div id="footer-text">
-Page generated 2021-10-07 09:32:58 Pacific Daylight Time, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+Page generated 2022-09-30 18:55:54 Eastern Daylight Time, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
 </div>
 </div>
 </td>

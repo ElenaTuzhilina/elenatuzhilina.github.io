@@ -1,18 +1,38 @@
-# jemdoc: menu{MENU}{conferences.html}
-= Talks
+# jemdoc: menu{MENU}{talks.html}
 
-== Conferences
-- "Intelligent Rollouts for Office", The Microsoft Machine Learning & Data Sciences Conference, Virtual Conference, *November 2021*
-- "Canonical correlation analysis in high dimensions with structured regularization", [https://ww2.amstat.org/meetings/jsm/2021/ /JSM 2021/], Virtual Conference, *August 2021*
-- "Canonical correlation analysis in high dimensions with structured regularization", [https://statistics.stanford.edu/iap/conference /Industrial Affiliates Annual Conference/], Virtual Conference, *October 2020*
-- "Principal curve approaches for inferring 3D chromatin architecture", [https://smiles.skoltech.ru/school /SMILES 2020/], Virtual Conference, *August 2020*
-- "Principal curve approaches for inferring 3D chromatin architecture", [https://ww2.amstat.org/meetings/jsm/2020/index.cfm /JSM 2020/], Virtual Conference, *August 2020*
-- "A weighted principal curve approach to inferring 3D chromatin architecture", [https://statistics.stanford.edu/iap/conference /Industrial Affiliates Annual Conference/], Stanford, CA, USA, *November 2019*
-- "The geometry of iterations defined on measure metric", [http://tesla.pmf.ni.ac.rs/people/geometrijskiseminarxix/index.php /19th meeting of the Geometrical Seminar/], Zlatibor, Serbia, *September 2016*
-- "The continuous case of cancer spread problem", /Lomonosov Conference/, Moscow, Russia, *April 2014*
-- "Mathematical model of cancer spread", [https://www.uni-ulm.de/en/mawi/institute-of-stochastics/staff/staff/former-members/zakhar-kabluchko/workshop-probability-analysis-and-geometry/?print=1 /Probability, Analysis and Geometry/], Ulm, Geometry, *September 2013*
+== Talks
 
-== Poster Sessions
-- "Canonical correlation analysis in high dimensions with structured regularization", /DBDS Scientific Retreat/, Stanford, CA, USA, *June 2021*
-- "Chromatin reconstruction via Weighted Principal Curves", [https://mlss2019.skoltech.ru/community-day /MLSS Community day/], Moscow, Russia, *September 2019*
+- *August 2022*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://ww2.amstat.org/meetings/jsm/2022/ /Joint Statistical Meeting/],
+Washington, USA
+- *November 2021*, "Intelligent Rollouts for Office", /Machine Learning & Data Sciences Conference at Microsoft/, Virtual
+- *August 2021*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://ww2.amstat.org/meetings/jsm/2021/ /Joint Statistical Meeting/],
+Virtual
+- *October 2020*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://statistics.stanford.edu/events/conferences/2020-industrial-affiliates-annual-conference /Industrial Affiliates Annual
+Conference at Stanford University/], Virtual
+- *August 2020*, "Principal curve approaches for inferring 3D chromatin architecture", [https://smiles.skoltech.ru/school /Summer School of Machine Learning at
+Skolkovo Institute of Science & Technology/], Virtual
+- *August 2020*, "Principal curve approaches for inferring 3D chromatin architecture", [https://ww2.amstat.org/meetings/jsm/2020/index.cfm /Joint Statistical Meeting/], Virtual
+- *November 2019*, "A weighted principal curve approach to inferring 3D chromatin architecture", [https://statistics.stanford.edu/events/conferences/autumn-industrial-affiliates-conference-2019 /Industrial Affiliates Annual
+Conference at Stanford University/], Stanford, USA
+- *September 2016*, "The geometry of iterations defined on measure metric", [http://tesla.pmf.ni.ac.rs/people/geometrijskiseminarxix/index.php /19th meeting of the Geometrical Seminar/], Zlatibor,
+Serbia
+- *April 2014*, "The continuous case of cancer spread problem", /Lomonosov Conference at Moscow State University/, Moscow, Russia
+- *September 2013*, "Mathematical model of cancer spread", [https://www.uni-ulm.de/en/mawi/institute-of-stochastics/staff/staff/former-members/zakhar-kabluchko/workshop-probability-analysis-and-geometry/?print=1 /Probability, Analysis and Geometry/], Ulm, Geometry
+
+== Poster sessions
+
+- *June 2022*, "Statistical curve models for inferring 3D chromatin architecture", [https://simons.berkeley.edu/workshops/statistics-big-data-era /Statistics in the Big Data Era at Simons Institute/],
+Berkeley, USA
+- *April 2022*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://datascience.stanford.edu/events/2022-stanford-data-science-inaugural-conference /Data Science Inaugural
+Conference at Stanford University/], Stanford, USA
+- *June 2021*, "Canonical Correlation Analysis in high dimensions with structured regularization", /DBDS Scientific Retreat at
+Stanford University/, Stanford, USA
+- *September 2019*, "Chromatin reconstruction via Weighted Principal Curves", [https://mlss2019.skoltech.ru/community-day Machine Learning Summer School at Skolkovo
+Institute of Science & Technology], Moscow, Russia
+
+== Summer schools
+- *2020*, [https://smiles.skoltech.ru /Summer School of Machine Learning at Skolkovo Institute of Science & Technology/], Virtual
+- *2019*, [https://smiles.skoltech.ru/mlss2019 /Machine learning Summer School at Skolkovo Institute of Science & Technology/], Moscow, Russia
+- *2016*, [http://dia.fi.upm.es/es/MLAS /Advanced Statistics and Data Mining Summer School at Polytechnic University of Madrid/], Madrid, Spain
+
 

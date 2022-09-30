@@ -1,12 +1,17 @@
 Home
     About me            [index.html]
-
+	Resume				[resume.html]
+	
 Research
 	Projects			[projects.html]
 	Publications		[publications.html]
 	Conferences			[conferences.html]
+	Software			[software.html]
 	
-Coursework
-	Teaching			[teaching.html]
-	Courses				[courses.html]
+Teaching	
+	Instructor [instructor.html]
+	Teaching Assistant [teaching_assistant.html]
+	
+Data Science
+	Blog [ds_blog.html]
 	
