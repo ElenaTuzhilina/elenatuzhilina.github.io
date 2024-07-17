@@ -1,12 +1,16 @@
 # jemdoc: menu{MENU}{instructor.html}
 
-== Instructor
+== Course instructor
 /University of Toronto/:
-- *2022*, Reading course "Statistical learning: methods and applications"
+- *2023*, [sta220.html /STA 220/: Practice in Statistics I]
+- *2023*, /STA 198/: Probabilities Everywhere
+- *2022*, /Reading course/ "Statistical learning: methods and applications"
 
 /Stanford University/:
-- *2021*, [https://web.stanford.edu/~elenatuz/courses/stats32-aut2021/ /STATS 32/: Introduction to R for UGs]
+- *2021*, /STATS 32/: Introduction to R for undergraduates
 
 /Moscow State University/:
-- *2017*, Practicum in statistics
+- *2017*, Practicum in Statistics
 - *2016*, Probability Theory
+
+

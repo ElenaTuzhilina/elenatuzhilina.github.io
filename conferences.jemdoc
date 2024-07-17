@@ -1,7 +1,11 @@
 # jemdoc: menu{MENU}{talks.html}
 
 == Talks
-
+- *June 2024*, "Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions", [https://icsa-canada-chapter.org/symposium2024/ /Sixth ICSA-Canada Chapter Symposium/], Niagara Falls, Canada
+- *June 2023*, "Statistical curve models for inferring 3D chromatin architecture", University of Waterloo, Waterloo, Canada
+- *May 2023*, "Statistical curve models for inferring 3D chromatin architecture", [https://ssc.ca/en/meetings/annual/2023-ssc-annual-meeting-ottawa /Statistical Society of Canada Annual Meeting/], Ottawa, Canada
+- *February 2023*, "Statistical curve models for inferring 3D chromatin architecture", McMaster University, Hamilton, Canada
+- *November 2022*, "Canonical Correlation Analysis in high dimensions with structured regularization", University of Mississippi Medical Center, Virtual
 - *August 2022*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://ww2.amstat.org/meetings/jsm/2022/ /Joint Statistical Meeting/],
 Washington, USA
 - *November 2021*, "Intelligent Rollouts for Office", /Machine Learning & Data Sciences Conference at Microsoft/, Virtual
@@ -21,6 +25,7 @@ Serbia
 
 == Poster sessions
 
+- *August 2023*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://imstat.org/meetings-calendar/new-researchers-conference-2023/ New Researchers Conference], Toronto, Canada
 - *June 2022*, "Statistical curve models for inferring 3D chromatin architecture", [https://simons.berkeley.edu/workshops/statistics-big-data-era /Statistics in the Big Data Era at Simons Institute/],
 Berkeley, USA
 - *April 2022*, "Canonical Correlation Analysis in high dimensions with structured regularization", [https://datascience.stanford.edu/events/2022-stanford-data-science-inaugural-conference /Data Science Inaugural
@@ -30,7 +35,9 @@ Stanford University/, Stanford, USA
 - *September 2019*, "Chromatin reconstruction via Weighted Principal Curves", [https://mlss2019.skoltech.ru/community-day Machine Learning Summer School at Skolkovo
 Institute of Science & Technology], Moscow, Russia
 
-== Summer schools
+== Participation
+- *2024*, [https://ssc.ca/en/meetings/annual/2024-ssc-annual-meeting-st-johns /Statistical Society of Canada Annual Meeting/], St. John's, Canada
+- *2023*, [https://ww2.amstat.org/meetings/jsm/2023/ /Joint Statistical Meeting/], Torotno, Canada
 - *2020*, [https://smiles.skoltech.ru /Summer School of Machine Learning at Skolkovo Institute of Science & Technology/], Virtual
 - *2019*, [https://smiles.skoltech.ru/mlss2019 /Machine learning Summer School at Skolkovo Institute of Science & Technology/], Moscow, Russia
 - *2016*, [http://dia.fi.upm.es/es/MLAS /Advanced Statistics and Data Mining Summer School at Polytechnic University of Madrid/], Madrid, Spain

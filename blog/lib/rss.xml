@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Obsidian Vault]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib\media\favicon.png</url><title>Obsidian Vault</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 17 Jul 2024 18:14:25 GMT</lastBuildDate><atom:link href="lib\rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 17 Jul 2024 18:14:25 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Probabilistic CCA]]></title><description><![CDATA[ 
+ <br><br>Given two datasets with observations  and  and defining the sample covariance matrices by the canonical pairs are denoted by  and  where  and  are left and right singular vectors of  The canonical correlations are stored on the diagonal of .<br>
+Consider model<br>
+<img alt="PCCA.png" src="\images\pcca.png" style="width: 200px; max-width: 100%;"><br>
+The MLE estimates of the parameters are:<br>
+Here  are arbitrary matrices such that , and  and  are the corresponding truncated matrices.<br><a data-tooltip-position="top" aria-label="https://www.di.ens.fr/~fbach/probacca.pdf" rel="noopener" class="external-link" href="https://www.di.ens.fr/~fbach/probacca.pdf" target="_blank">A Probabilistic Interpretation of Canonical Correlation Analysis - Bach and Jordan - 2006</a><br><br>Assume the linear model for signal  and consider the probabilistic model  In other words, <img alt="PPCA.png" src="\images\ppca.png" style="width: 200px; max-width: 100%;"><br>Let  be the sample covariance matrix computed using the observations , and  is its SVD. The MLE of  is  for  it is  Here  and  are truncated versions of  and  and  is an arbitrary orthogonal rotation matrix.<br>
+For  the MLE the variance parameter is  which has the interpretation of the average variance "lost" in the projection.<br>Proof
+Denote . Take the derivative of then If  (the minimizer of the log-likelihood) then take SVD  Thus  If  then  is an eigenvector of  with  If  then  is arbitrary.
+<br>One can show that Using Bayes's rule we obtain Denote  the conditional latent mean. Then is the optimal reconstruction of . If  then  and the projection of  simplifies to <a data-tooltip-position="top" aria-label="https://www.cs.columbia.edu/~blei/seminar/2020-representation/readings/TippingBishop1999.pdf" rel="noopener" class="external-link" href="https://www.cs.columbia.edu/~blei/seminar/2020-representation/readings/TippingBishop1999.pdf" target="_blank">Probabilistic Principal Component Analysis - Tipping and Bishop - 1999</a><br><br>Denote  the adjacency matrix of a random graph. We model  as<br>
+We assume that  graph nodes belong to  communities. Denote by  the matrix of and a map  between nodes and communities such that<br>
+If  is the community assignment matrix, i.e.<br>
+ then setting  we have<br>
+<br>Example 
+Assume<br>
+In other words, the edge probability within a community is  and between communities is .
+<br>Some theoretical results can be derived using perturbation theory using the noise matrix by <br><a data-tooltip-position="top" aria-label="https://www.stat.cmu.edu/~arinaldo/Teaching/36710/F1a8/Scribed_Lectures/Nov12.pdf" rel="noopener" class="external-link" href="https://www.stat.cmu.edu/~arinaldo/Teaching/36710/F1a8/Scribed_Lectures/Nov12.pdf" target="_blank">CMU course</a><a data-tooltip-position="top" aria-label="https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-of-data-science-fall-2015/2a9793af9d85cf5ae0b0531bbb916d33_MIT18_S096F15_Ses22.pdf" rel="noopener" class="external-link" href="https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-of-data-science-fall-2015/2a9793af9d85cf5ae0b0531bbb916d33_MIT18_S096F15_Ses22.pdf" target="_blank">MIT course</a><br><br> Let  be symmetric matrices and define .<br>
+Suppose  and are the eigen-decompositions. Where  represent the first  eigenvectors of  and  respectively.<br>
+If there is a gap in eigenvalues, i.e.<br>
+then the upper bound for the distance between the eigenspaces  and  is<br>
+<br>Proof
+We note that<br>
+thus<br>
+
+<br> <a data-tooltip-position="top" aria-label="https://trungvietvu.github.io/notes/2020/DavisKahan" rel="noopener" class="external-link" href="https://trungvietvu.github.io/notes/2020/DavisKahan" target="_blank">Blog: Matrix Perturbation and Davis-Kahan Theorem</a><a data-tooltip-position="top" aria-label="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/" rel="noopener" class="external-link" href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/" target="_blank">Blog: Davis-Kahan Theorem</a><br><br>Let  be symmetric matrices. Let  denote the -th matrix eigenvalue. Then,<br>
+A more general result is<br>
+<br>This is related to perturbation of eigenvalues. Let  then eigenvalues of  estimate well the ones of  if  is small.<br><br>Consider two matrices  such that . Define the angle between subspaces  and   as<br>
+General statement is defined through the SVD of . If<br>
+then  are called principal angles.<br>Define  and  the projection matrices. We also define the distance between subspaces  and  as<br>
+]]></description><link>stats-blog.html</link><guid isPermaLink="false">Stats blog.md</guid><pubDate>Wed, 17 Jul 2024 17:35:05 GMT</pubDate><enclosure url="images\pcca.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;images\pcca.png&quot;&gt;&lt;/figure&gt;</content:encoded></item></channel></rss>

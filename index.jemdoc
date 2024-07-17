@@ -1,7 +1,7 @@
 # jemdoc: menu{MENU}{index.html}
 
 ~~~
-{}{img_left}{photo.jpg}{alt text}{270px}{350px}{}
+{}{img_left}{photo.jpg}{alt text}{340px}{350px}{}
 *Elena Tuzhilina* \n
 Assistant Professor \n 
 [https://www.statistics.utoronto.ca Department of Statistical Sciences,\n University of Toronto] \n\n
@@ -17,7 +17,7 @@ the Faculty of Mechanics and Mathematics of Moscow State University].
 During my undergraduate studies in pure mathematics I found myself having a growing interest in machine learning and applied statistics, which was fueled by two-year program 
 in Data Science at [https://yandexdataschool.com Yandex School of Data Analysis]
 and my job as a researcher at [https://www.smartcat.ai  the SmartCAT Company]. In 2022, I completed my PhD studies in [https://statistics.stanford.edu the Department of Statistics at Stanford University], where I was lucky to be supervised by [http://web.stanford.edu/~hastie/ Professor Trevor Hastie]. 
-Currently, I am an Assistant Professor in [https://www.statistics.utoronto.ca the Department of Statistical Sciences at the University of Toronto].
+Since June 2022, I work as an Assistant Professor in [https://www.statistics.utoronto.ca the Department of Statistical Sciences at the University of Toronto].
 
-My scientific interests include machine learning, applied statistics, especially with applications in biology, computer linguistics and convex optimization.
+My scientific interests include machine learning, applied statistics, especially with applications in biology and medicine, and convex optimization.
 

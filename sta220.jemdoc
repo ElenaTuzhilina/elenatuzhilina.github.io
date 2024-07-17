@@ -1,0 +1,46 @@
+# jemdoc: menu{MENU}{instructor.html}
+
+== /STA 220/: Practice in Statistics I
+
+/An introductory course in statistical concepts and methods, emphasizing exploratory data analysis for univariate and bivariate data, sampling and experimental designs, basic probability models, estimation and tests of hypothesis in one-sample and comparative two-sample studies. 
+A statistical computing package is used but no prior computing experience is assumed./
+
+=== Course goals
+
+- learn some of the basic concepts of statistics
+- develop a toolbox for analyzing, and displaying data
+- learn a bit of coding!
+
+=== Course topics
+
+- data summary - one variable and relationships between variables
+- probability - events, random variables, and distribution
+- confidence intervals - calculation and interpretation
+- hypothesis testing - type I and II errors, p-value, relation to confidence intervals
+- simple linear regression - interpretation and inference, coefficient of determination
+
+We will use [https://cran.r-project.org/ R programming language] for computations. [https://posit.co/download/rstudio-desktop/ RStudio] is a user-friendly environment for developing, running, and documenting R code. 
+
+=== Course content
+
+~~~
+{}{table}{TABLENAME}
+			| *Lecture notes* | *Practice questions* ||
+Lecture 1  | [courses/sta220/Lectures/Lecture1.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture1-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice1.html practice] ~~~ [courses/sta220/Practice/Practice1-answers.html practice answers] ||
+Lecture 2  | [courses/sta220/Lectures/Lecture2.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture2-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice2.html practice] ~~~ [courses/sta220/Practice/Practice2-answers.html practice answers] ||
+Lecture 3  | [courses/sta220/Lectures/Lecture3.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture3-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice3.html practice] ~~~ [courses/sta220/Practice/Practice3-answers.html practice answers] ||
+Lecture 4  | [courses/sta220/Lectures/Lecture4.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture4-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice4.html practice] ~~~ [courses/sta220/Practice/Practice4-answers.html practice answers] ||
+*Midterm 1* | [courses/sta220/Exams/Midterm1-answers.pdf exam with answers] |  [courses/sta220/Practice/Practice5.html R practice] ||
+Lecture 6  | [courses/sta220/Lectures/Lecture6.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture6-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice6.html practice] ~~~ [courses/sta220/Practice/Practice6-answers.html practice answers] ||
+Lecture 7  | [courses/sta220/Lectures/Lecture7.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture7-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice7.html practice] ~~~ [courses/sta220/Practice/Practice7-answers.html practice answers] ||
+Lecture 8  | [courses/sta220/Lectures/Lecture8.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture8-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice8.html practice] ~~~ [courses/sta220/Practice/Practice8-answers.html practice answers] ||
+*Midterm 2* | [courses/sta220/Exams/Midterm2-answers.pdf exam with answers] |  [courses/sta220/Practice/Practice9.html R practice] ||
+Lecture 10  | [courses/sta220/Lectures/Lecture10.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture10-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice10.html practice] ~~~ [courses/sta220/Practice/Practice10-answers.html practice answers] ||
+Lecture 11  | [courses/sta220/Lectures/Lecture11.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture11-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice11.html practice] ~~~ [courses/sta220/Practice/Practice11-answers.html practice answers] ||
+Lecture 12  | [courses/sta220/Lectures/Lecture12.pdf notes]  ~~~ [courses/sta220/Lectures/Lecture12-annotated.pdf notes annotated] | [courses/sta220/Practice/Practice12.html practice] ~~~ [courses/sta220/Practice/Practice12-answers.html practice answers]
+~~~
+
+
+//
+
+/Distribution tables/: ~~~ [courses/sta220/Tables/normal-distribution.pdf normal] ~~~ [courses/sta220/Tables/t-distribution.pdf Student's t] ~~~ [courses/sta220/Tables/binomial-distribution.pdf binomial] ~~~ [courses/sta220/Tables/chi-square-distribution.pdf chi-square] 

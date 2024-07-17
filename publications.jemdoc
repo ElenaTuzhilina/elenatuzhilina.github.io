@@ -1,21 +1,22 @@
 # jemdoc: menu{MENU}{publications.html}
 
 == Preprints
-- *2022*, "Statistical curve models for inferring 3D chromatin architecture", *E.Tuzhilina*, T.Hastie, M.Segal
-- *2022*, "Smooth multi-period forecasting with application to prediction of COVID-19 cases", *E.Tuzhilina*, T.Hastie, R.Tibshirani
-- *2021*, "Weighted Low Rank Matrix Approximation and acceleration", *E.Tuzhilina*, T.Hastie
+- *2024+*, "Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions", C.Donnat, *E.Tuzhilina*
+- *2024+*, "Weighted Low Rank Matrix Approximation, Acceleration and Applications", *E.Tuzhilina*, T.Hastie
 
 
 == Journal Papers
-- *2022*, "Principal Component Analysis", M.Greenacre, P.Groenen, T.Hastie, A.D'Enza, A.Markos, *E.Tuzhilina*, /accepted to Nature Reviews Methods Primers/
--  *2021*, [https://www.medrxiv.org/content/10.1101/2021.07.12.21259660v1 "An Open Repository of Real-Time COVID-19 Indicators"], A. Reinhart, L. Brooks, M. Jahja,
+- *2024*, "Statistical curve models for inferring 3D chromatin architecture", *E.Tuzhilina*, T.Hastie, M.Segal, /The Annals of Applies Statistics/
+- *2023*, [https://www.tandfonline.com/doi/full/10.1080/10618600.2023.2285337 "Smooth multi-period forecasting with application to prediction of COVID-19 cases"], *E.Tuzhilina*, T.Hastie, R.Tibshirani, /Journal of Journal of Computational and Graphical Statistics/
+- *2022*, [https://www.nature.com/articles/s43586-022-00184-w "Principal Component Analysis"], M.Greenacre, P.Groenen, T.Hastie, A.D'Enza, A.Markos, *E.Tuzhilina*, /Nature Reviews Methods Primers/
+-  *2021*, [https://www.pnas.org/doi/full/10.1073/pnas.2111452118 "An Open Repository of Real-Time COVID-19 Indicators"], A. Reinhart, L. Brooks, M. Jahja,
 A.Rumack, J.Tang, W. Saeed, T.Arnold, A.Basu, J.Bien, A.Cabrera, A.Chin, E.Chua, B.Clark, 
 N.DeFries, J.Forlizzi, S.Gratzl, A.Green, G.Haff, R.Han, A.Hu, S.Hyun, A.Joshi, J.Kim, A.Kuznetsov, 
 W.Motte-Kerr, K.Lee, Y.Lee, Z.Lipton, M.Liu, L.Mackey, K.Mazaitis, D.McDonald, B.Narasimhan, N.Oliveira, 
 P.Patil, A.Perer, C.Politsch, S.Rajanala, D.Rucker, N.Shah, V.Shankar, J.Sharpnack, D.Shemetov, N.Simon, 
 V.Srivastava, S.Tan, R.Tibshirani, *E.Tuzhilina*, A.Nortwick, V.Ventura, L.Wasserman, J.Weiss, K.Williams, 
 R.Rosenfeld, R.Tibshirani, /Proceedings of the National Academy of Sciences/
--  *2021*, [https://journals.sagepub.com/doi/full/10.1177/1471082X211041033 "Canonical Correlation Analysis in high dimensions with structured regularization"], *E.Tuzhilina*, L.Tozzi, T.Hastie, /Statisticsl Modelling, SAGE/
+-  *2021*, [https://journals.sagepub.com/doi/full/10.1177/1471082X211041033 "Canonical Correlation Analysis in high dimensions with structured regularization"], *E.Tuzhilina*, L.Tozzi, T.Hastie, /Statistical Modelling, SAGE/
 -  *2021*, [https://www.sciencedirect.com/science/article/pii/S1053811921004146?via%3Dihub "Relating whole-brain functional connectivity to self-reported negative emotion in a large sample of young adults using group regularized canonical correlation analysis"], L.Tozzi, *E.Tuzhilina*, M.Glasser, T.Hastie, L.Williams, /NeuroImage/, Vol. 237, pp. 118-137
 -  *2020*, [https://academic.oup.com/biostatistics/article/23/2/626/5998307 "Principal curve approaches for inferring 3D chromatin architecture"], *E.Tuzhilina*, T.Hastie, M.Segal, /Biostatistics/
 -  *2017*, [https://link.springer.com/article/10.1007/s10958-017-3477-2 "Analyzing the Data Bank of Proteins Space Structures (PDB); A Geometrical Approach"], *E.Vilkul*, A.Ivanov, A.Mishchenko, F.Popelensky, A.Tuzhilin, K.Shaitan, /Springer/, /Journal of mathematical Sciences/, Vol. 225, number 4, pp. 555--564
