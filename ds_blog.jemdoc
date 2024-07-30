@@ -5,10 +5,10 @@ Data snooping is a form of statistical bias manipulating data or analysis to art
 Extended data manipulation increases your chances of observing statistically significant results because of the probabilistic nature 
 of all statistical tests. Although some of these results may be significant by nature, other results could demonstrate this property just by chance.
 
-[materials/data_snooping.html \[Blog\]] [materials/data_snooping.pdf \[Slides\]]
+[blog/data_snooping.html \[Blog\]] [blog/data_snooping.pdf \[Slides\]]
 
 == Data preprocessing 
 Nonsense input data produces nonsense output.
 Data preprocessing is a data mining technique which is used to transform the raw data in a useful and efficient format.
 
-[materials/data_preprocessing.pdf \[Slides\]]
+[blog/data_preprocessing.pdf \[Slides\]]
