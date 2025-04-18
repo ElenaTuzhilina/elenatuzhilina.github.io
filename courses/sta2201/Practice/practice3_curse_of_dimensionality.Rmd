@@ -1,0 +1,382 @@
+---
+title: 'Curse of dimensionality'
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions for visualization
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+
+\newpage
+
+### In high dimensions nobody can hear you scream
+
+Generate uniform points in a segment in 1D.
+```{r, fig.width = 10, fig.height = 1}
+p = 1
+n = 100
+esize = 1/n
+X = matrix(runif(p * n), n, p)
+colnames(X) = c("x1")
+ggplot()+
+  geom_point(X, mapping = aes(x1, 0), color = "cornflowerblue")+
+  scale_x_continuous(breaks = seq(0, 1, esize), minor_breaks = NULL)+
+  theme(axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y = element_blank(), 
+        panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())+
+   theme(axis.text.x = element_text(angle = 90, size = 6))
+```
+
+
+Generate uniform points in a square in 2D.
+```{r}
+p = 2
+n = 100
+esize = (1/n)^(1/p)
+X = matrix(runif(p * n), n, p)
+colnames(X) = c("x1", "x2")
+ggplot()+
+  geom_point(X, mapping = aes(x1, x2), color = "cornflowerblue")+
+  scale_x_continuous(breaks = seq(0, 1, esize), minor_breaks = NULL)+
+  scale_y_continuous(breaks = seq(0, 1, esize), minor_breaks = NULL)
+```
+
+Check the dependance of the volume per observation on the side of the hypercube.
+```{r}
+ns = c(2, 4, 10, 100, 1000)
+ps = c(1, 2, 5, 10, 100)
+df = expand.grid(ns, ps)
+colnames(df) = c("n", "p")
+df = df %>% mutate(volpart = 1/n,  esize = (1/n)^(1/p), p = as.factor(p))
+ggplot(df, aes(volpart, esize, color = p))+
+  geom_point()+
+  geom_line()+
+  xlab("volume per observation")+
+  ylab("hypercube edge size")
+```
+
+
+
+\newpage
+
+### Orange peel
+
+Generate uniform points on a circle in in 2D.
+```{r, warning = F}
+library(mvtnorm)
+p = 2
+n = 1000
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+X = X/sqrt(rowSums(X^2))
+colnames(X) = c("x1", "x2")
+ggplot(X)+
+  geom_point(aes(x1, x2), alpha = 0.2, color = "cornflowerblue")
+```
+
+
+\newpage
+
+Generate uniform points in a ball in 2D.
+```{r, warning = F}
+U = (runif(n))^(1/p)
+Y = X * U
+colnames(Y) = c("x1", "x2")
+ggplot(Y)+
+  geom_point(aes(x1, x2), alpha = 0.2, color = "cornflowerblue")
+```
+
+\newpage
+
+Check distance to the center.
+```{r, message = F, warning = F}
+dist = sqrt(rowSums(Y^2))
+ggplot(data.frame(dist), aes(dist))+
+  geom_histogram(fill = "orange")+
+  xlab("distance to the origin")
+  xlim(0, 1)
+```
+
+\newpage
+
+Generate uniform points on a sphere in in 3D.
+```{r, fig.width = 5, fig.height = 5, message = F}
+library(plotly)
+p = 3
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+X = X/sqrt(rowSums(X^2))
+colnames(X) = c("x1", "x2", "x3")
+plot_ly(x = ~x1, y = ~x2, z = ~x3, data = data.frame(X), type="scatter3d", mode = "markers", opacity = 0.2)
+```
+
+
+\newpage
+
+Generate uniform points in a ball in 3D.
+```{r, warning = F, fig.width = 5, fig.height = 5}
+U = (runif(n))^(1/p)
+Y = X * U
+colnames(Y) = c("x1", "x2", "x3")
+plot_ly(x = ~x1, y = ~x2, z = ~x3, data = data.frame(Y), type="scatter3d", mode="markers", opacity = 0.2)
+```
+
+\newpage
+
+Check distance to the center.
+```{r, message = F, warning = F}
+dist = sqrt(rowSums(Y^2))
+ggplot(data.frame(dist), aes(dist))+
+  geom_histogram(fill = "orange")+
+  xlab("distance to the origin")+
+  xlim(0, 1)
+```
+
+
+\newpage
+
+What if we increase $p$?
+```{r, fig.width = 6, fig.height = 5, message = F}
+rdist = function(p){
+  X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+  X = X/sqrt(rowSums(X^2))
+  U = (runif(n))^(1/p)
+  Y = X * U
+  dist = sqrt(rowSums(Y^2))
+  return(dist)
+}
+
+ps = c(2, 3, 5, 10, 25, 50, 75, 100, 200)
+dist = do.call(c, lapply(ps, rdist))
+df = data.frame(dist, p = rep(ps, rep(n, length(ps))))
+ggplot(df, aes(dist))+
+  geom_histogram(fill = "orange")+
+  facet_wrap(~p, labeller = label_both)+
+  xlab("distance to the origin")
+```
+
+Use interactive `ggplotly` for visualization.
+```{r}
+plt = ggplot(df, aes(dist, frame = p))+
+  geom_histogram(position = "identity", fill = "orange")+
+  xlab("distance to the origin")
+ggplotly(plt)
+```
+
+
+
+Plot the distance to the nearest neighbor from the origin vs $p$.
+```{r}
+distmin = df %>%
+  group_by(p) %>%
+  summarise(distmin = min(dist))
+ggplot(distmin, aes(p, distmin))+
+  geom_point()+
+  geom_line()+
+  ylab("distance to the nearest neighbor")
+```
+
+
+Repeat the simulation 30 times and check the median value of the minimum distance.
+```{r}
+library(tidyr)
+nrep = 30
+dist = replicate(nrep, do.call(c, lapply(ps, rdist)))
+colnames(dist) = paste0("rep", 1:nrep)
+df = data.frame(dist, p = rep(ps, rep(n, length(ps))))
+dflong = df %>% 
+  pivot_longer(!p, names_to = "replicate", values_to = "dist")
+distmin = dflong %>%
+  group_by(p, replicate) %>%
+  summarise(distmin = min(dist))
+distminmed = distmin %>%
+  group_by(p) %>%
+  summarise(distminmed = median(distmin))
+ggplot()+
+  geom_line(distmin, mapping = aes(p, distmin, group = replicate))+
+  geom_line(distminmed, mapping = aes(p, distminmed), color = "red", size = 2)+
+  ylab("distance to the nearest neighbor")
+```
+
+### Distribution of the Eucledian distance
+
+Generate a pair of points from $N_2(0, I)$.
+```{r}
+n = 1
+p = 2
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(X) = c("x1", "x2")
+Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(Y) = c("y1", "y2")
+dist = sqrt(rowSums((X - Y)^2))
+df = data.frame(X, Y)
+ggplot(df)+
+  geom_point(aes(x1, x2), color = "cornflowerblue")+
+  geom_text(aes(x1 + 0.1, x2 + 0.1), label = "x", color = "cornflowerblue")+
+  geom_point(aes(y1, y2), color = "orange")+
+  geom_text(aes(y1 + 0.1, y2 + 0.1), label = "y", color = "orange")+
+  geom_segment(aes(x = x1, y = x2, xend = y1, yend = y2), alpha = 0.3)+
+  ggtitle(paste("||x - y|| =", round(dist,3)))
+```
+
+Generate 100 pairs.
+```{r}
+n = 100
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(X) = c("x1", "x2")
+Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(Y) = c("y1", "y2")
+df = data.frame(X, Y)
+ggplot(df)+
+  geom_point(aes(x1, x2), color = "cornflowerblue")+
+  geom_text(aes(x1 + 0.1, x2 + 0.1), label = "x", color = "cornflowerblue")+
+  geom_point(aes(y1, y2), color = "orange")+
+  geom_text(aes(y1 + 0.1, y2 + 0.1), label = "y", color = "orange")+
+  geom_segment(aes(x = x1, y = x2, xend = y1, yend = y2), alpha = 0.3)
+```
+
+Check the distribution of Euclidean distances between pairs.
+```{r}
+dist = sqrt(rowSums((X - Y)^2))
+ggplot(data.frame(dist), aes(dist))+
+  geom_histogram(fill = "orange")+
+  geom_vline(aes(xintercept = sqrt(2 * p)), size = 1, linetype = "dashed")+
+  xlab("distance between x and y")
+```
+
+
+Plot the results for different $p$.
+```{r, fig.width = 6, fig.height = 5}
+rdist = function(p){
+  X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+  Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+  dist = sqrt(rowSums((X - Y)^2))
+  return(dist)
+}
+ps = c(2, 3, 5, 10, 25, 50, 75, 100, 200)
+dist = do.call(c, lapply(ps, rdist))
+df = data.frame(dist, p = rep(ps, rep(n, length(ps))))
+plt = ggplot(df, aes(dist, frame = p))+
+  geom_histogram(position = "identity", fill = "orange")+
+  geom_vline(aes(xintercept = sqrt(2*p), frame = p), size = 1, linetype = "dashed")+
+  xlab("distance between x and y")
+ggplotly(plt)
+```
+
+
+Compute mean and standard deviation for the distances between two points.
+```{r}
+dfsumm  = df %>% group_by(p) %>%
+  summarize(mean = mean(dist), sd = sd(dist))
+ggplot(dfsumm)+
+  geom_line(aes(p, mean), color = "orange", size = 1)+
+  geom_ribbon(aes(x = p, ymin = mean - sd, ymax = mean + sd), fill = "orange", alpha = 0.2)+
+  geom_line(aes(p, sqrt(2*p)), linetype = "dashed", size = 1)+
+  ylab("distance between x and y")
+```
+
+### Distribution of angles
+
+Generate a pair of points from $N_2(0, I)$.
+```{r}
+n = 1
+p = 2
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(X) = c("x1", "x2")
+Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(Y) = c("y1", "y2")
+angles = function(X, Y){
+  dotXY = rowSums(X * Y)
+  normX = sqrt(rowSums(X^2))
+  normY = sqrt(rowSums(Y^2))
+  angle = acos(dotXY / (normX * normY))
+  return(angle/pi * 180)
+}
+angle = angles(X, Y)
+
+df = data.frame(X, Y)
+ggplot(df)+
+  geom_point(aes(0, 0), color = "black")+
+  geom_point(aes(x1, x2), color = "cornflowerblue")+
+  geom_text(aes(x1 + 0.1, x2 + 0.1), label = "x", color = "cornflowerblue")+
+  geom_point(aes(y1, y2), color = "orange")+
+  geom_text(aes(y1 + 0.1, y2 + 0.1), label = "y", color = "orange")+
+  geom_segment(aes(x = 0, y = 0, xend = x1, yend = x2), color = "cornflowerblue", arrow = arrow(length = unit(0.3,"cm")), size = 1)+
+  geom_segment(aes(x = 0, y = 0, xend = y1, yend = y2), color = "orange", arrow = arrow(length = unit(0.3,"cm")), size = 1)+
+  geom_segment(aes(x = x1, y = x2, xend = y1, yend = y2), alpha = 0.3)+
+  ggtitle(paste("angle(x, y) =", round(angle, 1)))
+
+```
+
+
+Generate 100 pairs.
+```{r}
+n = 100
+X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(X) = c("x1", "x2")
+Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+colnames(Y) = c("y1", "y2")
+df = data.frame(X, Y)
+ggplot(df)+
+  geom_point(aes(0, 0), color = "black")+
+  geom_point(aes(x1, x2), color = "cornflowerblue")+
+  geom_text(aes(x1 + 0.1, x2 + 0.1), label = "x", color = "cornflowerblue")+
+  geom_point(aes(y1, y2), color = "orange")+
+  geom_text(aes(y1 + 0.1, y2 + 0.1), label = "y", color = "orange")+
+  geom_segment(aes(x = 0, y = 0, xend = x1, yend = x2), color = "cornflowerblue", arrow = arrow(length = unit(0.5,"cm")), size = 1)+
+  geom_segment(aes(x = 0, y = 0, xend = y1, yend = y2), color = "orange", arrow = arrow(length = unit(0.5,"cm")), size = 1)+
+  geom_segment(aes(x = x1, y = x2, xend = y1, yend = y2), alpha = 0.3)
+```
+
+Check the distribution of angles between pairs.
+```{r}
+angle = angles(X, Y)
+ggplot(data.frame(angle), aes(angle))+
+  geom_histogram(fill = "orange")+
+  geom_vline(aes(xintercept = 90), size = 1, linetype = "dashed")+
+  xlab("angle between x and y")
+```
+
+
+Plot the results for different $p$.
+```{r, fig.width = 6, fig.height = 5}
+rangle = function(p){
+  X = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+  Y = rmvnorm(n, mean = rep(0, p), sigma = diag(p))
+  angle = angles(X, Y)
+  return(angle)
+}
+ps = c(2, 3, 5, 10, 25, 50, 75, 100, 200)
+angle = do.call(c, lapply(ps, rangle))
+df = data.frame(angle, p = rep(ps, rep(n, length(ps))))
+plt = ggplot(df, aes(angle, frame = p))+
+  geom_histogram(position = "identity", fill = "orange")+
+  geom_vline(aes(xintercept = 90, frame = p), size = 1, linetype = "dashed")+
+  xlab("angle between x and y")
+ggplotly(plt)
+```
+
+
+Compute mean and standard deviation for the angles between two vectors.
+```{r}
+dfsumm  = df %>% group_by(p) %>%
+  summarize(mean = mean(angle), sd = sd(angle))
+ggplot(dfsumm)+
+  geom_line(aes(p, mean), color = "orange", size = 1)+
+  geom_ribbon(aes(x = p, ymin = mean - sd, ymax = mean + sd), fill = "orange", alpha = 0.2)+
+  geom_line(aes(p, 90), linetype = "dashed", size = 1)+
+  ylab("angle between x and y")
+```
+
+
+

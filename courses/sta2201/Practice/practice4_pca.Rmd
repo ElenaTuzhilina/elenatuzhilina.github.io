@@ -1,0 +1,334 @@
+---
+title: 'Principal component analysis'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    theme_bw()
+}
+
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile(color = "black")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_y_reverse()+
+    theme_void()
+}
+
+Fnorm = function(A) return(sqrt(sum(A^2)))
+```
+
+
+\newpage
+
+## Iris dataset
+
+![https://www.datacamp.com/tutorial/machine-learning-in-r](img/iris.png)
+
+\
+
+
+The `iris` dataset contains four features: length and width of sepals and petals. 
+It includes 50 samples of three species of Iris: Iris setosa, Iris virginica and Iris versicolor. 
+Type `?iris` to learn more.
+
+
+```{r, fig.width = 10, fig.height = 1}
+data("iris")
+head(iris)
+```
+
+
+Let's check the number of observation per Species as well as the average values for sepal and petal widths and lengths.
+```{r}
+iris %>% group_by(Species) %>%
+  summarize(n = n())
+iris %>% group_by(Species) %>%
+  summarize_all(mean)
+```
+
+
+
+Let's check the scatter plot for each pair of variables.
+```{r, fig.height = 6.5, fig.width = 6.5}
+library(GGally)
+ggpairs(iris, columns = 1:4, aes(color = Species))
+```
+
+### PCA on iris dataset
+
+PCA can be performed using `prcomp` function.
+```{r}
+X = iris[, 1:4]
+PCA = prcomp(X, center = TRUE, scale = TRUE)
+```
+
+`sdev` is the standard deviations of the principal components (i.e., the square roots of the eigenvalues of the covariance matrix).
+```{r}
+sdev = PCA$sdev
+sdev
+```
+`rotation` is the matrix of variable loadings (i.e., a matrix whose columns contain the eigenvectors).
+```{r}
+rotation = PCA$rotation
+data.frame(rotation)
+```
+
+`x` the value of the rotated data (the centered and scaled data multiplied by the rotation matrix) is returned.
+```{r}
+head(data.frame(PCA$x))
+```
+
+Variance explained (VE) and the cumulative values of VE can be found using `summary()` function.
+```{r}
+summ = summary(PCA)
+data.frame(summ$importance)
+```
+
+Generate scree plot for variance explained.
+```{r}
+ve = summ$importance[2,]
+barplot(ve)+
+  xlab("principal component")+
+  ylab("variance explained")+
+  ylim(0, 1)
+```
+
+
+Generate biplot with `autoplot`.
+```{r}
+library(ggfortify)
+autoplot(PCA, data = iris, scale = 0)
+```
+
+Add class labels and vectors representing each feature. 
+```{r, fig.width = 5}
+autoplot(PCA, data = iris, color = "Species", loadings = TRUE, loadings.label = TRUE, loadings.label.size = 3, scale = 0)
+```
+
+### Handwritten digits data 
+
+Normalized handwritten digits, automatically
+scanned from envelopes by the U.S. Postal Service. The original
+scanned digits are binary and of different sizes and orientations; the
+images  here have been deslanted and size normalized, resulting
+in 16 x 16 grayscale images (Le Cun et al., 1990).
+The data can be accessed at https://hastie.su.domains/ElemStatLearn/.
+
+
+The data consists of the digit id (0-9) followed by the 256 grayscale values.
+
+
+#### First look
+
+We first check how many digits are in the training data.
+```{r}
+zip = read.table("Data/zip.train")
+dim(zip)
+colnames(zip) = c("label", paste0("pixel", 1:256))
+zip = zip %>% mutate(label = factor(label))
+zip %>% group_by(label) %>%
+  summarize(n = n())
+```
+
+Let's take a look at the images of the digits.
+```{r}
+digits = zip[,-1]
+getdigit = function(gsvalues){
+ matrix(unlist(gsvalues), 16, 16, byrow = T) 
+}
+heatmap(getdigit(digits[1,]))
+heatmap(getdigit(digits[2,]))
+heatmap(getdigit(digits[3,]))
+```
+
+As expected, they are labeled as
+```{r}
+zip$label[1:3]
+```
+
+#### PCA for "3" only
+
+We will focus on threes only for now.
+```{r}
+threes = digits[zip$label == 3,]
+heatmap(getdigit(threes[1,]))
+heatmap(getdigit(threes[2,]))
+heatmap(getdigit(threes[3,]))
+```
+
+
+We compute the principal components. The first ~50 components explain 90\% of the variance.
+```{r}
+PCA = prcomp(threes)
+ve = summary(PCA)$importance[3,]
+barplot(ve[1:60])+
+  xlab("principal component")+
+  ylab("cumulative variance explained")+
+  ylim(0, 1)+
+  geom_hline(aes(yintercept = 0.9), size = 1, linetype = "dashed")
+```
+
+
+Lets check the biplot for the first two components.
+```{r, fig.height= 10, fig.width= 10}
+autoplot(PCA, scale = 0, label = TRUE, label.size = 3, shape = F)
+```
+
+Extreme values along the PC1 axis.
+
+Two negative
+```{r}
+heatmap(getdigit(threes["5649",]))
+heatmap(getdigit(threes["1528",]))
+```
+
+and two positive.
+```{r}
+heatmap(getdigit(threes["2877",]))
+heatmap(getdigit(threes["5051",]))
+```
+
+Extreme values along the PC2 axis.
+
+Two negative
+```{r}
+heatmap(getdigit(threes["4439",]))
+heatmap(getdigit(threes["7167",]))
+```
+
+and two positive.
+```{r}
+heatmap(getdigit(threes["321",]))
+heatmap(getdigit(threes["5489",]))
+```
+
+
+Let's take a look at the loadings. The first loading accounts for horizontal movement (stretching) and the second loading accounts for the line thickness.
+```{r}
+heatmap(getdigit(PCA$rotation[,1]))
+heatmap(getdigit(PCA$rotation[,2]))
+```
+
+#### PCA for all digits
+
+This is the plot for the first two principal components. We see that the first component separates well "0" and "1". Other digits are mixed up.
+
+```{r, fig.height = 8, fig.width = 8}
+PCA = prcomp(digits)
+autoplot(PCA, data = zip, shape = F, color = "label", label = TRUE, label.label = "label", scale = 0)+
+  theme(legend.position = "none")
+```
+
+Let's take a look at the loadings. The interpretation is more challenging here :)
+
+```{r}
+heatmap(getdigit(PCA$rotation[,1]))
+heatmap(getdigit(PCA$rotation[,2]))
+```
+
+### Illustration of power iteration
+
+Create $S$ first.
+```{r}
+U = matrix(c(1/sqrt(2), 1/sqrt(2), -1/sqrt(2), 1/sqrt(2)), 2, 2)
+lambda = c(5, 1)
+S = U %*% diag(lambda) %*% t(U)
+```
+
+Consider 20 different initialization for $v$.
+```{r}
+nrep = 20
+v0 = matrix(rnorm(nrep * 2), nrep, 2)
+v0 = v0/sqrt(rowSums(v0^2))
+colnames(v0) = c("x1", "x2")
+
+df = data.frame(v0, point = factor(1:nrep))
+ggplot(df, aes(x1, x2, color = point))+
+  geom_point()+
+  xlim(-1, 1)+
+  ylim(-1, 1)+
+  theme(legend.position = "none")+
+  geom_abline(aes(intercept = 0, slope = U[1,1]/U[2,1]), alpha = 0.2)+
+  annotate("segment", x = 0, y = 0, xend = U[1,1], yend = U[2,1], size = 0.5)
+```
+
+Plot the results after one iteration of power iteration. 
+```{r}
+poweriter = function(v){
+  u = S %*% v
+  return(u / sqrt(sum(u^2)))
+}
+
+v1 = t(apply(v0, 1, poweriter))
+colnames(v1) = c("x1", "x2")
+df = data.frame(v1, point = factor(1:nrep))
+ggplot(df, aes(x1, x2, color = point))+
+  geom_point()+
+  xlim(-1, 1)+
+  ylim(-1, 1)+
+  theme(legend.position = "none")+
+  geom_abline(aes(intercept = 0, slope = U[1,1]/U[2,1]), alpha = 0.2)+
+  annotate("segment", x = 0, y = 0, xend = U[1,1], yend = U[2,1], size = 0.5)
+
+```
+
+Compute results for 5 iterations.
+```{r}
+library(plotly)
+viter = data.frame(v0, point = factor(1:nrep), iter = 0)
+lambda1iter = data.frame(lambda1 = diag(v0 %*% S %*% t(v0)), point = factor(1:nrep), iter = 0)
+v = v0
+for(iter in 1:5){
+  v = t(apply(v, 1, poweriter))
+  colnames(v) = c("x1", "x2")
+  viter = rbind(viter, data.frame(v, point = factor(1:nrep), iter = iter))
+  lambda1iter = rbind(lambda1iter, data.frame(lambda1 = diag(v %*% S %*% t(v)), point = factor(1:nrep), iter = iter)) 
+}
+```
+
+Plot eigen vectors vs iteration for each initialization value.
+```{r}
+plt = ggplot(viter, aes(x1, x2, color = point, frame = iter))+
+  geom_point()+
+  xlim(-1, 1)+
+  ylim(-1, 1)+
+  theme(legend.position = "none")+
+  geom_abline(aes(intercept = 0, slope = U[1,1]/U[2,1]), alpha = 0.2)+
+  annotate("segment", x = 0, y = 0, xend = U[1,1], yend = U[2,1], size = 0.5)+
+  coord_fixed()
+ggplotly(plt)
+```
+
+What happens to the eigenvalues?
+```{r}
+ggplot(lambda1iter, aes(iter, lambda1, color = point))+
+  geom_line()+
+  theme(legend.position = "none")+
+  xlab("iteration")+
+  ylab("value of the top eigen value")
+```
+

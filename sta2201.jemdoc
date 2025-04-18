@@ -1,0 +1,46 @@
+# jemdoc: menu{MENU}{instructor.html}
+
+== /STA 2201/: Methods of Applied Statistics II
+
+/This course provides an in-depth exploration of fundamental statistical techniques, focusing on both unsupervised and supervised methods. 
+Key topics include clustering algorithms, dimensionality reduction techniques, and supervised classification models. 
+Students will gain an understanding of the mathematics underlying these approaches, enhancing their theoretical knowledge and practical skills./
+
+/A significant component of the course emphasizes hands-on implementation, 
+where students will apply these methods to analyze and interpret real-world data. 
+By the end of the course, participants will be equipped to design, implement, and critically evaluate statistical models in diverse applications./
+
+=== Course topics
+
+- Review: Gaussian MVN, matrix decompositions.
+- High-dimensional data and curse of dimensionality.
+- Principal component analysis: three ways to interpret PCA.
+- More on PCA: functional, kernel and sparse PCA, PCA with missing values, stability of principal components.
+- Non-linear dimension reduction techniques: t-SNE and UMAP. 
+- Clustering methods: k-means, gaussian mixture models, spectral and hierarchical clustering.
+- Classification methods: logistic regression, KNN, linear and quadratic discriminant analysis.
+
+We will use R programming language for computations. RStudio is a user-friendly environment for developing, 
+running, and documenting R code. R is available for free from CRAN, along with RStudio 
+for a nicer user interface. Downloading and installing R and RStudio on your computer is highly recommended for optimal 
+performance and flexibility. However, if you prefer, you can use the server version of RStudio.  
+
+=== Course content
+
+~~~
+{}{table}{TABLENAME}
+			| *Lecture notes* | *Practice* ||
+Lecture 1  | [courses/sta2201/Lectures/part1_annotated_matrix_decomposition.pdf Matrix decomposition] | [courses/sta2201/Practice/practice1_matrix_decomposition.html practice] ||
+Lecture 2  | [courses/sta2201/Lectures/part2_annotated_mvn.pdf Multivariate normal distribution]  |  [courses/sta2201/Practice/practice2_mvn.html practice] ||
+Lecture 3  | [courses/sta2201/Lectures/part3_annotated_curse_of_dimensionality.pdf Curse of dimensionality]|  [courses/sta2201/Practice/practice3_curse_of_dimensionality.html practice] ||
+Lecture 4  | [courses/sta2201/Lectures/part4_annotated_pca.pdf Principal component analysis] |  [courses/sta2201/Practice/practice4_pca.html practice] ||
+Lecture 5  | [courses/sta2201/Lectures/part5_annotated_low-rank_matrix_approximation.pdf Low-rank matrix approximation]  |  [courses/sta2201/Practice/practice5_low_rank_data.html practice] ||
+Lecture 6  | [courses/sta2201/Lectures/part6_annotated_pca_variations.pdf PCA variations] | [courses/sta2201/Practice/practice6_pca_variations.html practice] ||
+Lecture 7  | [courses/sta2201/Lectures/part7_annotated_clustering_kmeans.pdf K-means clustering]  |  [courses/sta2201/Practice/practice7_kmeans.html practice] ||
+Lecture 8  | [courses/sta2201/Lectures/part8_annotated_clustering_gmm.pdf Hierarchical clustering and Gaussian mixture models] |  [courses/sta2201/Practice/practice8_hierarchical_gmm.html practice] ||
+Lecture 9  | [courses/sta2201/Lectures/part9_annotated_clustering_spectral.pdf Spectral clustering] |  [courses/sta2201/Practice/practice9_spectral_clustering.html practice] ||
+Lecture 10  | [courses/sta2201/Lectures/part10_annotated_classification_lda.pdf Linear discriminant analysis]  |  [courses/sta2201/Practice/practice10_classification_lda.html practice] ||
+Lecture 11  | [courses/sta2201/Lectures/part11_annotated_classification_lr_knn.pdf Logistic regression and K-nearest neighbors] | [courses/sta2201/Practice/practice11_classification_lr_knn.html practice]
+
+~~~
+

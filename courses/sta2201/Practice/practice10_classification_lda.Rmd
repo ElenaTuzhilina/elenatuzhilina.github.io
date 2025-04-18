@@ -1,0 +1,283 @@
+---
+title: 'Classification: LDA'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 5, fig.height = 5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+library(factoextra)
+library(cluster)
+library(plotly)
+library(ggdendro)
+
+
+scatterplot = function(X, cluster = NULL){
+  if(is.null(cluster)) cluster = rep(1, nrow(X))
+  if(length(unique(cluster)) == 1){
+    ggplot()+
+      geom_point(X, mapping = aes(x1, x2))
+  } else {
+    ggplot()+
+      geom_point(data.frame(X, cluster = as.factor(cluster)), mapping = aes(x1, x2, color = cluster))+
+      theme(legend.position = "none")
+  } 
+}
+
+scatterplot3D = function(X, cluster = NULL){
+  if(is.null(cluster)) cluster = rep(1, nrow(X))
+  plot_ly(x = X[,1], y = X[,2], z = X[,1], color = as.factor(cluster)) %>% add_markers() %>%
+    layout(scene = list(xaxis = list(title = 'first'),
+                     yaxis = list(title = 'second'),
+                     zaxis = list(title = 'third')), showlegend = FALSE)
+}
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_x_continuous(breaks = 1:n)+
+    theme_bw()+
+    theme(legend.position = "none")
+}
+
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_viridis()+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+# Phoeme data
+
+The data were extracted from the Acoustic-Phonetic Continuous Speech Corpus.  A
+dataset was formed by selecting five phonemes for
+classification based on digitized speech from this database.  
+
+The phonemes are transcribed as follows: 
+
+* "sh" as in "she", 
+* "dcl" as in "dark", 
+* "iy" as the vowel in "she", 
+* "aa" as the vowel in "dark", 
+* "ao" as the first vowel in "water".  
+
+From continuous speech of 50 male
+speakers, 4509 speech frames of 32 msec duration were selected,
+approximately 2 examples of each phoneme from each speaker.  Each
+speech frame is represented by 512 samples at a 16kHz sampling rate,
+and each frame represents one of the above five phonemes. 
+From each speech frame, a log-periodogram was computed.  
+
+
+Load the data and split it into train and test data.
+```{r}
+data = read.csv("https://hastie.su.domains/ElemStatLearn/datasets/phoneme.data", header = T, sep = ",")
+X = data %>% dplyr::select(-row.names, -g, -speaker)
+Y = data %>% dplyr::select(g) %>% pull() %>% as.factor()
+table(Y)
+dim(X)
+n = nrow(X)
+p = ncol(X)
+train = sample(1:n, n*0.8)
+Xtrain = as.matrix(X[train,])
+Ytrain = Y[train]
+Xtest = as.matrix(X[-train,])
+Ytest = Y[-train]
+```
+
+PCA results.
+```{r, fig.width = 5}
+PCA = prcomp(Xtrain, scale = FALSE)
+autoplot(PCA, data = data.frame(Xtrain, phoneme = Ytrain), colour = 'phoneme')             
+```
+
+
+
+# LDA model
+
+Fit the LDA model. 
+```{r}
+library(MASS)
+LDA = lda(Xtrain, grouping = Ytrain)
+LDA$prior
+head(LDA$scaling) # is the transformation matrix
+dim(LDA$scaling)
+head(t(LDA$means))
+dim(t(LDA$means))
+```
+
+Visualize the results. 
+
+Option 1: use the transformation matrix.
+```{r}
+pi = LDA$prior
+AX = Xtrain %*% LDA$scaling
+AM = LDA$means %*% LDA$scaling
+classify = function(X, M, pi){
+  D = as.matrix(dist(rbind(M, X)))[nrow(M) + (1:nrow(X)), 1:nrow(M)]
+  C = scale(1/2 * D^2, center = log(pi), scale = F)
+  colnames(D)[apply(C, 1, which.min)]
+}
+labels = classify(AX, AM, pi)
+
+df = data.frame(AX, phoneme = labels)
+dfm = data.frame(AM)
+ggplot(mapping = aes(LD1, LD2, color = phoneme))+
+  geom_point(data = df)+
+  geom_point(data = dfm, color = "black", shape = 4, size = 3)
+```
+
+Option 1: use `predict()` function.
+```{r}
+pred = predict(LDA)
+PX = pred$x
+df = data.frame(PX, phoneme = pred$class)
+predm = predict(LDA, LDA$means)
+PM = predm$x
+dfm = data.frame(PM, phoneme = predm$class)
+ggplot(mapping = aes(LD1, LD2, color = phoneme))+
+  geom_point(data = df)+
+  geom_point(data = dfm, color = "black", shape = 4, size = 3)
+```
+
+
+Option 1 and 2 return different projected data. What is the difference?
+```{r}
+sum((AX - PX)^2)
+sum((AM - PM)^2)
+```
+
+The difference is in centering. The `predict()` function centers the projections at $\mu = \sum_{k=1}^K\pi_k \mu_k$ 
+```{r}
+colSums(diag(pi) %*% PM)
+center = colSums(diag(pi) %*% AM)
+AXc = scale(AX, center = center, scale = F)
+AMc = scale(AM, center = center, scale = F)
+sum((AXc - PX)^2)
+sum((AMc - PM)^2)
+```
+
+
+Check other LD components.
+```{r}
+ggplot(mapping = aes(LD1, LD2, color = phoneme))+
+  geom_point(data = df)+
+  geom_point(data = dfm, color = "black", shape = 4, size = 3)
+ggplot(mapping = aes(LD2, LD3, color = phoneme))+
+  geom_point(data = df)+
+  geom_point(data = dfm, color = "black", shape = 4, size = 3)
+ggplot(mapping = aes(LD3, LD4, color = phoneme))+
+  geom_point(data = df)+
+  geom_point(data = dfm, color = "black", shape = 4, size = 3)
+```
+
+
+Compare true labels with predicted ones.
+```{r, fig.width = 9}
+df = data.frame(PX, phoneme = c(pred$class, Ytrain), type = c(rep("predicted", length(train)), rep("true", length(train))))
+ggplot(df, aes(LD1, LD2, color = phoneme))+
+  geom_point()+
+  facet_wrap(~type)
+```
+
+Quantify the accuracy. It's quite high!
+```{r}
+table(Ytrain, pred$class)
+mean(Ytrain == pred$class)
+```
+
+Plot the decision boundaries when using LD1 and LD2.
+```{r}
+grid = expand.grid(LD1 = seq(min(PX[,1]), max(PX[,1]), length.out = 50), LD2 = seq(min(PX[,2]), max(PX[,2]), length.out = 50))
+LDAreg = lda(PX[,1:2], grouping = Ytrain)
+LDAreg$prior
+pi
+LDAreg$means
+PM[,1:2]
+labelsgrid = predict(LDAreg, grid)$class
+#labelsgrid = classify(grid, PM[,1:2], pi)
+dfgrid =  data.frame(grid, phoneme = labelsgrid)
+plt = ggplot(mapping = aes(LD1, LD2, color = phoneme))+
+  geom_point(data = dfgrid, alpha = 0.2, size = 3)+
+  geom_point(data = PM, color = "black", shape = 4, size = 3)
+plt
+```
+
+
+Compare to the true labels. The accuracy dropped!
+```{r}
+plt + 
+  geom_point(data = df %>% filter(type == "true"))+
+  geom_point(data = PM, color = "black", shape = 4, size = 3)
+labelsreg = predict(LDAreg, PX[,1:2])$class
+mean(Ytrain == labelsreg)
+```
+
+Compare the results for is we use $L=1,2,3,4$.
+```{r}
+accs = c()
+for(L in 1:4){
+  LDAreg = lda(PX[,1:L,drop = F], grouping = Ytrain)
+  labelsreg = predict(LDAreg)$class
+  #labelsreg = classify(PX[,1:L,drop = F], PM[,1:L, drop = F], pi)
+  accs = c(accs, mean(Ytrain == labelsreg))
+}
+data.frame(L = 1:4, accuracy = accs)
+
+```
+
+This was train accuracy. Now evaluate the classification performance on the test set. The results are consistent.
+```{r}
+pred = predict(LDA, Xtest)
+PXtest = pred$x
+accstest = c()
+for(L in 1:4){
+  LDAreg = lda(PX[,1:L,drop = F], grouping = Ytrain)
+  labelsreg = predict(LDAreg, PXtest[,1:L,drop = F])$class
+  #labelsreg = classify(PXtest[,1:L,drop = F], PM[,1:L, drop = F], pi)
+  accstest = c(accstest, mean(Ytest == labelsreg))
+}
+data.frame(L = 1:4, accuracy_train = accs, accuracy_test = accstest)
+```
+
+
+# QDA model
+
+Fit the QDA model.
+```{r}
+QDA = qda(Xtrain, grouping = Ytrain)
+QDA$prior # the same for LDA
+head(t(QDA$means)) # the same for LDA
+dim(QDA$scaling) # is the sphering matrices
+```
+
+Compare the performance. QDA overfits slightly.
+```{r}
+labels = predict(QDA)$class
+mean(Ytrain == labels)
+labelstest = predict(QDA, Xtest)$class
+mean(Ytest == labelstest)
+```
+

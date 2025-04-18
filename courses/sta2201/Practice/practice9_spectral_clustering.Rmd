@@ -1,0 +1,271 @@
+---
+title: 'Clustering: spectral'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 5, fig.height = 5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+library(factoextra)
+library(cluster)
+library(plotly)
+library(ggdendro)
+
+
+scatterplot = function(X, cluster = NULL){
+  if(is.null(cluster)) cluster = rep(1, nrow(X))
+  if(length(unique(cluster)) == 1){
+    ggplot()+
+      geom_point(X, mapping = aes(x1, x2))
+  } else {
+    ggplot()+
+      geom_point(data.frame(X, cluster = as.factor(cluster)), mapping = aes(x1, x2, color = cluster))+
+      theme(legend.position = "none")
+  } 
+}
+
+scatterplot3D = function(X, cluster = NULL){
+  if(is.null(cluster)) cluster = rep(1, nrow(X))
+  plot_ly(x = X[,1], y = X[,2], z = X[,1], color = as.factor(cluster)) %>% add_markers() %>%
+    layout(scene = list(xaxis = list(title = 'first'),
+                     yaxis = list(title = 'second'),
+                     zaxis = list(title = 'third')), showlegend = FALSE)
+}
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_x_continuous(breaks = 1:n)+
+    theme_bw()+
+    theme(legend.position = "none")
+}
+
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_viridis()+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+
+### Spectral clustering
+
+Generate data.
+```{r}
+set.seed(0)
+n = 100
+r1 = 0.3
+r2 = 1
+r3 = 1.8
+X1 = matrix(rnorm(n * 2), n, 2)
+X1 = X1/sqrt(rowSums(X1^2)) * r1
+X2 = matrix(rnorm(n * 2), n, 2)
+X2 = X2/sqrt(rowSums(X2^2)) * r2
+X3 = matrix(rnorm(n * 2), n, 2)
+X3 = X3/sqrt(rowSums(X3^2)) * r3
+E = matrix(rnorm(3*n * 2, 0, 0.1), 3*n, 2)
+X = rbind(X1, X2, X3) + E
+X = scale (X, scale = F, center = T)
+colnames(X) = c("x1", "x2")
+labels = c(rep(1, n), rep(2, n), rep(3, n))
+df = data.frame(X, label = as.factor(labels))
+ggplot(X, aes(x1, x2))+
+  geom_point()
+```
+
+Create a similarity matrix $S$.
+```{r, fig.height=5, fig.width=5}
+S = exp(-1/2 * as.matrix(dist(X)))
+heatmap(S)
+```
+
+
+Convert it to a weighted adjacency matrix $W$, use 10-nearest neighbors. 
+```{r, fig.height=5, fig.width=5}
+knn = function(values, k){
+  index = order(values, decreasing = TRUE)[(1:k) + 1]
+  values[-index] = NA
+  return(values)
+}
+W = apply(S, 2, function(x) knn(x, k = 10))
+W = (W + t(W)) / 2
+W[is.na(W)] = 0
+heatmap(W)
+```
+
+
+Create a graph representation.
+```{r}
+library(igraph)
+G = graph.adjacency(W, mode="undirected", weighted = TRUE)
+plot(G, vertex.size=3, vertex.label=NA)
+```
+
+
+
+Compute Laplacian $L$.
+```{r}
+D = diag(colSums(W))
+L = D - W
+heatmap(L)
+```
+
+Find the last $K$ eigenvectors of $L$.
+```{r}
+n = nrow(L)
+K = 3
+ED = eigen(L)
+ED$values[(n-K+1):n]
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+scatterplot3D(U)
+```
+
+
+Run $K$-means on the last $K$ eigenvectors of $L$.
+```{r}
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot3D(U, KM$cluster)
+scatterplot(X, KM$cluster)
+```
+
+
+#### What if we increase the number of clusters in K-means?
+
+```{r}
+K = 4
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+
+```{r}
+K = 5
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+```{r}
+K = 6
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+
+#### What if we increase the number of neighbors?
+
+Twenty neighbors.
+```{r}
+K = 3
+W = apply(S, 2, function(x) knn(x, k = 20))
+W = (W + t(W)) / 2
+W[is.na(W)] = 0
+heatmap(W)
+G = graph.adjacency(W, mode="undirected", weighted = TRUE)
+plot(G, vertex.size=3, vertex.label=NA)
+D = diag(colSums(W))
+L = D - W
+ED = eigen(L)
+ED$values[(n-K+1):n]
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+
+#### What is we use the $\epsilon$-neighborhood adjacency matrix instead?
+
+This method is not sensitive to the values of distances.
+```{r}
+eps = 0.8
+W = (S > eps) * 1
+diag(W) = 0
+heatmap(W)
+G = graph.adjacency(W, mode="undirected")
+plot(G, vertex.size=3, vertex.label=NA)
+D = diag(colSums(W))
+L = D - W
+ED = eigen(L)
+ED$values[(n-K+1):n]
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+Decreasing $\epsilon$ will make $W$ more dense.
+```{r}
+eps = 0.5
+W = (S > eps) * 1
+diag(W) = 0
+heatmap(W)
+G = graph.adjacency(W, mode="undirected")
+plot(G, vertex.size=3, vertex.label=NA)
+D = diag(colSums(W))
+L = D - W
+ED = eigen(L)
+ED$values[(n-K+1):n]
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+#### What if we use soft-threshold adjacency matrix instead?
+
+This method will also truncale more edges in the second and third clusters than in the first one.
+```{r}
+lambda = 0.7
+W = pmax(S - lambda, 0)
+diag(W) = 0
+heatmap(W)
+G = graph.adjacency(W, mode="undirected", weighted = TRUE)
+plot(G, vertex.size=3, vertex.label=NA)
+D = diag(colSums(W))
+L = D - W
+ED = eigen(L)
+ED$values[(n-K+1):n]
+U = ED$vectors[, (n-K+1):n]
+heatmap(U)
+KM = kmeans(U, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+
+
+### Performance of K-means on the original
+
+```{r}
+K = 3
+KM = kmeans(X, centers = K, iter.max = 100, nstart = 10)
+scatterplot(X, KM$cluster)
+```
+

@@ -1,0 +1,184 @@
+---
+title: 'Clustering: K-means'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4.5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+library(tictoc)
+
+scatterplot = function(X, M, cluster, label = F){
+  if(length(unique(cluster)) == 1){
+    plt = ggplot()+
+      geom_point(X, mapping = aes(longtitude, latitude))+
+      geom_point(M, mapping = aes(longtitude, latitude), shape = 4, size = 4)
+    if(label) return(plt + geom_text(X, mapping = aes(longtitude, latitude, label = 1:nrow(X)), nudge_x = 0.1))
+    else return(plt)
+  }
+  else{
+    ggplot()+
+      geom_point(data.frame(X, cluster = as.factor(cluster)), mapping = aes(longtitude, latitude, color = cluster))+
+      geom_point(M, mapping = aes(longtitude, latitude), shape = 4, size = 4)+
+      theme(legend.position = "none")
+  } 
+}
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_x_continuous(breaks = 1:n)+
+    theme_bw()+
+    theme(legend.position = "none")
+}
+```
+
+
+### Urban planning
+
+Imagine we have a location with $n = 18$ houses and the city administration wants to build $K = 3$ grocery shops. 
+```{r}
+set.seed(6)
+n = 18
+K = 3
+M = matrix(rnorm(K * 2), K, 2)
+colnames(M) =  c("longtitude", "latitude")
+Ms = M[rep(c(1,2,3), times = c(n/6, n/3, n/2)),]
+X = matrix(rnorm(n * 2, 0, 0.3), n, 2) + Ms
+colnames(X) = c("longtitude", "latitude")
+plt = ggplot()+
+  geom_point(X, mapping = aes(longtitude, latitude))
+plt
+```
+
+
+
+We will use K-means with $K = 3$ to identify the locations for the grocery stores. 
+```{r}
+KM = kmeans(X, centers = K, algorithm = "Lloyd")
+KM$cluster
+KM$centers
+KM$size
+KM$iter
+```
+
+
+Let's investigate the impact of initialization on the results.
+```{r}
+M0 = M - 0.6
+scatterplot(X, M0, rep(1, n))
+for(iter in 1:3){
+  KM = kmeans(X, iter.max = iter, centers = M0, algorithm = "Lloyd")
+  print(scatterplot(X, KM$centers, KM$cluster))
+}
+```
+
+Now we try different initialization. The result is quite different.
+```{r}
+M0 = M - 1
+scatterplot(X, M0, rep(1, n))
+for(iter in 1:3){
+  KM = kmeans(X, iter.max = iter, centers = M0, algorithm = "Lloyd")
+  print(scatterplot(X, KM$centers, KM$cluster))
+}
+```
+
+### K-means++
+
+The first centroid $m_1$ is chosen to be $x_i$ at random.
+```{r}
+set.seed(0)
+M1 = X[sample(1:n, 1),,drop = F]
+scatterplot(X, M1, rep(1, n), label = T)
+```
+
+The next centroid is chosen to be $x_i$ with probability proportional to $\|x_i-m_{k-1}\|^2$.
+```{r}
+D = as.matrix(dist(rbind(M1, X)))[2:(n+1),1]
+P = D^2/sum(D^2)
+barplot(P)+
+  ylab("probability")
+pick = sample(1:n, 1, prob = P)
+M2 = X[pick,,drop = F]
+scatterplot(X, rbind(M1, M2), rep(1, n), label = T)
+D = as.matrix(dist(rbind(M2, X)))[2:(n+1),1]
+P = D^2/sum(D^2)
+barplot(P)+
+  ylab("probability")
+pick = sample(1:n, 1, prob = P)
+M3 = X[pick,,drop = F]
+scatterplot(X, rbind(M1, M2, M3), rep(1, n), label = T)
+```
+
+
+Run K-means with the K-means++ initialization.
+```{r}
+M0 = rbind(M1, M2, M3)
+KM = kmeans(X, centers = M0, algorithm = "Lloyd")
+print(scatterplot(X, KM$centers, KM$cluster))
+```
+
+### Between- and within-cluster scatter
+
+
+Check the pattern for $B(K)$ and $W(K)$.
+```{r}
+Ks = 2:10
+Bs = c()
+Ws = c()
+for(K in Ks){
+  KM = kmeans(X, centers = K, iter.max = 10, nstart = 10)
+  Bs = c(Bs, KM$betweenss)
+  Ws = c(Ws, KM$tot.withinss)
+}
+df = data.frame(scatter = c(Bs, Ws, Bs + Ws), K = Ks, type = rep(c("between", "within", "total"), times = rep(length(Ks), 3)))
+ggplot(df, aes(K, scatter, color = type))+
+  geom_point()+
+  geom_line()
+```
+
+
+# Gap statistics
+
+Compute the Gap statistics.
+```{r}
+library(factoextra)
+library(cluster)
+gapstat = clusGap(X, FUN = kmeans, nstart = 50, K.max = 10, B = 50)
+print(gapstat, method = "Tibs2001SEmax")
+fviz_gap_stat(gapstat, maxSE = list(method = "Tibs2001SEmax", SE.factor = 1))
+```
+
+Make clusters more separated from each other.
+```{r}
+set.seed(6)
+n = 18
+K = 3
+M = matrix(rnorm(K * 2), K, 2)
+colnames(M) =  c("longtitude", "latitude")
+Ms = M[rep(c(1,2,3), times = c(n/6, n/3, n/2)),]
+X = matrix(rnorm(n * 2, 0, 0.1), n, 2) + Ms
+colnames(X) = c("longtitude", "latitude")
+ggplot()+
+  geom_point(X, mapping = aes(longtitude, latitude))
+gapstat = clusGap(X, FUN = kmeans, nstart = 50, K.max = 10, B = 50)
+fviz_gap_stat(gapstat, maxSE = list(method = "Tibs2001SEmax", SE.factor = 1))
+```
+

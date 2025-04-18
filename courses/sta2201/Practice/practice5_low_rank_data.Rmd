@@ -1,0 +1,228 @@
+---
+title: 'Low-rank matrix apploximation'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4.5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    theme_bw()+
+    theme(legend.position = "none")
+}
+
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_viridis()+
+    #scale_fill_gradient(low="grey", high="black")+
+    scale_y_reverse()+
+    theme_void()
+}
+
+Fnorm = function(A) return(sqrt(sum(A^2)))
+```
+
+
+\newpage
+
+### Visualizing low-rank matrices
+
+```{r}
+n = 50
+p = 30
+r = 1
+A = matrix(runif(n*r), n, r)
+B = matrix(runif(p*r), p, r)
+X = A %*% t(B)
+heatmap(X)
+```
+
+```{r}
+r = 2
+A = matrix(runif(n*r), n, r)
+B = matrix(runif(p*r), p, r)
+X = A %*% t(B)
+heatmap(X)
+```
+```{r}
+r = 10
+A = matrix(runif(n*r), n, r)
+B = matrix(runif(p*r), p, r)
+X = A %*% t(B)
+heatmap(X)
+```
+```{r}
+r = 30
+A = matrix(runif(n*r), n, r)
+B = matrix(runif(p*r), p, r)
+X = A %*% t(B)
+heatmap(X)
+```
+
+
+### Low-rank approximation
+
+```{r}
+library(tiff)
+library(rasterImage)
+LRA = function(X, r){
+  SVD = svd(X)
+  Xhat = SVD$u[,1:r] %*% diag(SVD$d[1:r],r) %*% t(SVD$v[,1:r])
+  return(Xhat)
+}
+```
+
+### Image compression
+
+Load and image and check how rank impacts the resulting image.
+```{r}
+X = readTIFF("img/baboon.tiff")[,,1]
+X = scale(X, center = T, scale = F)
+dim(X)
+ve = (svd(X)$d)^2/sum((svd(X)$d)^2)
+barplot(cumsum(ve)[1:50])+
+  xlab("principal component")+
+  ylab("cumulative variance explained")
+heatmap(X)
+heatmap(LRA(X, 1))
+heatmap(LRA(X, 5))
+heatmap(LRA(X, 10))
+heatmap(LRA(X, 50))
+```
+
+### De-noising of an image
+
+Create a low-rank pattern. 
+```{r}
+set.seed(3)
+library(splines)
+n = 100
+df = 15
+H = ns(1:n, df = df)
+Theta = matrix(rnorm(df * 3), df, 3)
+A = H %*% Theta
+X = A %*% t(A)
+heatmap(X)
+ve = (svd(X)$d)^2/sum((svd(X)$d)^2)
+barplot(ve[1:10])+
+  xlab("principal component")+
+  ylab("variance explained")
+```
+
+Add noise and try de-noising varying the rank of approximation.
+```{r}
+E = matrix(rnorm(n*n, 0, 0.2), n, n)
+Xnoise = X+E
+heatmap(Xnoise)
+ve = (svd(Xnoise)$d)^2/sum((svd(Xnoise)$d)^2)
+barplot(ve[1:10])+
+  xlab("principal component")+
+  ylab("variance explained")
+heatmap(LRA(Xnoise, 1))
+heatmap(LRA(Xnoise, 3))
+heatmap(LRA(Xnoise, 20))
+```
+
+Increase the noise and check the performance.
+```{r}
+E = matrix(rnorm(n*n, 0, 0.5), n, n)
+Xnoise = X+E
+heatmap(Xnoise)
+ve = (svd(Xnoise)$d)^2/sum((svd(Xnoise)$d)^2)
+barplot(ve[1:10])+
+  xlab("principal component")+
+  ylab("variance explained")
+heatmap(LRA(Xnoise, 1))
+heatmap(LRA(Xnoise, 3))
+heatmap(LRA(Xnoise, 20))
+```
+
+### Soft rank approximation
+
+```{r}
+nucnorm = function(X){
+  d = svd(X)$d
+  return(sum(d))
+}
+SRA = function(X, lambda){
+  SVD = svd(X)
+  d = SVD$d
+  dstar = pmax(d - lambda, 0)
+  return(SVD$u %*% diag(dstar) %*% t(SVD$v))
+}
+```
+
+
+Let's return to baboons.
+```{r}
+X = readTIFF("img/baboon.tiff")[,,1]
+X = scale(X, center = T, scale = F)
+heatmap(X)
+n = nrow(X)
+p = ncol(X)
+```
+
+
+Check the distribution of singular values after applying the soft-threshold.
+```{r, fig.width = 6}
+singvals = c()
+for(lambda in c(0.1, 1, 2, 5, 10)){
+  Xhat = SRA(X, lambda)
+  singvals = rbind(singvals, data.frame(lambda, dstar = svd(Xhat)$d, index = 1:p))
+}
+ggplot(singvals %>% mutate(lambda = as.factor(lambda)))+
+  geom_bar(aes(x = index, y = dstar, fill = lambda), stat = "identity",  alpha = 0.5)+
+  facet_grid(lambda~., labeller = label_both)+
+  theme(legend.position = "none")+
+  ylab("signular values of the approximation")
+```
+
+
+Check that the nuclear norm decreases.
+```{r}
+singvals %>% 
+  group_by(lambda) %>%
+  summarise(norm = nucnorm(dstar)) %>%
+ggplot(aes(lambda, norm))+
+  geom_point()+
+  geom_line()+
+  ylab("nuclear norm")+
+  xlab(expression(lambda))
+```
+
+The results resemble the ones obtained by low-rank matrix approximation.
+
+```{r}
+heatmap(SRA(X, 1))
+heatmap(SRA(X, 5))
+heatmap(SRA(X, 10))
+```
+
+
+
+
+
+

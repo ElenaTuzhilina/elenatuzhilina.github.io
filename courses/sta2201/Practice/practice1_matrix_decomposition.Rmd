@@ -1,0 +1,232 @@
+---
+title: 'Review: Matrix decomposition'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 2.5, fig.height = 2)
+```
+
+### Helper functions for visualization
+
+```{r, warning=FALSE}
+library(ggplot2)
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile(color = "black")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_y_reverse()+
+    theme_void()
+}
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value, fill = value)) + 
+    geom_bar(color = "black", stat = "identity")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    theme_bw()
+}
+```
+
+\newpage
+
+### Generating matrices with various structures
+
+Generate a random matrix.
+```{r}
+n = 5
+p = 3
+A = matrix(rnorm(n * p), n, p)
+A
+```
+
+
+\newpage
+
+Find QR decomposition. QR can be used to generate a random column orthogonal matrix.
+```{r}
+QR = qr(A)
+Q = qr.Q(QR)
+Q
+t(Q) %*% Q
+heatmap(t(Q) %*% Q)
+heatmap(Q %*% t(Q))
+R = qr.R(QR)
+R
+heatmap(R)
+```
+
+\newpage 
+
+Generate a symmetric matrix.
+```{r}
+B = matrix(rnorm(n * n), n, n)
+B = t(B) + B
+heatmap(B)
+```
+
+\newpage
+
+Compute eigen decomposition.
+```{r}
+ED = eigen(B)
+lambdas = ED$values
+lambdas
+barplot(lambdas)
+U = ED$vectors
+heatmap(t(U) %*% U)
+heatmap(U %*% t(U))
+```
+
+\newpage 
+
+Generate a rank-$r$ matrix.
+```{r}
+r = 1
+A = matrix(rnorm(n * r), n, r)
+B = matrix(rnorm(p * r), p, r)
+C = A %*% t(B)
+QR = qr(C)
+QR$rank
+heatmap(qr.R(QR))
+```
+
+\newpage
+
+Generate a PSD matrix.
+```{r}
+A = matrix(rnorm(n * p), n, p)
+C = A %*% t(A)
+heatmap(C)
+barplot(eigen(C)$values)
+```
+
+\newpage
+
+Generate a PD matrix.
+```{r}
+A = matrix(rnorm(n * n), n, n)
+C = t(A) %*% A
+eigen(C)$values
+barplot(eigen(C)$values)
+```
+
+\newpage
+
+Find square root of a matrix.
+```{r}
+ED = eigen(C)
+Csqrt = ED$vectors %*% diag(sqrt(ED$values)) %*% t(ED$vectors)
+heatmap(Csqrt %*% Csqrt)
+heatmap(C)
+```
+
+\newpage
+
+Generate a matrix with given eigenvalues.
+```{r}
+A = matrix(rnorm(n * n), n, n)
+U = qr.Q(qr(A))
+lambdas = c(1, 2, 3, 4, 4)
+C = U %*% diag(lambdas) %*% t(U)
+barplot(eigen(C)$values)
+```
+
+\newpage
+
+Generate a projection matrix.
+```{r}
+A = matrix(rnorm(n * p), n, p)
+P = A %*% solve(t(A) %*% A) %*% t(A)
+heatmap(P)
+barplot(eigen(P)$values)
+barplot(diag(P))
+```
+
+\newpage
+
+Find orthogonal complement to a basis
+```{r}
+A = matrix(rnorm(n * p), n, p)
+Q = qr.Q(qr(A))
+P = Q %*% t(Q)
+barplot(eigen(P)$values)
+Pperp = diag(n) - P
+barplot(eigen(Pperp)$values)
+Qperp = eigen(Pperp)$vector[, 1:(n - p)]
+t(Qperp) %*% Q
+```
+
+\newpage
+
+Compute singular value decomposition.
+```{r}
+A = matrix(rnorm(n * p), n, p)
+SVD = svd(A)
+U = SVD$u
+V = SVD$v
+d = SVD$d
+heatmap(U)
+heatmap(V)
+barplot(d)
+```
+
+\newpage
+
+What if p>n?
+```{r}
+A = t(A)
+SVD = svd(A)
+U = SVD$u
+V = SVD$v
+d = SVD$d
+heatmap(U)
+heatmap(V)
+barplot(d)
+```
+
+\newpage
+
+Link between SVD and ED.
+```{r}
+A = matrix(rnorm(n * p), n, p)
+svd(A)$v
+eigen(t(A) %*% A)$vectors
+svd(A)$u
+eigen(A %*% t(A))$vectors
+```
+
+\newpage
+
+### Centering and computing sample covariance matrix
+
+Matrix view for centering.
+```{r}
+X = matrix(rnorm(n * p), n, p)
+xbar = colMeans(X)
+xbar
+Xc = scale(X, center = T, scale = F)
+colMeans(Xc)
+C = diag(n) - matrix(1/n, n, n)
+heatmap(C)
+Xc = C %*% X
+colMeans(Xc)
+```
+
+
+\newpage
+
+Sample covariance matrix.
+```{r}
+S = (t(X) %*% C %*% X)/(n - 1)
+heatmap(S)
+heatmap(cov(X))
+```
+
+

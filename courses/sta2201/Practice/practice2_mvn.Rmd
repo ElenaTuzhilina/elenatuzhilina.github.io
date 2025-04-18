@@ -1,0 +1,193 @@
+---
+title: 'Review: multivariate normal distribution'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  paste0("\n \\", "footnotesize","\n\n", x, "\n\n \\Huge")
+})
+library(ggplot2)
+
+
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4)
+theme_set(theme_bw())
+```
+
+### Helper functions for visualization
+
+```{r, warning=FALSE}
+library(ggplot2)
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile(color = "black")+
+    scale_fill_gradient2(low="#619CFF", mid="white", high="#F8766D")+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+
+\newpage
+
+### Generating sample from MVN
+
+Generate $x\sim\mathcal{N}_2(0, I)$.
+```{r, warning = F}
+n = 1000
+X = matrix(rnorm(2*n), n, 2)
+colnames(X) = c("x1", "x2")
+mu = c(0, 0)
+axes = diag(2)
+
+ggplot(data = data.frame(X), aes(x1, x2)) +
+  geom_point(alpha = 0.1)+
+  stat_ellipse(level = 0.8, color = "forestgreen", size = 1.5, type = "norm")+
+  stat_ellipse(level = 0.95, color = "forestgreen", size = 1.5, type = "norm")+
+  annotate("point", x = mu[1], y = mu[2], size = 3, color = "forestgreen")+
+  annotate("segment", x = mu[1], y = mu[2], xend = mu[1] + axes[1,1], yend = mu[2] + axes[2,1],
+                  arrow = arrow(length = unit(0.5, "cm")), color = "forestgreen", size = 1.5)+
+  annotate("segment", x = mu[1], y = mu[2], xend = mu[1] + axes[1,2], yend = mu[2] + axes[2,2],
+                  arrow = arrow(length = unit(0.5, "cm")), color = "forestgreen", size = 1.5)+
+  coord_fixed()
+```
+
+
+\newpage
+
+Generate $x\sim\mathcal{N}_2(\mu, \Sigma)$.
+```{r}
+mu = c(1,2)
+U = matrix(c(1/sqrt(2), 1/sqrt(2), -1/sqrt(2), 1/sqrt(2)), 2, 2)
+lambdas = c(0.2, 1) 
+Sigma = U %*% diag(lambdas) %*% t(U)
+
+Sigmasqrt = U %*% diag(sqrt(lambdas)) %*% t(U)
+X = t(Sigmasqrt %*% t(X) + mu)
+colnames(X) = c("x1", "x2")
+axes = U %*% diag(sqrt(lambdas))
+
+plt = ggplot(data = data.frame(X), aes(x1, x2)) +
+  geom_point(alpha = 0.1)
+
+plt +
+  stat_ellipse(level = 0.8, color = "forestgreen", size = 1.5, type = "norm")+
+  stat_ellipse(level = 0.95, color = "forestgreen", size = 1.5, type = "norm")+
+  annotate("point", x = mu[1], y = mu[2], size = 3, color = "forestgreen")+
+  annotate("segment", x = mu[1], y = mu[2], xend = mu[1] + axes[1,1], yend = mu[2] + axes[2,1],
+                  arrow = arrow(length = unit(0.5, "cm")), color = "forestgreen", size = 1.5)+
+  annotate("segment", x = mu[1], y = mu[2], xend = mu[1] + axes[1,2], yend = mu[2] + axes[2,2],
+                  arrow = arrow(length = unit(0.5, "cm")), color = "forestgreen", size = 1.5)+
+  coord_fixed()
+```
+
+\newpage
+
+Alternative way: generate MVN data via `rmvnorm`.
+```{r, warning = F}
+library(mvtnorm)
+X = rmvnorm(n, mean = mu, sigma = Sigma)
+colnames(X) = c("x1", "x2")
+plt+  
+  geom_point(data = data.frame(X), aes(x1, x2), color = "red", alpha = 0.5)
+```
+
+\newpage
+
+Plot marginal distributions.
+```{r, message = F, warning = F, fig.height=3}
+ggplot(X, aes(x = x1))+
+  geom_histogram(aes(y = ..density..))+
+  geom_density(color = "forestgreen", size = 1.5)+
+  geom_vline(aes(xintercept = mu[1]), color = "forestgreen", size = 1.5)
+ggplot(X, aes(x = x2))+
+  geom_histogram(aes(y = ..density..))+
+  geom_density(color = "forestgreen", size = 1.5)+
+  geom_vline(aes(xintercept = mu[2]), color = "forestgreen", size = 1.5)
+```
+
+\newpage
+
+Add marginal distributions to the scatterplot plot.
+```{r, warning = F}
+library(ggExtra)
+ggMarginal(plt, type="histogram")
+```
+
+\newpage
+
+Add conditional distributions to the scatterplot.
+```{r, message = F}
+library(dplyr)
+x1 = X[,1]; x2 = X[,2]
+x1grid = seq(quantile(x1, 0.05), quantile(x1, 0.95), length.out = 5) 
+x2grid = seq(min(x2), max(x2), length.out = 100) 
+condMVN = function(x1, x2, mu, Sigma){
+  muc = mu[2] + Sigma[2,1]/Sigma[1,1] * (x1 - mu[1])
+  Sigmac = Sigma[2,2] - Sigma[1,2] * Sigma[2,1]/Sigma[1,1]
+  dnorm(x2, muc, sqrt(Sigmac))
+}
+df = expand.grid(x1grid, x2grid) %>%
+  rename(x1 = 1, x2 = 2) %>% 
+  mutate(density = condMVN(x1, x2, mu, Sigma))
+
+plt +
+    geom_abline(aes(intercept = mu[2] - Sigma[2,1]/Sigma[1,1] * mu[1], 
+                    slope = Sigma[2,1]/Sigma[1,1]), color = "orange", size = 1.5) + 
+    geom_path(df, mapping = aes(x1 + density, x2, group = x1), color = "purple", size = 1) +
+    geom_abline(aes(intercept = mu[2] - axes[2,1]/axes[1,1] * mu[1], 
+                    slope = axes[2,1]/axes[1,1]), color = "forestgreen", size = 1, linetype = "dashed") + 
+    geom_abline(aes(intercept = mu[2] - axes[2,2]/axes[1,2] * mu[1], 
+                    slope = axes[2,2]/axes[1,2]), color = "forestgreen", size = 1, linetype = "dashed") +
+  coord_fixed()
+```
+
+\newpage
+
+Wishart distribution with`n` = number of matrices, `df` $= n$, `Sigma` $=\Sigma$.
+```{r, fig.height = 1, , fig.width = 2}
+df = 5
+nrep = 3
+Slist = rWishart(n = nrep, df = df, Sigma = Sigma)
+apply(Slist, 3, heatmap)
+```
+
+\newpage
+
+Generate a sample using random covariance matrices. Compare the results.
+```{r}
+Xlist = apply(Slist, 3, function(S) rmvnorm(500, mean = c(0,0), sigma = S/df), simplify = F)
+Xs = do.call(rbind, Xlist)
+colnames(Xs) = c("x1", "x2")
+df = data.frame(Xs, replicate = as.factor(rep(1:nrep, rep(500, nrep))))
+ggplot(data = df, aes(x1, x2, color = replicate, group = replicate)) +
+  geom_point(alpha = 0.3) +
+  stat_ellipse(level = 0.95, size = 1.5, type = "norm")
+```
+
+
+\newpage
+What if we increase `df`?
+```{r, fig.height = 1, , fig.width = 2}
+df = 100
+Slist = rWishart(n = nrep, df = df, Sigma = Sigma)
+apply(Slist, 3, heatmap)
+```
+
+When increasing degrees of freedom, random Wishart matrices become more similar. As a result, the generated data look more similar as well. 
+```{r}
+Xlist = apply(Slist, 3, function(S) rmvnorm(500, mean = c(0,0), sigma = S/df), simplify = F)
+Xs = do.call(rbind, Xlist)
+colnames(Xs) = c("x1", "x2")
+df = data.frame(Xs, replicate = as.factor(rep(1:nrep, rep(500, nrep))))
+ggplot(data = df, aes(x1, x2, color = replicate, group = replicate)) +
+  geom_point(alpha = 0.3) +
+  stat_ellipse(level = 0.95, size = 1.5, type = "norm")
+```

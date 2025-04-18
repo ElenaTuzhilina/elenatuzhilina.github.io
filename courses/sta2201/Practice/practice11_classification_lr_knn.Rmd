@@ -1,0 +1,225 @@
+---
+title: 'Classification: logistic regression and K-nearest neighbors'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 5, fig.height = 5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+library(factoextra)
+```
+
+# South African Heart Disease data
+
+A retrospective sample of males in a heart-disease high-risk region
+of the Western Cape, South Africa. There are roughly two controls per
+case of CHD. Many of the CHD positive men have undergone blood
+pressure reduction treatment and other programs to reduce their risk
+factors after their CHD event. In some cases the measurements were
+made after these treatments. These data are taken from a larger
+dataset, described in  Rousseauw et al, 1983, South African Medical
+Journal. 
+
+
+Load the data. There are 10 variables.
+
+`sbp`:		systolic blood pressure
+
+`tobacco`:		cumulative tobacco (kg)
+
+`ldl`:		low densiity lipoprotein cholesterol
+
+`adiposity`: adiposity
+
+`famhist`:		family history of heart disease (Present, Absent)
+
+`typea`:		type-A behavior
+
+`obesity`: obesity
+
+`alcohol`:		current alcohol consumption
+
+`age`:		age at onset
+
+`chd`		response, coronary heart disease
+
+
+```{r}
+library(GGally)
+data = read.csv("https://hastie.su.domains/ElemStatLearn/datasets/SAheart.data", header = T, sep = ",") %>% 
+  select(-row.names)
+head(data)
+dim(data)
+table(data$chd)
+X = data %>% select(-chd) 
+Y = data %>% select(chd) %>% pull()
+n = nrow(X)
+p = ncol(X)
+```
+
+
+Pairwise plots.
+```{r, fig.width = 10, fig.height = 10}
+ggpairs(data, columns = 1:(ncol(data) - 1), aes(colour = as.factor(chd)))
+```
+
+
+
+
+Age vs chd plot. Why not just using linear regression?
+```{r}
+ggplot(data, aes(age, chd))+
+  geom_point()+
+  geom_smooth(method = "lm")
+ggplot(data, aes(age, chd))+
+  geom_point()+
+  geom_smooth(method = "glm", method.args = list(family = "binomial"))
+```
+
+
+Split the data into train and test sets.
+```{r}
+train = sample(1:n, n*0.8)
+Xtrain = X[train,]
+Ytrain = Y[train]
+Xtest = X[-train,]
+Ytest = Y[-train]
+```
+
+
+Fit logistic regression.
+```{r}
+GLM = glm(chd ~ ., data = data[train,], family = "binomial")
+summary(GLM)
+GLM$coefficients
+exp(GLM$coefficients)
+```
+
+Predict values.
+```{r}
+pred = predict(GLM, newdata = Xtest, type = "response")
+```
+
+
+Assess the performance.
+```{r}
+Ytestpred = (pred > 0.5)*1
+tab = table(Ytestpred, Ytest)
+tab
+```
+
+```{r  label = pollen, echo = F, out.width = '50%'}
+knitr::include_graphics("aucroc.png")
+```
+
+Accuracy, sensitivity and specificity.
+```{r}
+(tab[1,1] + tab[2,2])/sum(tab)
+tab[2,2]/(tab[1,2] + tab[2,2]) # caret::sensitivity(tab[2:1,2:1]) 
+tab[1,1]/(tab[1,1] + tab[2,1]) # caret::specificity(tab[2:1,2:1])
+```
+Change the threshold.
+```{r}
+Ytestpred = (pred > 0.8)*1
+tab = table(Ytestpred, Ytest)
+tab
+```
+
+Accuracy, sensitivity and specificity.
+```{r}
+(tab[1,1] + tab[2,2])/sum(tab)
+tab[2,2]/(tab[1,2] + tab[2,2]) # caret::sensitivity(tab[2:1,2:1]) 
+tab[1,1]/(tab[1,1] + tab[2,1]) # caret::specificity(tab[2:1,2:1])
+```
+
+Plot ROC and compute AUCROC.
+```{r}
+library(pROC)
+ROC = roc(response = Ytest, predictor = pred)
+ggroc(ROC)+
+  geom_segment(aes(x = 1, xend = 0, y = 0, yend = 1), color = "grey", linetype = "dashed")
+auc(ROC)
+```
+
+Use `caret` package for cross-validation and `glmnet` package for sparsity.
+
+
+# K-nearest neighbors
+
+Do we need to standardize the data?
+```{r}
+summary(X)
+X = X %>% mutate(famhist = as.numeric(ifelse(famhist == "Present", 1, 0)))
+Xn = scale(X, scale = T, center = F)
+```
+
+PCA embedding.
+```{r}
+PCA = prcomp(as.matrix(X))
+autoplot(PCA, data = data %>% mutate(chd = as.factor(chd)), colour = 'chd')
+```
+
+Split into train and test again.
+```{r}
+Xtrain = Xn[train,]
+Xtest = Xn[-train,]
+```
+
+
+Fit the model.
+```{r}
+library(class)
+KNN = knn(train = Xtrain, test = Xtest, cl = Ytrain, k = 20, prob = TRUE)
+Ptestpred = attributes(KNN)$prob
+Ytestpred = (Ptestpred > 0.5)*1
+```
+
+Measure the performance.
+```{r}
+tab = table(Ytestpred, Ytest)
+tab
+```
+
+Accuracy, sensitivity and specificity.
+```{}
+(tab[1,1] + tab[2,2])/sum(tab)
+tab[2,2]/(tab[1,2] + tab[2,2]) # caret::sensitivity(tab[2:1,2:1]) 
+tab[1,1]/(tab[1,1] + tab[2,1]) # caret::specificity(tab[2:1,2:1])
+```
+
+Compute AUCROC.
+```{r}
+ROC = roc(response = Ytest, predictor = Ptestpred)
+ggroc(ROC)+
+  geom_segment(aes(x = 1, xend = 0, y = 0, yend = 1), color = "grey", linetype = "dashed")
+auc(ROC)
+```
+
+Vary the number of neighbors.
+```{r}
+ks = 1:20
+accs = c()
+for(k in ks){
+  Ytestpred = knn(train = Xtrain, test = Xtest, cl = Ytrain, k = k)
+  tab = table(Ytestpred, Ytest)
+  accs = c(accs, (tab[1,1] + tab[2,2])/sum(tab))
+}
+df = data.frame(accuracy = accs, k = ks)
+ggplot(df, aes(k, accuracy))+
+  geom_point()+
+  geom_line()
+```
+

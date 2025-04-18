@@ -1,0 +1,545 @@
+---
+title: 'PCA variations'
+output:
+  html_document:
+    df_print: kable
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4, fig.height = 4.5, warning = F, message = F)
+theme_set(theme_bw())
+```
+
+### Helper functions
+
+```{r, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(ggfortify)
+library(tictoc)
+
+barplot = function(values){
+  n = length(values)
+  df = data.frame(value = values,  index = 1:n)
+  ggplot(df, aes(index, value)) + 
+    geom_bar(stat = "identity", color = "orange")+
+    theme_bw()+
+    theme(legend.position = "none")
+}
+
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_viridis()+
+    #scale_fill_gradient(low="grey", high="black")+
+    scale_y_reverse()+
+    theme_void()
+}
+
+Fnorm = function(A) return(sqrt(sum(A^2)))
+```
+
+
+### PCA with missing values
+
+```{r, include = F}
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_gradient(low="green", high = "red")+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+Load microarray data.
+```{r}
+microarray = read.csv("data/cancer_microarray.csv")
+X = microarray %>% select(-cancer_type) %>% as.matrix()
+label = microarray$cancer_type
+dim(X)
+heatmap(X)
+```
+
+Remove columns with missing values and check the PCA results.
+```{r}
+
+Xremove = t(na.omit(t(X)))
+dim(Xremove)
+PCA =  prcomp(Xremove, scale = F, center = T)
+autoplot(PCA, data = microarray, shape = F, color = "cancer_type", label = TRUE, label.label = "cancer_type", scale = 0)+
+  theme(legend.position = "none")
+```
+```{r, include = F}
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_gradient(low="white", high = "black")+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+Hard-impute step.
+```{r}
+W = 1 - is.na(X)
+heatmap(W)
+hardimpute_iter = function(X, r, Xhat){
+  X[is.na(X)] = 0
+  Y = W * X + (1 - W) * Xhat
+  SVD = svd(Y)
+  Xhat = SVD$u[,1:r] %*% diag(SVD$d[1:r], r) %*% t(SVD$v[,1:r])
+  return(Xhat)
+}
+```
+
+Run hard-impute for 20 iterations.
+```{r}
+hardimpute = function(X, r, verbose = T){
+  n = nrow(X)
+  p = ncol(X)
+  Xhat = matrix(rnorm(n*p), n, p)
+  for(iter in 1:20){
+    Xhat0 = Xhat
+    Xhat = hardimpute_iter(X, r, Xhat)
+    rch = sum((Xhat - Xhat0)^2)/sum((Xhat0)^2)
+    if(verbose) cat("\niter:", iter, "| relative change in X:", rch)
+  }
+  return(Xhat)
+}
+```
+
+Use $r=2$ to impute missing values.
+```{r}
+Ximp = hardimpute(X, 2)
+```
+
+Check the PCA results.
+```{r}
+PCA =  prcomp(Ximp, scale = T, center = T)
+autoplot(PCA, data = microarray, shape = F, color = "cancer_type", label = TRUE, label.label = "cancer_type", scale = 0)+
+  theme(legend.position = "none")
+```
+
+Try other values for $r$.
+```{r}
+performance = c()
+for(r in seq(2, 50, 2)){
+  Ximp = hardimpute(X, r, verbose = F)
+  relerr = sum((X - Ximp)^2, na.rm = T)/sum(X^2, na.rm = T)
+  performance = rbind(performance, data.frame(r, relerr))
+}
+ggplot(performance, aes(r, relerr))+
+  geom_point()+
+  geom_line()+
+  xlab("rank")+
+  ylab("relative approximation error")
+  
+```
+
+### PCA with sparsity
+
+Load data.
+```{r}
+microarray = read.csv("data/cancer_microarray_full.csv") %>% mutate(cancer_type = as.factor(cancer_type))
+X = microarray %>% select(-cancer_type) %>% as.matrix()
+label = microarray$cancer_type
+n = nrow(X)
+p = ncol(X)
+dim(X)
+```
+
+Remove columns with missing values and check the PCA results.
+```{r}
+Xc = scale(X, center = T, scale = F)
+PCA =  prcomp(Xc, scale = F, center = T)
+autoplot(PCA, data = microarray, shape = F, color = "cancer_type", label = TRUE, label.label = "cancer_type", scale = 0)+
+  theme(legend.position = "none")
+```
+
+
+The first PC loading vector would look like this.
+
+```{r, fig.width = 10}
+v1 = PCA$rotation[,1]
+barplot(v1)+
+  xlab("gene")+
+  ylab("loading value")+
+  geom_hline(aes(yintercept = c(0.05)), linetype = "dashed", color = "black")+
+  geom_hline(aes(yintercept = c(-0.05)), linetype = "dashed", color = "black")
+```
+
+```{r, include = F}
+heatmap = function(A){
+  n = nrow(A)
+  p = ncol(A)  
+  df = data.frame(value = c(A),  i = 1:n, j = rep(1:p, rep(n, p)))
+  ggplot(df, aes(j, i, fill = value)) + 
+    geom_tile()+
+    scale_fill_gradient(low="green", high = "red")+
+    scale_y_reverse()+
+    theme_void()
+}
+```
+
+
+Visualize the "important" genes.
+```{r}
+pick = (abs(v1) > 0.05)
+dim(X[,pick])
+heatmap(X[,pick])
+```
+Run PCA on important genes only.
+```{r}
+PCA =  prcomp(X[,pick], scale = F, center = T)
+autoplot(PCA, data = microarray, shape = F, color = "cancer_type", label = TRUE, label.label = "cancer_type", scale = 0)+
+  theme(legend.position = "none")
+```
+
+Use `PMA` package to find sparse PCA solution. Try different thresholds for the $\|v\|_1$.
+```{r}
+library(PMA)
+sqrt(p)
+spc3 = SPC(Xc, sumabsv = 3, K = 2, orth = T, niter = 100)
+spc3
+heatmap(X[,spc3$v[,1] != 0])
+spc7 = SPC(Xc, sumabsv = 7, K = 2, orth = T, niter = 50)
+spc7
+heatmap(X[,spc7$v[,1] != 0])
+spc12 = SPC(Xc, sumabsv = 12, K = 2, orth = T, niter = 50)
+spc12
+heatmap(X[,spc12$v[,1] != 0])
+```
+
+
+Plot the loading vectors for the first PC.
+```{r, fig.width=10}
+df = data.frame(loading = c(spc3$v[,1], spc7$v[,1], spc12$v[,1]), threshold = rep(c(3, 7, 12), rep(ncol(X), 3)), gene = 1:p)
+ggplot(df, aes(gene, loading)) + 
+  geom_bar(stat = "identity", color = "orange")+
+  theme_bw()+
+  theme(legend.position = "none")+
+  facet_grid(threshold~., labeller = label_both)
+```
+
+Plot the biplots.
+```{r, fig.width=10}
+Z = rbind(Xc %*% spc3$v, Xc %*% spc7$v, Xc %*% spc12$v)
+colnames(Z) = c("PC1", "PC2")
+df = data.frame(Z, threshold = rep(c(3, 5, 12), rep(nrow(X), 3)), sample = 1:n, cancer_type = label)
+ggplot(df, aes(PC1, PC2, color = cancer_type, label = cancer_type)) + 
+  geom_text()+
+  stat_ellipse()+
+  theme_bw()+
+  theme(legend.position = "none")+
+  facet_wrap(~threshold, scale = "free", ncol = , labeller = label_both)
+```
+
+### Kernel PCA
+
+#### Two concentric circles
+
+Generate data.
+```{r}
+n = 100
+r1 = 0.3
+r2 = 1
+X1 = matrix(rnorm(n * 2), n, 2)
+X1 = X1/sqrt(rowSums(X1^2)) * r1
+X2 = matrix(rnorm(n * 2), n, 2)
+X2 = X2/sqrt(rowSums(X2^2)) * r2
+E = matrix(rnorm(2*n * 2, 0, 0.05), 2*n, 2)
+X = rbind(X1, X2) + E
+X = scale (X, scale = F, center = T)
+colnames(X) = c("x1", "x2")
+labels = c(rep(1, n), rep(2, n))
+df = data.frame(X, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")
+```
+
+Apply PCA.
+```{r}
+PCA = prcomp(X)
+Xhat = PCA$x
+colnames(Xhat) = c("x1", "x2")
+df = data.frame(Xhat, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  xlab("PC1")+
+  ylab("PC2")
+```
+
+Apply kernel PCA with the RBF kernel.
+```{r}
+library(kernlab)
+KPCA = kpca(X, kernel="rbfdot", kpar=list(sigma = 10), features=2)
+Xhat = rotated(KPCA)
+colnames(Xhat) = c("x1", "x2")
+df = data.frame(Xhat, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  xlab("PC1")+
+  ylab("PC2")
+```
+
+
+#### Two half-circles
+
+Generate data.
+```{r}
+n = 100
+theta = -pi / 180 * 10
+R = matrix(c(cos(theta), sin(theta), -sin(theta), cos(theta)), 2, 2)
+X1 = matrix(rnorm(n * 2), n, 2)
+X1 = X1/sqrt(rowSums(X1^2))
+X1[,2] = abs(X1[,2])
+X1 = scale(X1 %*% R, center = c(-0.6, 0), scale = F)
+X2 = matrix(rnorm(n * 2), n, 2)
+X2 = X2/sqrt(rowSums(X2^2))
+X2[,2] = -abs(X2[,2])
+X2 = scale(X2 %*% R, center = c(0.6, 0), scale = F)
+E = matrix(rnorm(2*n * 2, 0, 0.03), 2*n, 2)
+X = rbind(X1, X2) + E
+X = scale(X, scale = F, center = T)
+colnames(X) = c("x1", "x2")
+labels = c(rep(1, n), rep(2, n))
+df = data.frame(X, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+Apply PCA.
+```{r}
+PCA = prcomp(X)
+Xhat = PCA$x
+colnames(Xhat) = c("x1", "x2")
+df = data.frame(Xhat, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  xlab("PC1")+
+  ylab("PC2")
+```
+
+Apply kernel PCA with the RBF kernel.
+```{r}
+KPCA = kpca(X, kernel="rbfdot", kpar=list(sigma = 7), features=2)
+Xhat = rotated(KPCA)
+colnames(Xhat) = c("x1", "x2")
+df = data.frame(Xhat, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  xlab("PC1")+
+  ylab("PC2")
+```
+
+
+### tSNE
+
+
+#### Distances between clusters and cluster sizes are not informative.
+
+Generate data: three clusters of different size.
+```{r}
+n = 100
+X1 = matrix(rnorm(n * 2, 0, 0.05), n, 2)
+X2 = matrix(rnorm(n * 2, 0, 0.2), n, 2)
+X2[,1] = X2[,1] + 1
+X3 = matrix(rnorm(n * 2, 0, 0.3), n, 2)
+X3[,1] = X3[,1] + 3
+X = rbind(X1, X2, X3)
+colnames(X) = c("x1", "x2")
+labels = c(rep(1, n), rep(2, n), rep(3, n))
+df = data.frame(X, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  ylim(-3,3)+
+  coord_fixed()
+```
+
+Try different values of `perplexity`.
+```{r}
+library(tsne)
+TSNE = tsne(X, perplexity = 5)
+colnames(TSNE) = c("x1", "x2")
+df = data.frame(TSNE, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+  
+```{r}
+library(tsne)
+TSNE = tsne(X, perplexity = 10)
+colnames(TSNE) = c("x1", "x2")
+df = data.frame(TSNE, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+```{r}
+library(tsne)
+TSNE = tsne(X, perplexity = 50)
+colnames(TSNE) = c("x1", "x2")
+df = data.frame(TSNE, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+#### Two concentric circles
+
+
+Generate data.
+```{r}
+n = 500
+r1 = 0.3
+r2 = 1
+X1 = matrix(rnorm(n * 2), n, 2)
+X1 = X1/sqrt(rowSums(X1^2)) * r1
+X2 = matrix(rnorm(n * 2), n, 2)
+X2 = X2/sqrt(rowSums(X2^2)) * r2
+E = matrix(rnorm(2*n * 2, 0, 0.1), 2*n, 2)
+X = rbind(X1, X2) + E
+X = scale (X, scale = F, center = T)
+colnames(X) = c("x1", "x2")
+labels = c(rep(1, n), rep(2, n))
+df = data.frame(X, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")
+```
+
+
+Let's try UMAP.
+```{r}
+library(umap)
+UMAP = umap(X)
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+Change the parameters. First, change `n_neighbor`. 
+```{r}
+custom.config = umap.defaults
+custom.config
+custom.config$n_neighbors = 5
+UMAP = umap(X, config = custom.config)
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+```{r}
+custom.config$n_neighbors = 50
+UMAP = umap(X, config = custom.config)
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+Then change `min_dist`.
+```{r}
+custom.config = umap.defaults
+custom.config$min_dist = 0.9
+UMAP = umap(X, config = custom.config)
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+```{r}
+custom.config$min_dist = 0.01
+UMAP = umap(X, config = custom.config)
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(labels))
+ggplot(df, aes(x1, x2, color = label))+
+  geom_point()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+
+#### tSNE and UMAP for digits
+
+We first check how many digits are in the training data.
+```{r}
+zip = read.table("Data/zip.train")
+colnames(zip) = c("label", paste0("pixel", 1:256))
+zip = zip %>% mutate(label = factor(label))
+digits = zip[,-1]
+```
+
+
+Plot for the first two principal components. 
+```{r, fig.height = 8, fig.width = 8}
+PCA = prcomp(digits)
+autoplot(PCA, data = zip, shape = F, color = "label", label = TRUE, label.label = "label", scale = 0)+
+  theme(legend.position = "none")
+```
+
+
+
+Let's try tSNE and plot the result.
+```{r, fig.height = 8, fig.width = 8}
+tic()
+TSNE = tsne(digits, perplexity = 30)
+tic()
+colnames(TSNE) = c("x1", "x2")
+df = data.frame(TSNE, label = as.factor(zip$label))
+ggplot(df, aes(x1, x2, color = label, label = label))+
+  geom_text()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
+Now, we try UMAP. 
+```{r, fig.height = 8, fig.width = 8}
+tic()
+UMAP = umap(digits)
+toc()
+colnames(UMAP$layout) = c("x1", "x2")
+df = data.frame(UMAP$layout, label = as.factor(zip$label))
+ggplot(df, aes(x1, x2, color = label, label = label))+
+  geom_text()+
+  theme(legend.position = "none")+
+  coord_fixed()
+```
+
