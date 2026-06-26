@@ -7,13 +7,6 @@
     "text": "I enjoy teaching statistics at both the undergraduate and graduate levels and introducing students to modern statistical methodology through a combination of theory, computation, and real-world applications. In addition to classroom teaching, I regularly supervise independent reading courses and mentor undergraduate research projects.\n\nUniversity of Toronto\n\nRegular Courses\n\n2025–2026 — STA 2201: Methods of Applied Statistics II\nGraduate course introducing modern statistical learning methods, with emphasis on dimension reduction, clustering, multivariate analysis, and latent variable models.\n2025 — STA 437: Methods for Multivariate Data Analysis\nUndergraduate and graduate course covering fundamental methods in multivariate statistics, including principal component analysis, canonical correlation analysis, factor analysis, independent component analysis, clustering, and graphical models.\n2023 — STA 220: Practice in Statistics I Undergraduate course emphasizing data exploration, statistical inference, visualization, and communication using R.\n2023 — STA 198: Probabilities Everywhere\nFirst-year seminar introducing probabilistic thinking through examples drawn from everyday life.\n\n\n\nUndergraduate Research Training\n\n2025–2026 — University of Toronto Statistical Sciences Research Program (UTSSRP)\nCo-organizer of the undergraduate summer research program. Taught the short course Curse of Dimensionality and mentored undergraduate research projects on single-cell genomics.\n\n\n\nReading Courses\n\n2026 — Stability of Canonical Correlation Analysis\nUndergraduate reading course investigating the statistical behavior of canonical correlation analysis under a variety of high-dimensional settings.\nPaper\n2026 — Privacy-Preserving Canonical Correlation Analysis\nUndergraduate reading course on statistical learning under privacy constraints, with a focus on performing canonical correlation analysis using the CKKS homomorphic encryption scheme.\n2024–2025 — Inference and Clustering Analysis of Contact Matrices\nUndergraduate reading course on statistical methods for analyzing single-cell Hi-C data, covering matrix and tensor methods for clustering, inference, and chromatin reconstruction.\nPaper\n2022 — Statistical Learning: Methods and Applications\nReading course on modern statistical learning with applications to COVID-19 forecasting and predictive modeling.\n\n\n\n\nStanford University\n\n2021 — STATS 32: Introduction to R for Undergraduates\nUndergraduate course introducing statistical programming, data visualization, and reproducible data analysis in R.\n\n\n\nMoscow State University\n\n2017 — Practicum in Statistics\n2016 — Probability Theory"
   },
   {
-    "objectID": "teaching.html#course-instructor",
-    "href": "teaching.html#course-instructor",
-    "title": "Teaching",
-    "section": "Course Instructor",
-    "text": "Course Instructor\n\nUniversity of Toronto\n\n2026 — Reading Course: Stability of Canonical Correlation Analysis\nUndergraduate reading course investigating the statistical behavior of canonical correlation analysis under a variety of high-dimensional settings.\n2026 — Reading Course: Privacy-Preserving Canonical Correlation Analysis\nUndergraduate reading course on statistical learning under homomorphic encryption, with a focus on performing canonical correlation analysis using the CKKS encryption scheme.\n2024–2025 — Reading Course: Inference and Clustering Analysis of Contact Matrices\nUndergraduate reading course on statistical methods for single-cell Hi-C data, covering matrix and tensor methods for clustering, inference, and chromatin reconstruction.\n2025–2026 — STA 2201: Methods of Applied Statistics II\nGraduate course covering modern methods in multivariate statistics, including principal component analysis, clustering, canonical correlation analysis, graphical models, factor analysis, and independent component analysis.\n2025 — STA 437: Methods for Multivariate Data Analysis\nUndergraduate and graduate course introducing statistical methods for high-dimensional multivariate data, including dimension reduction, clustering, canonical correlation analysis, and latent variable models.\n2023 — STA 220: Practice in Statistics I\nUndergraduate course emphasizing statistical practice through data analysis, visualization, statistical communication, and collaborative projects.\n2023 — STA 198: Probabilities Everywhere\nFirst-year seminar introducing probabilistic thinking through examples drawn from science, technology, and everyday life.\n2022 — Reading Course: Statistical Learning: Methods and Applications\nReading course on modern statistical learning with applications to COVID-19 forecasting and predictive modeling.\n\n\n\nStanford University\n\n2021 — STATS 32: Introduction to R for Undergraduates\nUndergraduate course introducing statistical programming, data visualization, and reproducible data analysis in R.\n\n\n\nMoscow State University\n\n2017 — Practicum in Statistics\n2016 — Probability Theory"
-  },
-  {
     "objectID": "students.html",
     "href": "students.html",
     "title": "Students",
@@ -42,6 +35,20 @@
     "text": "Patents\n\nData-driven Automated Selection of Profiles of Translation Professionals for Translation Tasks\nA. Ukrainets, V. Gusakov, I. Smolnikov, E. Tuzhilina.\nUS Patent US20190065463, 2019.\nLink\nSystem and Method of Intellectual Automatic Selection of Performers of Translation\nA. Ukrainets, E. Tuzhilina, V. Gusakov, I. Smolnikov.\nRU Patent RU2667030, 2018.\nLink"
   },
   {
+    "objectID": "courses/utssrp/index.html",
+    "href": "courses/utssrp/index.html",
+    "title": "University of Toronto Statistical Sciences Research Program (UTSSRP)",
+    "section": "",
+    "text": "The University of Toronto Statistical Sciences Research Program (UTSSRP) is a two-week summer research program organized by the Department of Statistical Sciences at the University of Toronto. The program introduces undergraduate students to modern statistical research through intensive coursework, faculty seminars, and mentored research projects.\nSince 2025, I have served as a co-organizer of the program. My responsibilities include coordinating the annual program, organizing research seminars, career panels, and student presentations, teaching an intensive short course, and mentoring undergraduate research projects.\n\nShort Course\n\n2025–2026 — Curse of Dimensionality\nShort course introducing the geometry of high-dimensional spaces, concentration of measure, and the statistical challenges arising in modern high-dimensional data analysis.\nSlides · R Tutorial\n\n\n\nResearch Project Mentorship\n\n2026 — Batch Effect Correction in Single-Cell Data\nMentored an undergraduate research project investigating the geometry of batch effects in single-cell RNA sequencing data and modern methods for batch effect correction.\n2025 — Heterogeneity of Single-Cell Hi-C Data\nMentored an undergraduate research project on dimension reduction and clustering methods for studying heterogeneity in single-cell Hi-C data.\n\n\n\nGallery\n\n\nResearch team for the Batch Effect Correction in Single-Cell Data proejct (UTSSRP 2026).\n\n\nResearch team for the Heterogeneity of Single-Cell Hi-C Data project (UTSSRP 2025)."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Students",
@@ -61,13 +68,6 @@
     "title": "Students",
     "section": "Alumni",
     "text": "Alumni\n\nPostdoctoral Fellows\n\nYaoming Zhen — University of Toronto (2024–2025)\n\n\n\nPhD Students\n\nRongqian Zhang — University of Toronto (2024–2025)\nCo-supervised with Jun Young Park\nNikita Glukhov — Skolkovo Institute of Science and Technology (2023–2024)\n\n\n\nUndergraduate Students\n\nRogers Yang — University of Toronto (2024)\n\nAnna Kosovskaya — Higher School of Economics (2023)\n\nJerry Qin — University of Toronto (2022)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   },
   {
     "objectID": "index.html",
@@ -96,54 +96,5 @@
     "title": "Talks",
     "section": "",
     "text": "Conference Talks\n\nUpcoming\n\nAugust 2026 — IVADO Symposium: AI Meets Statistics — Biomedical Data Perspectives, Montreal, Canada\nAugust 2026 — Joint Statistical Meeting, Boston, USA\nJuly 2026 — IMS Annual Meeting, Salzburg, Austria\n\n\n\nPast\n\nMay 2026 — Smooth zero-inflated modeling on counting tensors\nStatistical Society of Canada, Hamilton, Canada\nMarch 2026 — Efficient Canonical Correlation Analysis with Sparsity\nMcGill Biostatistics Seminar, Montreal, Canada\nDecember 2025 — Smooth zero-inflated modeling on counting tensors\nIMS International Conference on Statistics and Data Science, Seville, Spain\nDecember 2025 — Efficient Canonical Correlation Analysis with Sparsity\nUniversity Pompeu Fabra Statistics Seminar Series, Barcelona, Spain\nSeptember 2025 — Efficient Canonical Correlation Analysis with Sparsity\nUniversity of Guelph Math & Stats Colloquium Series, Guelph, Canada\nAugust 2025 — Statistical curve models for inferring 3D chromatin architecture\nBanff International Research Station Workshop, Banff, Canada\nJune 2025 — Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions\nWNAR/IMS Annual Meeting, Whistler, Canada\nMay 2025 — Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions\nStatistical Society of Canada, Saskatoon, Canada\nDecember 2024 — Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions\nIMS International Conference on Statistics and Data Science, Nice, France\nJune 2024 — Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions\nSixth ICSA-Canada Chapter Symposium, Niagara Falls, Canada\nJune 2023 — Statistical curve models for inferring 3D chromatin architecture\nUniversity of Waterloo Statistics and Biostatistics Seminar, Waterloo, Canada\nMay 2023 — Statistical curve models for inferring 3D chromatin architecture\nStatistical Society of Canada Annual Meeting, Ottawa, Canada\nFebruary 2023 — Statistical curve models for inferring 3D chromatin architecture\nMcMaster University Statistics Seminar, Hamilton, Canada\nNovember 2022 — Canonical Correlation Analysis in high dimensions with structured regularization\nUniversity of Mississippi Medical Center, Virtual\nAugust 2022 — Canonical Correlation Analysis in high dimensions with structured regularization\nJoint Statistical Meeting, Washington, USA\nNovember 2021 — Intelligent Rollouts for Office, Machine Learning & Data Sciences Conference at Microsoft, Virtual\nAugust 2021 — Canonical Correlation Analysis in high dimensions with structured regularization\nJoint Statistical Meeting, Virtual\nOctober 2020 — Canonical Correlation Analysis in high dimensions with structured regularization\nIndustrial Affiliates Annual Conference at Stanford University, Virtual\nAugust 2020 — Principal curve approaches for inferring 3D chromatin architecture\nSummer School of Machine Learning at Skolkovo Institute of Science & Technology, Virtual\nAugust 2020 — Principal curve approaches for inferring 3D chromatin architecture\nJoint Statistical Meeting, Virtual\nNovember 2019 — A weighted principal curve approach to inferring 3D chromatin architecture\nIndustrial Affiliates Annual Conference at Stanford University, Stanford, USA\nSeptember 2016 — The geometry of iterations defined on measure metric\n19th Meeting of the Geometrical Seminar, Zlatibor, Serbia\nApril 2014 — The continuous case of cancer spread problem\nLomonosov Conference at Moscow State University, Moscow, Russia\nSeptember 2013 — Mathematical model of cancer spread\nProbability, Analysis and Geometry, Ulm, Germany\n\n\n\n\nConference Poster Sessions\n\nAugust 2023 — Canonical Correlation Analysis in high dimensions with structured regularization\nNew Researchers Conference, Toronto, Canada\nJune 2022 — Statistical curve models for inferring 3D chromatin architecture\nStatistics in the Big Data Era at Simons Institute, Berkeley, USA\nApril 2022 — Canonical Correlation Analysis in high dimensions with structured regularization\nData Science Inaugural Conference at Stanford University, Stanford, USA\nJune 2021 — Canonical Correlation Analysis in high dimensions with structured regularization\nDBDS Scientific Retreat at Stanford University, Stanford, USA\nSeptember 2019 — Chromatin reconstruction via Weighted Principal Curves\nMachine Learning Summer School at Skolkovo Institute of Science & Technology, Moscow, Russia\n\n\n\nConference Participation\n\nMay 2024 — Statistical Society of Canada Annual Meeting, St. John’s, Canada\nAugust 2023 — Joint Statistical Meeting, Toronto, Canada\nJuly 2020 — Summer School of Machine Learning at Skolkovo Institute of Science & Technology, Virtual\nAugust 2019 — Machine Learning Summer School at Skolkovo Institute of Science & Technology, Moscow, Russia\nJune 2016 — Advanced Statistics and Data Mining Summer School at Polytechnic University of Madrid, Madrid, Spain"
-  },
-  {
-    "objectID": "teaching.html#university-of-toronto-statistical-sciences-research-program-utssrp",
-    "href": "teaching.html#university-of-toronto-statistical-sciences-research-program-utssrp",
-    "title": "Teaching",
-    "section": "University of Toronto Statistical Sciences Research Program (UTSSRP)",
-    "text": "University of Toronto Statistical Sciences Research Program (UTSSRP)\nCo-organizer (2025–2026)\nThe University of Toronto Statistical Sciences Research Program (UTSSRP) is a two-week summer research program that introduces undergraduate students to modern statistical research through intensive coursework, faculty seminars, and mentored research projects.\nAs a co-organizer, I help coordinate the annual program, teach a short course, and mentor undergraduate research projects.\n\nTeaching\n\nShort Course: Curse of Dimensionality (2025–2026)\nIntroduction to high-dimensional geometry, concentration of measure, and statistical challenges arising in modern high-dimensional data analysis.\nSlides · R Tutorial\n\n\n\nResearch Mentorship\n\n2026: Batch Effect Correction in Single-Cell Data\nIntegrating single-cell datasets using canonical correlation analysis and related methods for batch effect correction.\n2025: Heterogeneity of Single-Cell Hi-C Data\nStatistical analysis of heterogeneity in single-cell chromatin contact matrices using modern multivariate and clustering techniques.\n\n\n\nService\n\nCo-organized the annual undergraduate research program.\nCoordinated faculty seminars and research activities.\nOrganized the career panel and student research presentation sessions.\nMentored undergraduate students throughout the program."
-  },
-  {
-    "objectID": "teaching.html#university-of-toronto",
-    "href": "teaching.html#university-of-toronto",
-    "title": "Teaching",
-    "section": "University of Toronto",
-    "text": "University of Toronto"
-  },
-  {
-    "objectID": "teaching.html#regular-courses",
-    "href": "teaching.html#regular-courses",
-    "title": "Teaching",
-    "section": "Regular Courses",
-    "text": "Regular Courses\n\n2025–2026 — STA 2201: Methods of Applied Statistics II\nGraduate course introducing modern statistical learning methods, with emphasis on dimension reduction, clustering, multivariate analysis, and latent variable models.\n2025 — STA 437: Methods for Multivariate Data Analysis\nUndergraduate and graduate course covering fundamental methods in multivariate statistics, including principal component analysis, canonical correlation analysis, factor analysis, independent component analysis, clustering, and graphical models.\n2023 — STA 220: Practice in Statistics I\nUndergraduate course emphasizing data exploration, statistical inference, visualization, and communication using R.\n2023 — STA 198: Probabilities Everywhere\nFirst-year seminar introducing probabilistic thinking through examples drawn from everyday life."
-  },
-  {
-    "objectID": "teaching.html#reading-courses",
-    "href": "teaching.html#reading-courses",
-    "title": "Teaching",
-    "section": "Reading Courses",
-    "text": "Reading Courses\n\n2026 — Stability of Canonical Correlation Analysis\nUndergraduate reading course investigating the statistical behavior of canonical correlation analysis under a variety of high-dimensional settings.\n2026 — Privacy-Preserving Canonical Correlation Analysis\nUndergraduate reading course on statistical learning under privacy constraints, with a focus on performing canonical correlation analysis using the CKKS homomorphic encryption scheme.\n2024–2025 — Inference and Clustering Analysis of Contact Matrices\nUndergraduate reading course on statistical methods for analyzing single-cell Hi-C data, covering matrix and tensor methods for clustering, inference, and chromatin reconstruction.\n2022 — Statistical Learning: Methods and Applications\nReading course on modern statistical learning with applications to COVID-19 forecasting and predictive modeling."
-  },
-  {
-    "objectID": "teaching.html#stanford-university",
-    "href": "teaching.html#stanford-university",
-    "title": "Teaching",
-    "section": "Stanford University",
-    "text": "Stanford University\n\n2021 — STATS 32: Introduction to R for Undergraduates\nUndergraduate course introducing statistical programming, data visualization, and reproducible data analysis in R."
-  },
-  {
-    "objectID": "teaching.html#moscow-state-university",
-    "href": "teaching.html#moscow-state-university",
-    "title": "Teaching",
-    "section": "Moscow State University",
-    "text": "Moscow State University\n\n2017 — Practicum in Statistics\n2016 — Probability Theory"
-  },
-  {
-    "objectID": "courses/utssrp/index.html",
-    "href": "courses/utssrp/index.html",
-    "title": "University of Toronto Statistical Sciences Research Program (UTSSRP)",
-    "section": "",
-    "text": "The University of Toronto Statistical Sciences Research Program (UTSSRP) is a two-week summer research program organized by the Department of Statistical Sciences at the University of Toronto. The program introduces undergraduate students to modern statistical research through intensive coursework, faculty seminars, and mentored research projects.\nSince 2025, I have served as a co-organizer of the program. My responsibilities include coordinating the annual program, organizing research seminars, career panels, and student presentations, teaching an intensive short course, and mentoring undergraduate research projects.\n\nShort Course\n\n2025–2026 — Curse of Dimensionality\nShort course introducing the geometry of high-dimensional spaces, concentration of measure, and the statistical challenges arising in modern high-dimensional data analysis.\nSlides · R Tutorial\n\n\n\nResearch Project Mentorship\n\n2026 — Batch Effect Correction in Single-Cell Data\nMentored an undergraduate research project investigating the geometry of batch effects in single-cell RNA sequencing data and modern methods for batch effect correction.\n2025 — Heterogeneity of Single-Cell Hi-C Data\nMentored an undergraduate research project on dimension reduction and clustering methods for studying heterogeneity in single-cell Hi-C data.\n\n\n\nGallery\n\n\nResearch team for the Batch Effect Correction in Single-Cell Data proejct (UTSSRP 2026).\n\n\nResearch team for the Heterogeneity of Single-Cell Hi-C Data project (UTSSRP 2025)."
   }
 ]

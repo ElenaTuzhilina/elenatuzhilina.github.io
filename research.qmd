@@ -137,9 +137,6 @@ latent connectivity patterns with covariate-driven subject scores.
 
 :::
 
-
-::: {.project-text}
-
 ::: {.project-row}
 
 ::: {.project-image}
@@ -173,9 +170,6 @@ Building on this framework, we develop methods for sparse, group-sparse, and gra
 :::
 
 :::
-
-::: {.project-text}
-
 
 ::: {.project-row}
 
@@ -216,7 +210,6 @@ zero-inflated Poisson, hurdle Poisson, and negative binomial models.
 :::
 
 :::
-
 
 ::: {.project-row}
 
