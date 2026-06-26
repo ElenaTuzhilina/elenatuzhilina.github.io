@@ -1,0 +1,38 @@
+{
+  "about.qmd": {
+    "about.html": "39a938c0"
+  },
+  "index.qmd": {
+    "index.html": "7734d601"
+  },
+  "publications.qmd": {
+    "publications.html": "a080d93a"
+  },
+  "research.qmd": {
+    "research.html": "668fb354"
+  },
+  "software.qmd": {
+    "software.html": "e413805a"
+  },
+  "students.qmd": {
+    "students.html": "47ba267b"
+  },
+  "talks.qmd": {
+    "talks.html": "25efa3e2"
+  },
+  "teaching.qmd": {
+    "teaching.html": "d2d00431"
+  },
+  "blog.qmd": {
+    "blog.html": "2a870b62"
+  },
+  "docs/blog.qmd": {
+    "blog.html": "099293f4"
+  },
+  "resume.qmd": {
+    "resume.html": "90945cb8"
+  },
+  "courses/utssrp/index.qmd": {
+    "index.html": "f1c71ffd"
+  }
+}

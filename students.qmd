@@ -1,0 +1,53 @@
+---
+title: "Students"
+---
+
+### Current
+
+#### PhD Students
+
+- **Evan Shamov** — University of Toronto (2026-present)  
+  Co-supervised with [Ricardo Baptista](https://www.ricardobaptista.com/)
+- **William Groff** — University of Toronto (2025–present)  
+  Co-supervised with [Jun Young Park](https://junjypark.github.io/)
+- [**Luis Sierra Muntane**](https://luis-sierra-muntane.github.io/) — University of Toronto (2024-present)
+- [**Arian Hashemzadeh Amirkhizi**](https://arian-hashemzadeh.github.io/index.html) — University of Toronto (2023-present)  
+  Co-supervised with [Piotr Zwiernik](https://pzwiernik.github.io/)
+
+
+#### Master’s Students
+
+- **Owen Wang** — University of Toronto (2025-present)
+- **Emiliya Stolyarova** — University of Toronto (2024-present)  
+  Co-supervised with [Lea Harrington](https://leaharringtonlab.com/)
+
+
+#### Undergraduate Students
+
+- **Alisha Pham** — University of Toronto (2026-present) 
+- **Jianyang Xiao** — University of Toronto (2026-present) 
+- **Ismael Ghrabi** — University of Toronto (2026-present)
+
+
+
+### Alumni
+
+#### Postdoctoral Fellows
+
+- [**Yaoming Zhen**](https://sites.google.com/view/yaomingzhen) — University of Toronto (2024–2025)  
+  Co-supervised with [Piotr Zwiernik](https://pzwiernik.github.io/)
+  
+
+#### PhD Students
+
+- [**Rongqian Zhang**](https://rongqianzhang-ut.github.io/portfolio/) — University of Toronto (2024–2025)  
+  Co-supervised with [Jun Young Park](https://junjypark.github.io/)
+  
+- **Nikita Glukhov** — Skolkovo Institute of Science and Technology (2023–2024)
+
+
+#### Undergraduate Students
+
+- **Rogers Yang** — University of Toronto (2024) 
+- **Anna Kosovskaya** — Higher School of Economics (2023) 
+- **Jerry Qin** — University of Toronto (2022)

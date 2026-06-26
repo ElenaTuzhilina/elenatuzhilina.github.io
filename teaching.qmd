@@ -1,0 +1,58 @@
+---
+title: "Teaching"
+---
+
+I enjoy teaching statistics at both the undergraduate and graduate levels and introducing students to modern statistical methodology through a combination of theory, computation, and real-world applications. 
+In addition to classroom teaching, I regularly supervise independent reading courses and mentor undergraduate research projects.
+
+
+
+### University of Toronto
+
+#### Regular Courses
+
+- **2025–2026** — *STA 2201: Methods of Applied Statistics II*  
+  Graduate course introducing modern statistical learning methods, with emphasis on dimension reduction, clustering, multivariate analysis, and latent variable models.
+
+- **2025** — *STA 437: Methods for Multivariate Data Analysis*  
+  Undergraduate and graduate course covering fundamental methods in multivariate statistics, including principal component analysis, canonical correlation analysis, factor analysis, independent component analysis, clustering, and graphical models.
+
+- **2023** — *STA 220: Practice in Statistics I*
+  Undergraduate course emphasizing data exploration, statistical inference, visualization, and communication using R.
+
+- **2023** — *STA 198: Probabilities Everywhere*  
+  First-year seminar introducing probabilistic thinking through examples drawn from everyday life.
+
+
+#### Undergraduate Research Training
+
+- **2025–2026** — [*University of Toronto Statistical Sciences Research Program (UTSSRP)*](courses/utssrp/)  
+  Co-organizer of the undergraduate summer research program. Taught the short course *Curse of Dimensionality* and mentored undergraduate research projects on single-cell genomics.
+
+#### Reading Courses
+
+- **2026** — *Stability of Canonical Correlation Analysis*  
+  Undergraduate reading course investigating the statistical behavior of canonical correlation analysis under a variety of high-dimensional settings.  
+  [Paper](courses/reading/cca-stability.pdf)
+
+- **2026** — *Privacy-Preserving Canonical Correlation Analysis*  
+  Undergraduate reading course on statistical learning under privacy constraints, with a focus on performing canonical correlation analysis using the CKKS homomorphic encryption scheme.
+
+- **2024–2025** — *Inference and Clustering Analysis of Contact Matrices*  
+  Undergraduate reading course on statistical methods for analyzing single-cell Hi-C data, covering matrix and tensor methods for clustering, inference, and chromatin reconstruction.  
+  [Paper](courses/reading/single-cell-hic.pdf)
+  
+- **2022** — *Statistical Learning: Methods and Applications*  
+  Reading course on modern statistical learning with applications to COVID-19 forecasting and predictive modeling.
+
+
+### Stanford University
+
+- **2021** — *STATS 32: Introduction to R for Undergraduates*  
+  Undergraduate course introducing statistical programming, data visualization, and reproducible data analysis in R.
+
+### Moscow State University
+
+- **2017** — *Practicum in Statistics*
+
+- **2016** — *Probability Theory*

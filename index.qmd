@@ -1,0 +1,22 @@
+---
+title: "Elena Tuzhilina"
+---
+
+
+![](photo.jpg){width=200px style="border-radius: 10%; float: right; margin-left: 1rem; margin-bottom: 1rem;"}
+
+**Assistant Professor · Department of Statistical Sciences, University of Toronto**
+
+📧 *elena.tuzhilina@utoronto.ca*
+
+📍 *Office 9086, Ontario Power Building, Toronto*
+
+
+I am an Assistant Professor in the [Department of Statistical Sciences](https://www.statistics.utoronto.ca/) 
+at the University of Toronto since July 2022. My research focuses on developing statistical and computational methods for analyzing **complex, high-dimensional data**, with particular interests in **dimension reduction and data integration**. 
+I am especially interested in developing methodology that is both theoretically grounded and practically useful, and I enjoy collaborating with scientists on applications in biology, medicine, and neuroscience.
+
+I received my PhD in [Statistics from Stanford University](https://statistics.stanford.edu/) in 2022, 
+supervised by [Professor Trevor Hastie](https://hastie.su.domains/). 
+Before that, I studied pure mathematics at the [Faculty of Mechanics and Mathematics, Moscow State University](https://openday.msu.ru/https/opendaymsuru/math-en), and further developed my interest 
+in machine learning and applied statistics through the [Yandex School of Data Analysis](https://dataschool.yandex.com/).

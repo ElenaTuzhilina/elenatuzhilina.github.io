@@ -1,0 +1,101 @@
+---
+title: "Publications"
+---
+
+- **Zero-inflated modeling with smoothing on counting tensors**  
+  **E. Tuzhilina**, Y. Zhen.  
+  *arXiv preprint*, 2026.  
+  [Link](https://arxiv.org/abs/2604.22088)
+
+- **Sparse Covariate-Driven Factorization of High-Dimensional Brain Connectivity with Application to Site Effect Correction**  
+  R. Zhang, **E. Tuzhilina**, J. Y. Park.  
+  *arXiv preprint*, 2026.  
+  [Link](https://arxiv.org/abs/2601.09525) [Package](https://github.com/junjypark/SLACC)
+
+- **Efficient Canonical Correlation Analysis with Sparsity**  
+  Z. Wu, **E. Tuzhilina**, C. Donnat.  
+  *arXiv preprint*, 2025.  
+  [Link](https://arxiv.org/abs/2507.11160) [Package](https://CRAN.R-project.org/package=ccar3)
+
+- **Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions**  
+  C. Donnat, **E. Tuzhilina**.  
+  *arXiv preprint*, 2024.  
+  [Link](https://arxiv.org/abs/2405.19539) [Package](https://CRAN.R-project.org/package=ccar3)
+
+- **Statistical Curve Models for Inferring 3D Chromatin Architecture**  
+  **E. Tuzhilina**, T. Hastie, M. Segal.  
+  *Annals of Applied Statistics*, 18(2): 2024.  
+  [Link](https://doi.org/10.1214/24-AOAS1917) [Package](https://github.com/ElenaTuzhilina/DBMS)
+  
+- **Smooth Multi-Period Forecasting with Application to Prediction of COVID-19 Cases**  
+  **E. Tuzhilina**, T. Hastie, R. Tibshirani.  
+  *Journal of Computational and Graphical Statistics*, 32(4), 2023.  
+  [Link](https://doi.org/10.1080/10618600.2023.2285337) [Code](https://github.com/ElenaTuzhilina/MPF/) 
+
+- **Principal Component Analysis**  
+  M. Greenacre, P. Groenen, T. Hastie, A. D’Enza, A. Markos, **E. Tuzhilina**.  
+  *Nature Reviews Methods Primers*, 2:100, 2022.  
+  [Link](https://www.nature.com/articles/s43586-022-00184-w)
+
+- **Weighted Low-Rank Matrix Approximation and Acceleration**  
+  **E. Tuzhilina**, T. Hastie.  
+  *arXiv preprint*, 2021.  
+  [Link](https://arxiv.org/abs/2109.11057) [Package](https://github.com/ElenaTuzhilina/WLRMA)
+
+- **An Open Repository of Real-Time COVID-19 Indicators**  
+  A. Reinhart et al., **E. Tuzhilina**.  
+  *Proceedings of the National Academy of Sciences*, 118(5): e2111452118, 2021.  
+  [Link](https://doi.org/10.1073/pnas.2111452118)
+
+- **Canonical Correlation Analysis in High Dimensions with Structured Regularization**  
+  **E. Tuzhilina**, L. Tozzi, T. Hastie.  
+  *Statistical Modelling*, 23(3): 203–227, 2021.  
+  [Link](https://journals.sagepub.com/doi/10.1177/1471082X211041033) [Package](https://github.com/ElenaTuzhilina/RCCA)
+
+- **Relating Whole-Brain Functional Connectivity to Self-Reported Negative Emotion in a Large Sample of Young Adults Using Group-Regularized Canonical Correlation Analysis**  
+  L. Tozzi, **E. Tuzhilina**, M. Glasser, T. Hastie, L. Williams.  
+  *NeuroImage*, 237: 118137, 2021.  
+  [Link](https://doi.org/10.1016/j.neuroimage.2021.118137)
+
+- **Principal Curve Approaches for Inferring 3D Chromatin Architecture**  
+  **E. Tuzhilina**, T. Hastie, M. Segal.  
+  *Biostatistics*, 22(4): 834–850, 2021.  
+  [Link](https://doi.org/10.1093/biostatistics/kxaa024) [Package](https://github.com/ElenaTuzhilina/PoisMS) 
+
+- **Analyzing the Data Bank of Protein Space Structures (PDB): A Geometrical Approach**  
+  **E. Vilkul (Tuzhilina)**, A. Ivanov, A. Mishchenko, F. Popelensky, A. Tuzhilin, K. Shaitan.  
+  *Journal of Mathematical Sciences*, 225(4): 555–564, 2017.  
+  [Link](https://doi.org/10.1007/s10958-017-3477-2)
+
+- **Addendum to Critical Analysis of Amino Acids and Polypeptides Geometry**  
+  A. Ivanov, A. Mishchenko, A. Tuzhilin.  
+  In *Continuous and Distributed Systems: Theory and Applications*, Vol. 2, pp. 29–74, 2015.  
+  [Link](https://doi.org/10.1007/978-3-319-19075-4_4)
+
+- **A Geometric Approach to the Analysis of the Data Bank of 3D Protein Structures (PDB)**  
+  **E. Vilkul (Tuzhilina)**, A. Ivanov, A. Mishchenko, F. Popelensky, A. Tuzhilin, K. Shaitan.  
+  *Pure and Applied Mathematics*, 20(3): 33–46, 2015.  
+  [Link](https://istina.msu.ru/publications/article/22475388/)
+
+- **Conformations of Swivel Chain as a Model of Protein Folding**  
+  **E. Vilkul (Tuzhilina)**, A. Ivanov, A. Tuzhilin.  
+  *Mathematical Physics and Modeling*, 13(2): 25–42, 2015.  
+  [Link](https://nano-journal.ru/pdf/24_25_42_ivanov.pdf)
+
+- **Geometry of Amino Acids and Polypeptides: The Case of X-Ray Analysis**  
+  **E. Vilkul (Tuzhilina)**, A. Tuzhilin.  
+  *Mathematical Physics and Modeling*, 11(2): 5–27, 2014.  
+  [Link](https://nano-journal.ru/pdf/vilkul_20_06_28.pdf)
+
+
+## Patents
+
+- **Data-driven Automated Selection of Profiles of Translation Professionals for Translation Tasks**  
+  A. Ukrainets, V. Gusakov, I. Smolnikov, **E. Tuzhilina**.  
+  US Patent US20190065463, 2019.  
+  [Link](https://patents.google.com/patent/US20190065463A1)
+
+- **System and Method of Intellectual Automatic Selection of Performers of Translation**  
+  A. Ukrainets, **E. Tuzhilina**, V. Gusakov, I. Smolnikov.  
+  RU Patent RU2667030, 2018.  
+  [Link](https://patents.google.com/patent/RU2667030C1) 

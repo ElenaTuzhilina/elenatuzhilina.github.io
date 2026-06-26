@@ -1,0 +1,114 @@
+---
+title: "Talks"
+---
+
+### Conference Talks
+
+#### Upcoming
+
+- **August 2026** — **[IVADO Symposium: AI Meets Statistics — Biomedical Data Perspectives](https://ivado.ca/en/events/symposium-ai-meets-statistics-biomedical-data-perspectives/)**, Montreal, Canada
+
+- **August 2026** — **[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2026/)**, Boston, USA
+
+- **July 2026** — **[IMS Annual Meeting](https://imstat.org/meetings-calendar/ims-annual-meeting/)**, Salzburg, Austria
+
+#### Past
+
+- **May 2026** — *Smooth zero-inflated modeling on counting tensors*  
+**[Statistical Society of Canada](https://ssc.ca/en/meetings/annual/2026-ssc-annual-meeting-hamilton)**, Hamilton, Canada
+
+- **March 2026** — *Efficient Canonical Correlation Analysis with Sparsity*  
+**[McGill Biostatistics Seminar](https://www.mcgill.ca/epi-biostat-occh/channels/event/efficient-canonical-correlation-analysis-sparsity-371787)**, Montreal, Canada
+
+- **December 2025** — *Smooth zero-inflated modeling on counting tensors*  
+**[IMS International Conference on Statistics and Data Science](https://sites.google.com/view/ims-icsds2025/program)**, Seville, Spain
+
+- **December 2025** — *Efficient Canonical Correlation Analysis with Sparsity*  
+**[University Pompeu Fabra Statistics Seminar Series](https://www.upf.edu/en/web/econ/statistics-seminar-series)**, Barcelona, Spain
+
+- **September 2025** — *Efficient Canonical Correlation Analysis with Sparsity*  
+**[University of Guelph Math & Stats Colloquium Series](https://www.uoguelph.ca/mathstat/node/633)**, Guelph, Canada
+
+- **August 2025** — *Statistical curve models for inferring 3D chromatin architecture*  
+**[Banff International Research Station Workshop](https://www.birs.ca/events/2025/5-day-workshops/25w5470)**, Banff, Canada
+
+- **June 2025** — *Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions*  
+**[WNAR/IMS Annual Meeting](https://wnar.org/event-5946547)**, Whistler, Canada
+
+- **May 2025** — *Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions*  
+**[Statistical Society of Canada](https://ssc.ca/en/meetings/annual/2025-ssc-annual-meeting-saskatoon)**, Saskatoon, Canada
+
+- **December 2024** — *Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions*  
+**[IMS International Conference on Statistics and Data Science](https://www.ims-icsds2024.org/full-program)**, Nice, France
+
+- **June 2024** — *Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions*  
+**[Sixth ICSA-Canada Chapter Symposium](https://icsa-canada-chapter.org/symposium2024/)**, Niagara Falls, Canada
+
+- **June 2023** — *Statistical curve models for inferring 3D chromatin architecture*  
+**[University of Waterloo Statistics and Biostatistics Seminar](https://uwaterloo.ca/statistics-and-actuarial-science/events/seminar-elena-tuzhilina)**, Waterloo, Canada
+
+- **May 2023** — *Statistical curve models for inferring 3D chromatin architecture*  
+**[Statistical Society of Canada Annual Meeting](https://ssc.ca/en/meetings/annual/2023-ssc-annual-meeting-ottawa)**, Ottawa, Canada
+
+- **February 2023** — *Statistical curve models for inferring 3D chromatin architecture*  
+**[McMaster University Statistics Seminar](https://math.mcmaster.ca/events/statistics-seminar-elena-tuzhilina-statistical-curve-models-for-inferring-3d-chromatin-architecture/)**, Hamilton, Canada
+
+- **November 2022** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+University of Mississippi Medical Center, Virtual
+
+- **August 2022** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+**[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2022/)**, Washington, USA
+
+- **November 2021** — *Intelligent Rollouts for Office*, Machine Learning & Data Sciences Conference at Microsoft, Virtual
+- **August 2021** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+**[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2021/)**, Virtual
+
+- **October 2020** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+**[Industrial Affiliates Annual Conference at Stanford University](https://statistics.stanford.edu/events/conferences/2020-industrial-affiliates-annual-conference)**, Virtual
+
+- **August 2020** — *Principal curve approaches for inferring 3D chromatin architecture*  
+**[Summer School of Machine Learning at Skolkovo Institute of Science & Technology](https://smiles.skoltech.ru/school)**, Virtual
+
+- **August 2020** — *Principal curve approaches for inferring 3D chromatin architecture*  
+**[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2020/index.cfm)**, Virtual
+
+- **November 2019** — *A weighted principal curve approach to inferring 3D chromatin architecture*  
+**[Industrial Affiliates Annual Conference at Stanford University](https://statistics.stanford.edu/events/conferences/autumn-industrial-affiliates-conference-2019)**, Stanford, USA
+
+- **September 2016** — *The geometry of iterations defined on measure metric*  
+**[19th Meeting of the Geometrical Seminar](http://tesla.pmf.ni.ac.rs/people/geometrijskiseminarxix/index.php)**, Zlatibor, Serbia
+
+- **April 2014** — *The continuous case of cancer spread problem*  
+Lomonosov Conference at Moscow State University, Moscow, Russia
+
+- **September 2013** — *Mathematical model of cancer spread*  
+**[Probability, Analysis and Geometry](https://www.uni-ulm.de/en/mawi/institute-of-stochastics/staff/staff/former-members/zakhar-kabluchko/workshop-probability-analysis-and-geometry/?print=1)**, Ulm, Germany
+
+### Conference Poster Sessions
+
+- **August 2023** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+**[New Researchers Conference](https://imstat.org/meetings-calendar/new-researchers-conference-2023/)**, Toronto, Canada
+
+- **June 2022** — *Statistical curve models for inferring 3D chromatin architecture*  
+**[Statistics in the Big Data Era at Simons Institute](https://simons.berkeley.edu/workshops/statistics-big-data-era)**, Berkeley, USA
+
+- **April 2022** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+**[Data Science Inaugural Conference at Stanford University](https://datascience.stanford.edu/events/2022-stanford-data-science-inaugural-conference)**, Stanford, USA
+
+- **June 2021** — *Canonical Correlation Analysis in high dimensions with structured regularization*  
+DBDS Scientific Retreat at Stanford University, Stanford, USA
+
+- **September 2019** — *Chromatin reconstruction via Weighted Principal Curves*  
+**[Machine Learning Summer School at Skolkovo Institute of Science & Technology](https://mlss2019.skoltech.ru/community-day)**, Moscow, Russia
+
+### Conference Participation
+
+- **May 2024** — **[Statistical Society of Canada Annual Meeting](https://ssc.ca/en/meetings/annual/2024-ssc-annual-meeting-st-johns)**, St. John's, Canada
+
+- **August 2023** — **[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2023/)**, Toronto, Canada
+
+- **July 2020** — **[Summer School of Machine Learning at Skolkovo Institute of Science & Technology](https://smiles.skoltech.ru)**, Virtual
+
+- **August 2019** — **[Machine Learning Summer School at Skolkovo Institute of Science & Technology](https://mlss2019.skoltech.ru/)**, Moscow, Russia
+
+- **June 2016** — **[Advanced Statistics and Data Mining Summer School at Polytechnic University of Madrid](http://dia.fi.upm.es/es/MLAS)**, Madrid, Spain

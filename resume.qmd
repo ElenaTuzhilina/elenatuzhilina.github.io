@@ -1,0 +1,54 @@
+---
+title: "Resume"
+---
+
+### Education
+
+- **2017--2022**, *Ph.D. in Statistics*  
+[Department of Statistics, Stanford University](https://statistics.stanford.edu), Stanford, CA, USA
+
+- **2015--2017**, *Two-year Program in Data Science*  
+[Department of Data Analysis, Yandex School of Data Analysis](https://yandexdataschool.com/), Moscow, Russia
+
+- **2015--2017**, *Ph.D. in Mathematics*  
+[Faculty of Mechanics and Mathematics, Lomonosov Moscow State University](https://www.msu.ru/en/info/struct/depts/mechmath.html), Moscow, Russia
+
+- **2010--2015**, *B.Sc. + M.Sc. in Mathematics*  
+[Faculty of Mechanics and Mathematics, Lomonosov Moscow State University](https://www.msu.ru/en/info/struct/depts/mechmath.html), Moscow, Russia
+
+### Employment
+
+#### Academia
+
+- **2022--present**, *Assistant Professor in Statistics*  
+[Department of Statistical Sciences, University of Toronto](https://www.statistics.utoronto.ca), Toronto, ON, Canada
+
+- **2023--2024**, *Maternity Leave*
+
+#### Industry
+
+- **Summer 2021**, *Intern in Data Science*  
+Microsoft Corporation, Redmond, WA, USA
+
+- **2015--2017**, *Researcher in Computer Linguistics*  
+[SmartCAT](https://www.smartcat.ai), Moscow, Russia
+
+### Funding
+
+- **2023--2028**, *Discovery Grant*, Natural Sciences and Engineering Research Council of Canada
+
+- **2023--2025**, *Accelerator Grant*, University of Toronto McLaughlin Centre
+
+- **2022--2024**, *Catalyst Grant*, University of Toronto Data Sciences Institute
+
+- **2020--2022**, *Stanford Data Science Scholarship*, Stanford University Data Science Institute
+
+### Awards
+
+- **2023**, *Dorothy Shoichet Women Faculty in Science Awards of Excellence*, University of Toronto
+
+- **2022**, *JSM Student Travel Award*, San Francisco Bay Area Chapter of the American Statistical Association
+
+- **2022**, [*Outstanding Teaching Assistance Award*](materials/TA_award2.pdf), Stanford University
+
+- **2021**, [*Stanford Teaching Assistant Award*](materials/TA_award1.pdf), Stanford University
