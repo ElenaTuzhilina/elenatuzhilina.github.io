@@ -3,7 +3,7 @@ title: "Elena Tuzhilina"
 ---
 
 
-![](photo.jpg){width=200px style="border-radius: 10%; float: right; margin-left: 1rem; margin-bottom: 1rem;"}
+![](photo.jpg){width=400px style="border-radius: 10%; float: right; margin-left: 1rem; margin-bottom: 1rem;"}
 
 **Assistant Professor · Department of Statistical Sciences, University of Toronto**
 

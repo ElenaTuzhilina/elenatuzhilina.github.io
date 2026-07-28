@@ -10,9 +10,11 @@ title: "Talks"
 
 - **August 2026** — **[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2026/)**, Boston, USA
 
-- **July 2026** — **[IMS Annual Meeting](https://imstat.org/meetings-calendar/ims-annual-meeting/)**, Salzburg, Austria
 
 #### Past
+
+- **July 2026** — *Smooth zero-inflated modeling on counting tensors*  
+**[IMS Annual Meeting](https://imstat.org/meetings-calendar/ims-annual-meeting/)**, Salzburg, Austria
 
 - **May 2026** — *Smooth zero-inflated modeling on counting tensors*  
 **[Statistical Society of Canada](https://ssc.ca/en/meetings/annual/2026-ssc-annual-meeting-hamilton)**, Hamilton, Canada

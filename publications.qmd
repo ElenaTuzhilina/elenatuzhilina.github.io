@@ -11,6 +11,11 @@ title: "Publications"
   R. Zhang, **E. Tuzhilina**, J. Y. Park.  
   *arXiv preprint*, 2026.  
   [Link](https://arxiv.org/abs/2601.09525) [Package](https://github.com/junjypark/SLACC)
+  
+- **Weighted Low-Rank Matrix Approximation: Acceleration and Applications**  
+  **E. Tuzhilina**, T. Hastie.  
+  *arXiv preprint*, 2026.  
+  [Link](https://arxiv.org/abs/2109.11057) [Package](https://github.com/ElenaTuzhilina/WLRMA)
 
 - **Efficient Canonical Correlation Analysis with Sparsity**  
   Z. Wu, **E. Tuzhilina**, C. Donnat.  
@@ -36,11 +41,6 @@ title: "Publications"
   M. Greenacre, P. Groenen, T. Hastie, A. D’Enza, A. Markos, **E. Tuzhilina**.  
   *Nature Reviews Methods Primers*, 2:100, 2022.  
   [Link](https://www.nature.com/articles/s43586-022-00184-w)
-
-- **Weighted Low-Rank Matrix Approximation and Acceleration**  
-  **E. Tuzhilina**, T. Hastie.  
-  *arXiv preprint*, 2021.  
-  [Link](https://arxiv.org/abs/2109.11057) [Package](https://github.com/ElenaTuzhilina/WLRMA)
 
 - **An Open Repository of Real-Time COVID-19 Indicators**  
   A. Reinhart et al., **E. Tuzhilina**.  
