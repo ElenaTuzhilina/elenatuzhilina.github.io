@@ -18,8 +18,8 @@ title: "Publications"
   [Link](https://arxiv.org/abs/2109.11057) [Package](https://github.com/ElenaTuzhilina/WLRMA)
 
 - **Efficient Canonical Correlation Analysis with Sparsity**  
-  Z. Wu, **E. Tuzhilina**, C. Donnat.  
-  *arXiv preprint*, 2025.  
+  Z. Wu, C. Rousseau, **E. Tuzhilina**, C. Donnat.  
+  *accepted to Electronic Journal of Statistics*, 2026.  
   [Link](https://arxiv.org/abs/2507.11160) [Package](https://CRAN.R-project.org/package=ccar3)
 
 - **Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions**  
