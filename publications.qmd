@@ -2,6 +2,11 @@
 title: "Publications"
 ---
 
+- **Enrichment of Methylated Cell-Free Placental DNA**  
+  K. W. Smith, N. Yuen, S. Y. Shen, S. Girard, N. Cheng, P. Awadalla, T. Triche Jr., S. V. Bratman, D. D. De Carvalho, **E. Tuzhilina**, S. L. Wilson, and M. M. Hoffman.  
+  *bioRxiv preprint*, 2026.  
+  [Link](https://www.biorxiv.org/content/10.64898/2026.08.17.745276v1)
+
 - **Zero-inflated modeling with smoothing on counting tensors**  
   **E. Tuzhilina**, Y. Zhen.  
   *arXiv preprint*, 2026.  
@@ -9,7 +14,7 @@ title: "Publications"
 
 - **Sparse Covariate-Driven Factorization of High-Dimensional Brain Connectivity with Application to Site Effect Correction**  
   R. Zhang, **E. Tuzhilina**, J. Y. Park.  
-  *arXiv preprint*, 2026.  
+  accepted to *Biostatistics*, 2026.  
   [Link](https://arxiv.org/abs/2601.09525) [Package](https://github.com/junjypark/SLACC)
   
 - **Weighted Low-Rank Matrix Approximation: Acceleration and Applications**  
@@ -19,12 +24,12 @@ title: "Publications"
 
 - **Efficient Canonical Correlation Analysis with Sparsity**  
   Z. Wu, C. Rousseau, **E. Tuzhilina**, C. Donnat.  
-  *accepted to Electronic Journal of Statistics*, 2026.  
-  [Link](https://arxiv.org/abs/2507.11160) [Package](https://CRAN.R-project.org/package=ccar3)
+  *Electronic Journal of Statistics*, 20(2): 3959-4021, 2026.  
+  [Link](https://doi.org/10.1214/26-EJS2571) [Package](https://CRAN.R-project.org/package=ccar3)
 
 - **Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions**  
   C. Donnat, **E. Tuzhilina**.  
-  *arXiv preprint*, 2024.  
+  accepted to the *Journal of Machine Learning Research*, 2024.  
   [Link](https://arxiv.org/abs/2405.19539) [Package](https://CRAN.R-project.org/package=ccar3)
 
 - **Statistical Curve Models for Inferring 3D Chromatin Architecture**  
