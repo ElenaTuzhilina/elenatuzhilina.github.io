@@ -4,14 +4,13 @@ title: "Talks"
 
 ### Conference Talks
 
-#### Upcoming
-
-- **August 2026** — **[IVADO Symposium: AI Meets Statistics — Biomedical Data Perspectives](https://ivado.ca/en/events/symposium-ai-meets-statistics-biomedical-data-perspectives/)**, Montreal, Canada
-
-- **August 2026** — **[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2026/)**, Boston, USA
-
-
 #### Past
+
+- **August 2026** — *Imputing Single-Cell Contact Data via Zero-Inflated Tensor Smoothing*  
+**[IVADO Symposium: AI Meets Statistics — Biomedical Data Perspectives](https://ivado.ca/en/events/symposium-ai-meets-statistics-biomedical-data-perspectives/)**, Montreal, Canada
+
+- **August 2026** — *Smooth zero-inflated modeling on counting tensors*  
+**[Joint Statistical Meeting](https://ww2.amstat.org/meetings/jsm/2026/)**, Boston, USA
 
 - **July 2026** — *Smooth zero-inflated modeling on counting tensors*  
 **[IMS Annual Meeting](https://imstat.org/meetings-calendar/ims-annual-meeting/)**, Salzburg, Austria
