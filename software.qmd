@@ -6,7 +6,7 @@ This page collects software developed for my recent papers.
 
 ### Structured Canonical Correlation Analysis
 
-#### eccar3 (R package)
+#### ccar3 (R package)
 
 :::: {.columns}
 
@@ -19,7 +19,7 @@ This page collects software developed for my recent papers.
 ::: {.column width="78%"}
 
 
-The `eccar3` package implements canonical correlation analysis through a reduced-rank regression framework. It is designed for high-dimensional settings and supports structured regularization, model selection, and cross-validation.
+The `ccar3` package implements canonical correlation analysis through a reduced-rank regression framework. It is designed for high-dimensional settings and supports structured regularization, model selection, and cross-validation.
 
 The package includes `cca_rrr()` for settings in which one data view is high-dimensional and the other is low-dimensional, as well as `ecca()` for settings in which both data views are high-dimensional. Available penalties include standard $\ell_1$ regularization, group-lasso regularization, and total-variation regularization for variables with a known graph structure.
 

@@ -17,6 +17,7 @@ title: "Students"
 
 #### Master’s Students
 
+- **Young Nam Kim** — University of Toronto (2026-present)
 - **Owen Wang** — University of Toronto (2025-present)
 - **Emiliya Stolyarova** — University of Toronto (2024-present)  
   Co-supervised with [Lea Harrington](https://leaharringtonlab.com/)
@@ -24,6 +25,7 @@ title: "Students"
 
 #### Undergraduate Students
 
+- **Anna Esteve Gallifa** — Universitat Politecnica de Catalunya  (2026-present) 
 - **Hayden Yao** — University of Toronto (2026-present) 
 - **Yuxiang Zhang** — University of Toronto (2026-present) 
 - **Alisha Pham** — University of Toronto (2026-present) 

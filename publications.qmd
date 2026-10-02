@@ -14,7 +14,7 @@ title: "Publications"
 
 - **Sparse Covariate-Driven Factorization of High-Dimensional Brain Connectivity with Application to Site Effect Correction**  
   R. Zhang, **E. Tuzhilina**, J. Y. Park.  
-  accepted to *Biostatistics*, 2026.  
+  *Biostatistics*, 27(1): kxag034, 2026.  
   [Link](https://arxiv.org/abs/2601.09525) [Package](https://github.com/junjypark/SLACC)
   
 - **Weighted Low-Rank Matrix Approximation: Acceleration and Applications**  
@@ -29,12 +29,12 @@ title: "Publications"
 
 - **Canonical Correlation Analysis as Reduced Rank Regression in High Dimensions**  
   C. Donnat, **E. Tuzhilina**.  
-  accepted to the *Journal of Machine Learning Research*, 2024.  
+  *Journal of Machine Learning Research*, 27(160): 1-84, 2026.  
   [Link](https://arxiv.org/abs/2405.19539) [Package](https://CRAN.R-project.org/package=ccar3)
 
 - **Statistical Curve Models for Inferring 3D Chromatin Architecture**  
   **E. Tuzhilina**, T. Hastie, M. Segal.  
-  *Annals of Applied Statistics*, 18(2): 2024.  
+  *Annals of Applied Statistics*, 18(2), 2024.  
   [Link](https://doi.org/10.1214/24-AOAS1917) [Package](https://github.com/ElenaTuzhilina/DBMS)
   
 - **Smooth Multi-Period Forecasting with Application to Prediction of COVID-19 Cases**  

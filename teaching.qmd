@@ -11,10 +11,10 @@ In addition to classroom teaching, I regularly supervise independent reading cou
 
 #### Regular Courses
 
-- **2025–2026** — *STA 2201: Methods of Applied Statistics II*  
+- **2025–2027** — *STA 2201: Methods of Applied Statistics II*  
   Graduate course introducing modern statistical learning methods, with emphasis on dimension reduction, clustering, multivariate analysis, and latent variable models.
 
-- **2025** — *STA 437: Methods for Multivariate Data Analysis*  
+- **2025-2027** — *STA 437: Methods for Multivariate Data Analysis*  
   Undergraduate and graduate course covering fundamental methods in multivariate statistics, including principal component analysis, canonical correlation analysis, factor analysis, independent component analysis, clustering, and graphical models.
 
 - **2023** — *STA 220: Practice in Statistics I*
